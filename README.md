@@ -1,23 +1,25 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+`Analise e Desenvolvimento de Sistema`
 
-`DISCIPLINA`
+`Projeto: Desenvolvimento de uma Aplicação Interativa`
 
-`SEMESTRE`
+`Segundo Semestre`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto em andamento busca simplificar o processo de geração de recibos de cobrança. Através de um sistema inovador, os cobradores podem criar e salvar layouts padrão para os recibos, inserindo dados do cliente e datas de pagamento de forma rápida. A principal funcionalidade é a geração automática de recibos futuros baseados nos layouts, o que elimina a tarefa manual repetitiva. Isso resultará em maior eficiência, precisão e satisfação do cliente para os cobradores, além de reduzir erros e otimizar o tempo de trabalho.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Cassio Tadashi Kawamura
+* Bárbara Fernandes Sena
+* Lucas Bezerra Sampaio
+* Gleyston Guimarães Silva
+* Lucy Elaine Quispe Suxo
+* Eduarda Silva Merenciano
 
 ## Orientador
 
-* Nome completo do professor 1
+* Neil Paiva Tizzo
 
 ## Instruções de utilização
 
