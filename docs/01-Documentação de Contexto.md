@@ -1,27 +1,31 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Atualmente, os cobradores enfrentam um desafio árduo: a necessidade de preencher manualmente diversos recibos de cobrança para os clientes, uma tarefa que se repete constantemente devido aos vários pagamentos mensais. A natureza repetitiva desse processo manual torna-o cansativo e demorado. Contudo, uma solução brilhante se avizinha.
+
+A ideia de criar um sistema inovador surge como uma resposta promissora a esse dilema. Ao implementar esse sistema, os cobradores teriam a oportunidade de estabelecer um formato-padrão, conhecido como "layout". Através desse layout, seria possível inserir os dados do cliente e a data de pagamento de maneira rápida e fácil. Além disso, a funcionalidade notável desse sistema residiria na sua capacidade de previsão. Ao cadastrar o layout e fornecer os detalhes necessários, o sistema poderia automaticamente gerar os recibos para os próximos meses, reduzindo substancialmente a carga de trabalho repetitiva.
+
+Os ganhos advindos dessa solução são diversos. Primeiramente, a eficiência dos cobradores seria amplificada consideravelmente, pois o trabalho manual seria substituído por uma abordagem automatizada. Além disso, a uniformidade garantida pelo layout asseguraria a precisão das informações em todos os recibos, minimizando erros. Essa mudança não apenas economizaria tempo, mas também aprimoraria a imagem profissional ao entregar recibos precisos e oportunamente, aumentando a satisfação dos clientes.
+
+Em resumo, a concepção de um sistema que permita o cadastro de um layout e a geração automática de recibos surge como uma solução altamente vantajosa para os cobradores. Ao minimizar o esforço repetitivo, essa abordagem aprimoraria a eficiência, a exatidão e a satisfação do cliente, contribuindo para um ambiente de trabalho mais produtivo e profissional. 
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
+O problema destacado é a necessidade dos cobradores de preencher manualmente diversos recibos de cobrança para os clientes, repetidamente a cada mês. Essa tarefa é cansativa, demorada e propensa a erros devido à natureza repetitiva e manual do processo. A falta de automatização resulta em ineficiência, falta de uniformidade nos recibos e possível insatisfação dos clientes devido a erros nos documentos.
 
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
-
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
+Desenvolver um sistema de automação de geração de recibos de cobrança que reduza a carga de trabalho repetitiva dos cobradores.
  
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+## Objetivos Específicos
+
+- Criar uma interface amigável para que os cobradores possam cadastrar layouts personalizados.
+- Desenvolver um mecanismo de armazenamento de informações dos clientes e datas de pagamento.
+- Implementar um algoritmo de geração automática de recibos com base nos layouts cadastrados.
+- Assegurar a precisão dos dados em todos os recibos gerados pelo sistema.
+- Garantir que o sistema seja capaz de se adaptar a diferentes requisitos de cobrança.
+- Facilitar a visualização e revisão dos recibos antes de serem emitidos aos clientes.
+
 
 ## Justificativa
 
@@ -34,13 +38,8 @@ O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estat�
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
+- Cobradores ou profissionais responsáveis por gerar recibos de cobrança manualmente.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
+- Empresas e organizações que necessitam emitir recibos de cobrança regularmente para seus clientes.
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+- Setores que lidam com pagamentos recorrentes, como serviços públicos, assinaturas, mensalidades, entre outros.
