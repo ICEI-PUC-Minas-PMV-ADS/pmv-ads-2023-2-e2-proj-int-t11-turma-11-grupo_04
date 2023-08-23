@@ -30,13 +30,26 @@ Desenvolver um sistema de automação de geração de recibos de cobrança que r
 ## Justificativa
 
 A implementação de um sistema automatizado para geração de recibos é altamente justificável devido aos seguintes motivos:
-Eficiência: A automação reduz o tempo e esforço necessários para a geração de recibos, permitindo que os cobradores se concentrem em tarefas mais estratégicas.
-Redução de erros: A automatização diminui a probabilidade de erros manuais, garantindo a precisão das informações nos recibos.
-Uniformidade: O uso de layouts padronizados assegura que todos os recibos mantenham um formato consistente.
-Satisfação do cliente: Recibos precisos e entregues pontualmente aumentam a satisfação dos clientes, fortalecendo a relação com a empresa.
-Economia de recursos: A redução do trabalho manual libera recursos humanos para atividades mais valiosas.
-Aprimoramento da imagem profissional: Recibos precisos e profissionais contribuem para a imagem confiável da empresa
 
+ 
+
+**Eficiência**: A automação reduz o tempo e esforço necessários para a geração de recibos, permitindo que os cobradores se concentrem em tarefas mais estratégicas.
+
+ 
+
+**Redução de erros**: A automatização diminui a probabilidade de erros manuais, garantindo a precisão das informações nos recibos.
+
+Uniformidade: O uso de layouts padronizados assegura que todos os recibos mantenham um formato consistente.
+
+ 
+
+**Satisfação do cliente**: Recibos precisos e entregues pontualmente aumentam a satisfação dos clientes, fortalecendo a relação com a empresa.
+
+Economia de recursos: A redução do trabalho manual libera recursos humanos para atividades mais valiosas.
+
+ 
+
+**Aprimoramento da imagem profissional**: Recibos precisos e profissionais contribuem para a imagem confiável da empresa
 
 ## Público-Alvo
 
