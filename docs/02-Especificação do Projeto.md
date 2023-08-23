@@ -8,19 +8,45 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+## Carla Jaqueline da Rocha 
+<img src="../docs/img/persona_carla.jpg" width="300px">
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+## Profissão: Cobradora de empresa de pequeno porte 
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+### Idade: 26 anos
+Carla começou como assistente administrativa na empresa e, ao longo do tempo, assumiu a responsabilidade de cuidar das cobranças. Ela é uma pessoa comprometida e quer oferecer um serviço de alta qualidade aos clientes, mas a tarefa repetitiva de preencher recibos tem sido um obstáculo. 
+
+**Motivações:** Carla está determinada a executar seu trabalho de forma eficiente e precisa. Ela valoriza a organização e busca maneiras de otimizar suas tarefas diárias para que possa dedicar mais tempo a outras atividades.
+
+**Frustrações:** Ela se sente frustrada por gastar muito tempo preenchendo manualmente os recibos de cobrança todos os meses. Isso a impede de lidar com outras tarefas mais estratégicas e interessantes em seu trabalho. 
+
+## Rafael Iago Novaes
+
+<img src="../docs/img/persona_rafael.jpg" width="300px">
+
+## Profissão: Gestor de setor fiscal
+
+### Idade 35 anos
+Rafael possui uma vasta experiência em gestão de equipes e assumiu o cargo de Gestor de setor fiscal recentemente. Ele busca maneiras de modernizar e otimizar as operações do departamento, tornando-as mais eficientes e precisas. 
+
+**Motivações:** Rafael está focado em garantir que a equipe de cobradores execute seu trabalho de maneira eficiente e precisa. Ele valoriza a conformidade e a qualidade no processo de cobrança para manter a reputação da empresa. 
+
+**Frustrações:** Ele se preocupa com a possibilidade de erros nos recibos de cobrança e com a falta de uniformidade nas informações. Além disso, ele sente que a equipe de cobradores poderia ser mais produtiva se não fosse pela tarefa manual repetitiva. 
+
+
+## Isabela Sara Caldeira
+
+<img src="../docs/img/persona_isabela.jpg" width="300px">
+
+## Profissão: Analista de Finanças de uma Instituição de Caridade
+
+### Idade: 30 anos
+Isabela estudou finanças e sempre quis usar suas habilidades para fazer a diferença. Ela se juntou à instituição de caridade como estagiária e, ao longo dos anos, progrediu para o cargo de Analista de Finanças. Seu objetivo é garantir que cada centavo arrecadado seja investido de maneira responsável e impactante. 
+
+**Motivações:** Isabela é apaixonada por ajudar os outros e acredita no poder das instituições de caridade para criar um impacto positivo na sociedade. Ela se dedica a analisar os dados financeiros da organização para garantir que os recursos sejam utilizados de forma eficaz em projetos humanitários. 
+
+**Frustrações:** Isabela enfrenta frustrações ao lidar com a geração manual de recibos de doações e serviços prestados pela instituição de caridade. Ela acredita que o processo atual é demorado e propenso a erros, o que afeta a transparência e a confiabilidade das informações financeiras. Além disso, a tarefa de rastrear e documentar cada transação individualmente consome muito do seu tempo, reduzindo a capacidade de se concentrar em análises mais estratégicas para maximizar o impacto dos recursos. 
+
 
 ## Histórias de Usuários
 
