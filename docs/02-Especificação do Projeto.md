@@ -73,11 +73,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| O sistema deve ter uma interface de usuário intuitiva e amigável. | ALTA |
-|RF-002| O sistema deve permitir aos cobradores criar e salvar layouts personalizados para os recibos| ALTA | 
-|RF-003| Os cobradores devem ser capazes de inserir os dados do cliente e a data de pagamento no layout   | ALTA |
-|RF-004| O sistema deve ser capaz de gerar automaticamente os recibos com base nos layouts cadastrados.| ALTA|
-|RF-005| Deve haver uma opção para visualizar e editar os layouts e recibos gerados.| ALTA |
+|RF-001| O sistema deve ter um layout padrão para os recibos| ALTA | 
+|RF-002| O sistema deve permitir aos cobradores criar e salvar layouts personalizados para os recibos| MÉDIA | 
+|RF-003| O sistema deve permitir o cobrador inserir clientes | ALTA | 
+|RF-004| Os cobradores devem ser capazes de selecionar os dados do cliente e a data de pagamento no layout   | ALTA |
+|RF-005| O sistema deve ser capaz de gerar automaticamente e enviar os recibos com base nos layouts cadastrados.| ALTA|
+|RF-006| Deve haver uma opção para gerenciar os layouts e recibos gerados.| MÉDIA |
  
 
 ### Requisitos não Funcionais
@@ -85,8 +86,9 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
 |RNF-001| O sistema deve ser responsivo para proporcionar a melhor experiência ao usuário em qualquer dispositivo. | ALTA | 
-|RNF-002| O sistema deve ter um tempo de resposta rápido ao gerar os recibos. |  ALTA |
+|RNF-002| O sistema deve ter um tempo de resposta rápido ao gerar os recibos. |  MÉDIA |
 |RNF-003| A segurança dos dados do cliente deve ser uma prioridade, protegendo informações sensíveis.| ALTA |
+|RF-004| O sistema deve ter uma interface de usuário intuitiva e amigável. | ALTA |
 
 Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
