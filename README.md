@@ -12,12 +12,12 @@ O projeto em andamento busca simplificar o processo de geração de recibos de c
 
 ## Integrantes
 
-* Cassio Tadashi Kawamura
 * Bárbara Fernandes Sena
-* Lucas Bezerra Sampaio
-* Gleyston Guimarães Silva
-* Lucy Elaine Quispe Suxo
+* Cassio Tadashi Kawamura
 * Eduarda Silva Merenciano
+* Gleyston Guimarães Silva
+* Lucas Bezerra Sampaio
+* Lucy Elaine Quispe Suxo
 
 ## Orientador
 
