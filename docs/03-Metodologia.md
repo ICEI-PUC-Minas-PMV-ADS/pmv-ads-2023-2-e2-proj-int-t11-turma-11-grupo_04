@@ -24,10 +24,16 @@ O projeto segue a seguinte convenção para o nome de branches:
 Quanto à gerência de issues, o projeto adota a seguinte convenção para
 etiquetas:
 
-- `documentation`: melhorias ou acréscimos à documentação
-- `bug`: uma funcionalidade encontra-se com problemas
+- `bug`: Indica um problema inesperado ou comportamento involuntário
+- `duplicate`: Indica problemas, pull requests ou discussões
+- `help wanted`: Indica que um mantenedor deseja ajudar em um problema ou uma pull request
 - `enhancement`: uma funcionalidade precisa ser melhorada
-- `feature`: uma nova funcionalidade precisa ser introduzida
+- `invalid`: Indica que um problema, pull request ou discussão já não é relevante
+- `documentation`: melhorias ou acréscimos à documentação
+- `question`: Indica que um problema, pull request ou discussão precisa de mais informações
+- `bug`: uma funcionalidade encontra-se com problemas
+- `feature`: uma nova funcionalidade precisa ser implementada
+- `wontfix`: Indica que o trabalho não continuará em um problema, pull request ou discussão.
 
 ## Relação de Ambientes de Trabalho
 
@@ -54,7 +60,7 @@ A equipe está organizada da seguinte forma:
 **Equipe de Desenvolvimento:** 
 - 
 - 
-- 
+- Gleyston Guimarães Silva.
 - 
 - 
 - 
@@ -62,7 +68,7 @@ A equipe está organizada da seguinte forma:
 **Equipe de Design:**
 - 
 - 
-- 
+- Gleyston Guimarães Silva.
 - 
 - 
 - 
@@ -88,18 +94,8 @@ O quadro kanban do grupo no GitHub pode ser visualizado no link https://github.c
 
 As ferramentas empregadas no projeto são:
 
-- Editor de código.
-- Ferramentas de comunicação
-- Ferramentas de desenho de tela (_wireframing_)
+- Editor de código: Visual Studio Code.
+- Ferramentas de comunicação: Whatsapp, teams.
+- Ferramentas de desenho de tela (_wireframing_): Figma.
 
-O editor de código foi escolhido porque ele possui uma integração com o
-sistema de versão. As ferramentas de comunicação utilizadas possuem
-integração semelhante e por isso foram selecionadas. Por fim, para criar
-diagramas utilizamos essa ferramenta por melhor captar as
-necessidades da nossa solução.
-
-Liste quais ferramentas foram empregadas no desenvolvimento do projeto, justificando a escolha delas, sempre que possível.
- 
-> **Possíveis Ferramentas que auxiliarão no gerenciamento**: 
-> - [Slack](https://slack.com/)
-> - [Github](https://github.com/)
+Optamos pelo uso do VS Code devido à sua integração perfeita com o Git e o GitHub. O Microsoft Teams foi selecionado como a plataforma padrão para nossas aulas, e para a criação de diagramas, escolhemos o Figma, que permite a edição colaborativa em tempo real por todos os membros do grupo.
