@@ -40,7 +40,7 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 |Projeto de Interface e Wireframes|      |       |
 Gerenciamento de Projeto| GitHub | https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/573/views/1 |
 | Comunicação entre os Stakeholders | WhatsApp e Teams | https://www.whatsapp.com/?lang=pt_BR , https://teams.microsoft.com |
-| Editor de código | https://visualstudio.microsoft.com/pt-br/ |
+| Editor de código | Visual Studio | https://visualstudio.microsoft.com/pt-br/ |
 
 ## Gerenciamento de Projeto
 
@@ -82,7 +82,7 @@ Para gerenciar e distribuir as tarefas do projeto, a equipe está utilizando um 
 O quadro kanban do grupo no GitHub pode ser visualizado no link https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/573/views/1 e é apresentado, no estado atual, na Figura abaixo:
 <br>
 
-![kanban](img/kanban.jpg)
+![kanban](img/kanban.png)
 
 ### Ferramentas
 
