@@ -18,7 +18,7 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
 <br>
 
-![DiagramaER](img/Diagrama_ER.jpg)
+![Diagrama_ER](img/Diagrama_ER.jpg)
 
 ## Projeto da Base de Dados
 
