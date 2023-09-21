@@ -43,7 +43,7 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 |----------|------------|----------------|
 |Repositório de código fonte| GitHub| https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04|
 |Documento de Projeto| GitHub | https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/tree/main/docs |
-|Projeto de Interface e Wireframes|      |       |
+|Projeto de Interface e Wireframes|  Figma    |       |
 Gerenciamento de Projeto| GitHub | https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/573/views/1 |
 | Comunicação entre os Stakeholders | WhatsApp e Teams | https://www.whatsapp.com/?lang=pt_BR , https://teams.microsoft.com |
 | Editor de código | Visual Studio | https://visualstudio.microsoft.com/pt-br/ |
