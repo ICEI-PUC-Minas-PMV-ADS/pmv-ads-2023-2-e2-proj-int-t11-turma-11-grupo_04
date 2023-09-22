@@ -8,7 +8,7 @@
 
 `Segundo Semestre`
 
-O projeto em andamento busca simplificar o processo de geração de recibos de cobrança. Através de um sistema inovador, os cobradores podem criar e salvar layouts padrão para os recibos, inserindo dados do cliente e datas de pagamento de forma rápida. A principal funcionalidade é a geração automática de recibos futuros baseados nos layouts, o que elimina a tarefa manual repetitiva. Isso resultará em maior eficiência, precisão e satisfação do cliente para os cobradores, além de reduzir erros e otimizar o tempo de trabalho.
+O projeto em andamento busca simplificar o processo de geração de boletos de cobrança. Através de um sistema inovador, os cobradores podem criar e salvar layouts padrão para os recibos, inserindo dados do cliente e datas de pagamento de forma rápida. A principal funcionalidade é a geração automática de recibos futuros baseados nos layouts, o que elimina a tarefa manual repetitiva. Isso resultará em maior eficiência, precisão e satisfação do cliente para os cobradores, além de reduzir erros e otimizar o tempo de trabalho.
 
 ## Integrantes
 
