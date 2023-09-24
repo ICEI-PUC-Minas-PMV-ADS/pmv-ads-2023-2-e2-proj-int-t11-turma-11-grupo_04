@@ -19,9 +19,43 @@ O Modelo ER representa através de um diagrama como as entidades (coisas, objeto
 
 ## Projeto da Base de Dados
 
-O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
- 
-Para mais informações, consulte o microfundamento "Modelagem de Dados".
+Este projeto de base de dados tem como objetivo criar a estrutura de armazenamento de informações essenciais para a nossa aplicação. A base de dados será projetada para acomodar informações detalhadas sobre clientes e  cobranças e outros atributos relevantes. A estrutura de banco de dados será desenvolvida para garantir eficiência, escalabilidade e integridade dos dados, permitindo que a aplicação gerencie as operações necessárias de forma eficaz e segura.
+
+Tabela **clientes**<br>
+id_cliente (PK)<br>
+Nome<br>
+Sobrenome<br> 
+Cidade<br>
+CPF<br>
+CEP<br>
+Telefone <br>
+Email<br>
+<br>
+
+Tabela **cobrador**<br>
+id_cobrador (PK)<br>
+Nome<br>
+Sobrenome <br>
+Cidade<br>
+CPF<br>
+CEP<br>
+Telefone <br>
+Email<br>
+<br>
+
+Tabela **Cobrança** <br>
+id_cobranca (PK)<br>
+id_cliente(FK)<br>
+id_cobrador(FK)<br>
+data<br>
+vencimento<br>
+valor<br>
+status<br>
+
+**Relacionamentos**:<br>
+Um cobrador pode ter vários clientes, e um cliente pode ter vários cobradores. 
+<br><br>
+A Entidade cobrança surge com o relacionamento entre cliente e cobrador. Uma cobrança tem apenas um cobrador e apenas um cliente. 
 
 ## Tecnologias Utilizadas
 
