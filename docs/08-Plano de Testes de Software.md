@@ -1,7 +1,5 @@
 # Plano de Testes de Software
 
-Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
-
 **Introdução:**
 Este plano de testes tem como objetivo garantir que o Sistema de Automação de Geração de Recibos de Cobrança atenda aos requisitos definidos na seção "2 - Especificação do Projeto". Os testes serão conduzidos para verificar a funcionalidade e confiabilidade do sistema, assegurando que ele atenda às necessidades dos cobradores e clientes.
 
