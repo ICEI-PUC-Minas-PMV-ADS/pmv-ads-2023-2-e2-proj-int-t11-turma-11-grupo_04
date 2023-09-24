@@ -58,7 +58,7 @@ A equipe está organizada da seguinte forma:
 **Product Owner:** 
 
 **Equipe de Desenvolvimento:** 
-- 
+- Bárbara Fernandes Sena
 - 
 - Gleyston Guimarães Silva.
 - 
@@ -66,7 +66,7 @@ A equipe está organizada da seguinte forma:
 - 
 
 **Equipe de Design:**
-- 
+- Bárbara Fernandes Sena
 - 
 - Gleyston Guimarães Silva.
 - 
