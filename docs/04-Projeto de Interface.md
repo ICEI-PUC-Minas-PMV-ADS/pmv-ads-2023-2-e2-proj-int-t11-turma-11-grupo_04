@@ -15,7 +15,7 @@ O diagrama de fluxo a seguir representa a interação do usuário com o sistema.
 
 ## Wireframes
 
-O protótipo usado para sugerir a estrutura da nossa aplicação foi feito no figma e apresenta as seguintes telas:
+O protótipo usado para sugerir a estrutura da nossa aplicação foi feito no [figma](https://www.figma.com/file/qB86p72XibOUNFAqEdzdkB/Aplica%C3%A7%C3%A3o-Interativa?type=design&node-id=0%3A1&mode=design&t=9fNkZNSJwmd87BWh-1) e apresenta as seguintes telas:
 
 ### Página Inicial
 ![Página Inicial](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/104398945/6f589e6d-1293-4745-abb6-621fdfbb7dd2)
