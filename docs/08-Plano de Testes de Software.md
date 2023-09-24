@@ -1,31 +1,70 @@
 # Plano de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>
-
 Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
 
-Não deixe de enumerar os casos de teste de forma sequencial e de garantir que o(s) requisito(s) associado(s) a cada um deles está(ão) correto(s) - de acordo com o que foi definido na seção "2 - Especificação do Projeto". 
+**Introdução:**
+Este plano de testes tem como objetivo garantir que o Sistema de Automação de Geração de Recibos de Cobrança atenda aos requisitos definidos na seção "2 - Especificação do Projeto". Os testes serão conduzidos para verificar a funcionalidade e confiabilidade do sistema, assegurando que ele atenda às necessidades dos cobradores e clientes.
 
-Por exemplo:
- 
-| **Caso de Teste** 	| **CT-01 – Cadastrar perfil** 	|
+<br>
+
+**Cenários de Testes:**
+
+<br>
+
+| **Caso de Teste** 	| **CT-01 – Cadastro de Layout** 	|
 |:---:	|:---:	|
-|	Requisito Associado 	| RF-00X - A aplicação deve apresentar, na página principal, a funcionalidade de cadastro de usuários para que esses consigam criar e gerenciar seu perfil. |
-| Objetivo do Teste 	| Verificar se o usuário consegue se cadastrar na aplicação. |
-| Passos 	| - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html<br> - Clicar em "Criar conta" <br> - Preencher os campos obrigatórios (e-mail, nome, sobrenome, celular, CPF, senha, confirmação de senha) <br> - Aceitar os termos de uso <br> - Clicar em "Registrar" |
-|Critério de Êxito | - O cadastro foi realizado com sucesso. |
-|  	|  	|
-| Caso de Teste 	| CT-02 – Efetuar login	|
-|Requisito Associado | RF-00Y	- A aplicação deve possuir opção de fazer login, sendo o login o endereço de e-mail. |
-| Objetivo do Teste 	| Verificar se o usuário consegue realizar login. |
-| Passos 	| - Acessar o navegador <br> - Informar o endereço do site https://adota-pet.herokuapp.com/src/index.html<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" |
-|Critério de Êxito | - O login foi realizado com sucesso. |
+| Requisito Associado 	| RF-001 - Criar uma interface amigável para que os cobradores possam cadastrar layouts personalizados. |
+| Objetivo do Teste 	| Verificar se o sistema permite o cadastro de um novo layout de forma correta. |
+| Passos 	| - Acessar o sistema. <br> - Navegar até a seção de cadastro de layouts. <br> - Preencher os campos obrigatórios para criar um novo layout. <br> - Clicar em "Salvar". |
+| Critério de Êxito | O novo layout é cadastrado com sucesso no sistema. |
+
+<br>
+
+| **Caso de Teste** 	| **CT-02 – Armazenamento de Informações de Clientes e Datas de Pagamento** 	|
+|:---:	|:---:	|
+| Requisito Associado 	| RF-002 - Desenvolver um mecanismo de armazenamento de informações dos clientes e datas de pagamento. |
+| Objetivo do Teste 	| Verificar se o sistema armazena corretamente as informações dos clientes e datas de pagamento. |
+| Passos 	| - Cadastrar um novo cliente no sistema. <br> - Associar datas de pagamento a esse cliente. <br> - Verificar se as informações estão corretamente armazenadas. |
+| Critério de Êxito | As informações do cliente e datas de pagamento estão armazenadas e associadas corretamente no sistema. |
+
+<br>
+
+| **Caso de Teste** 	| **CT-03 – Geração Automática de Recibos** 	|
+|:---:	|:---:	|
+| Requisito Associado 	| RF-003 - Implementar um algoritmo de geração automática de recibos com base nos layouts cadastrados. |
+| Objetivo do Teste 	| Verificar se o sistema gera automaticamente recibos com base nos layouts cadastrados. |
+| Passos 	| - Selecionar um layout previamente cadastrado. <br> - Escolher um cliente e uma data de pagamento. <br> - Iniciar o processo de geração de recibos. <br> - Verificar se o sistema gera os recibos conforme o layout e as informações fornecidas. |
+| Critério de Êxito | Os recibos são gerados automaticamente de acordo com o layout e as informações fornecidas. |
+
+<br>
+
+| **Caso de Teste** 	| **CT-04 – Precisão dos Dados nos Recibos** 	|
+|:---:	|:---:	|
+| Requisito Associado 	| RF-004 - Assegurar a precisão dos dados em todos os recibos gerados pelo sistema. |
+| Objetivo do Teste 	| Verificar se os dados nos recibos gerados são precisos e correspondem às informações cadastradas. |
+| Passos 	| - Gerar um recibo usando o sistema. <br> - Comparar os dados no recibo com as informações cadastradas. |
+| Critério de Êxito | Os dados no recibo são precisos e correspondem às informações cadastradas. |
+
+<br>
+
+| **Caso de Teste** 	| **CT-05 – Adaptação a Diferentes Requisitos de Cobrança** 	|
+|:---:	|:---:	|
+| Requisito Associado 	| RF-005 - Garantir que o sistema seja capaz de se adaptar a diferentes requisitos de cobrança. |
+| Objetivo do Teste 	| Verificar se o sistema permite a personalização de layouts para diferentes requisitos de cobrança. |
+| Passos 	| - Criar um novo layout personalizado para requisitos específicos. <br> - Gerar um recibo usando o novo layout. <br> - Verificar se o recibo atende aos requisitos especificados. |
+| Critério de Êxito | O sistema permite a personalização de layouts e o recibo gerado atende aos requisitos especificados. |
+
+<br>
+
+| **Caso de Teste** 	| **CT-06 – Visualização e Revisão de Recibos** 	|
+|:---:	|:---:	|
+| Requisito Associado 	| RF-006 - Facilitar a visualização e revisão dos recibos antes de serem emitidos aos clientes. |
+| Objetivo do Teste 	| Verificar se o sistema permite a visualização e revisão de recibos antes da emissão. |
+| Passos 	| - Gerar um recibo no sistema. <br> - Visualizar o recibo antes de confirmar a emissão. <br> - Verificar se é possível realizar revisões, se necessário. |
+| Critério de Êxito | O sistema permite a visualização e revisão dos recibos antes da emissão. |
+
+<br>
 
  
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+**Conclusão:**
+Este plano de testes abrange os cenários necessários para validar a funcionalidade do Sistema de Automação de Geração de Recibos de Cobrança. A execução desses testes ajudará a garantir que o sistema atenda aos objetivos e requisitos definidos, proporcionando eficiência, precisão e satisfação aos usuários.
