@@ -90,6 +90,14 @@ O quadro kanban do grupo no GitHub pode ser visualizado no link https://github.c
 
 ![kanban](img/kanban.png)
 
+<br>
+
+- Atalização do quadro Kanban:
+<br>
+
+![kanban](img/Kanban2.jpg)
+<br>
+
 ### Ferramentas
 
 As ferramentas empregadas no projeto são:
