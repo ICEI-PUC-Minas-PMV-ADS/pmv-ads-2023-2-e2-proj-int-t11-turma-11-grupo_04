@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\turma11-grupo04.props" />
-</Project>
