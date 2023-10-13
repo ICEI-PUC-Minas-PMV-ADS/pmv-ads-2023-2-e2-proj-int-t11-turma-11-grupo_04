@@ -1,0 +1,6 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/src/Turma11-grupo04/bin/Debug/net6.0
+/src/Turma11-grupo04/obj
