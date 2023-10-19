@@ -1,0 +1,64 @@
+﻿@model LoginModel
+
+@{
+
+    ViewData["Title"] = "Login";
+
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+
+<link rel="stylesheet" href="/css/login-page.css" />
+
+
+<div class="container">
+
+    <div class="image">
+
+        <img src="~/ImagemPrincipal.png" alt="Imagem" />
+
+    </div>
+
+    <div class="col-md-9 col-lg-8 mx-auto">
+        <h3 class="login-heading mb-4">Faça seu login</h3>
+
+
+
+        <form asp-controller="Login" asp-action="Entrar" method="post">
+
+            <div class="form-label-group ">
+
+                <input type="text" asp-for="Email" id="login" name="username" class="form-control" placeholder="Login" required autofocus>
+                <label for="login">Digite seu Email</label>
+                @Html.ValidationMessageFor(c=> c.Email)
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" asp-for="Senha" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+                <label for="senha">Digite sua senha</label>
+                @Html.ValidationMessageFor(c=> c.Senha)
+            </div>
+
+            <button class="btn btn-lg btn-primary w-100 btn-login text-uppercase font-weight-bold mb-2" type="submit">Entrar</button>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    Ainda não tem uma conta? <a href="#" class="ml-2">Cadastre-se</a>
+                </div>
+
+                <div class="d-flex justify-content-center links">
+                    <a href="#">Esqueceu sua senha?</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
