@@ -1,8 +1,135 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Html
+
+@{
     ViewData["Title"] = "Home Page";
+
+    void FooterComponent(string imagePath, string title, string description)
+    {
+        <div class="footer-items">
+            <img src="@imagePath" width="50" />
+
+            <div>
+                <p class="footer-items-title">@title</p>
+                <p class="footer-items-description">@description</p>
+            </div>
+        </div>
+    }
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: #e7f4fa;
+    }
+    .main-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    .main-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .keyword {
+        color: #1090CB;
+        font-weight: 700;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .buttons button {
+        border: 1px solid #1090CB;
+        border-radius: 10px;
+        color: #1090CB;
+        background: none;
+        width: 115px;
+        height: 30px;
+        margin: 15px 5px 0px 0px;
+    }
+
+    .buttons button:hover {
+        cursor: pointer;
+        background-color: #1090CB;
+        color: white;
+    }
+
+    .footer-section {
+        display: flex;
+        flex-direction: row;
+
+        width: 100%;
+        justify-content: space-evenly
+    }
+
+    .footer-items {
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+    }
+    .footer-items img {
+        margin-right: 5px;
+    }
+
+    .main-text {
+        font-size: 42px;
+        font-weight: 800;
+    }
+
+    .footer-items-title {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .footer-items-description {
+        color: #969696;
+        font-size: 12px;
+    }
+
+    .main-description {
+        font-size: 36px;
+    }
+</style>
+<div class="content">
+    <section class="main-section">
+        <div class="main-info">
+            <p class="main-text">
+                A Solução <span class="keyword">ágil</span> para cobranças de <span class="keyword">sucesso</span>.
+            </p>
+            <p class="main-description">
+                Quer ter uma gestão financeira eficiente e resultados satisfatórios em suas cobranças?
+            </p>
+
+            <div class="buttons">
+                <button>
+                    Cadastrar
+                </button>
+                <button> 
+                    Entrar
+                </button>
+            </div>
+        </div>
+        <div class="main-image">
+            <img src="~/images/home_main_image.svg" width="250" />
+        </div>
+    </section>
+    
+    <section class="footer-section">
+        @{
+            FooterComponent("/images/cadastre_icon.svg", "Cadastre", "É rápido e simples");
+            FooterComponent("/images/clientes_icon.svg", "Clientes", "Cadastre seus clientes");
+            FooterComponent("/images/cobranca_icon.svg", "Cobrança", "Registre as cobranças");
+            FooterComponent("/images/envio_icon.svg", "Envio", "Envie as cobranças");
+        }
+    </section>
 </div>
