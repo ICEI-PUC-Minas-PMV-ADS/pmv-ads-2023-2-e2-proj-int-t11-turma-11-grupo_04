@@ -4,45 +4,110 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Turma11_grupo04</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Turma11_grupo04.styles.css" asp-append-version="true" />
+    <style>
+        header {
+            min-height: 10vh;
+            max-height: 10vh;
+        }
+
+        .content {
+            min-height: 90vh;
+            max-height: 90vh;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(16, 144, 203, 0.10);
+            margin: 0px;
+            padding: 20px;
+        }
+
+        .navbar-brand {
+            width: 40%;
+        }
+
+        .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 60%;
+        }
+
+        .nav-singup {
+            background-color: #1090CB;
+            border-radius: 6px;
+            border: none;
+            color: #FFF;
+            font-family: Poppins;
+            padding: 10px 24px;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0px;
+        }
+
+        .navbar-nav li {
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        .navbar-nav li a {
+            font-family: Poppins;
+            font-size: 16px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .navbar-nav li button {
+            cursor: pointer;
+        }
+
+        .navbar-nav li a:hover {
+            color: #1090CB;
+        }
+
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Turma11_grupo04</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav class="navbar">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/images/LOGO.svg"/>
+            </a>
+            <ul class="navbar-nav">
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Início</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Sobre nós</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark">Serviços</a>
+                </li>
+
+                <li>
+                    <a class="nav-link text-dark">Entrar</a>
+                </li>
+                <li>
+                    <button class="nav-singup">Cadastrar </button>
+                </li>
+            </ul>
         </nav>
     </header>
-    <div class="container">
+    <div class="content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Turma11_grupo04 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

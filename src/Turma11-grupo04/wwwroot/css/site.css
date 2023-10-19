@@ -8,11 +8,16 @@ html {
   }
 }
 
+* {
+    margin: 0px;
+}
+
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    width: 100%;
 }
+
