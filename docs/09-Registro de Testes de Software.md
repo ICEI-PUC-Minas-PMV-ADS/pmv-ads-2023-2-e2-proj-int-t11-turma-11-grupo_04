@@ -23,6 +23,9 @@ O vídeo acima evidencia o cadastro de um cobrador no sistema e segue os seguint
 Dentre os passos descritos no Caso de Teste, foram verificados com êxito:<br>
   1. **Cadastrar um novo cobrador no sistema.**<br>
   2. **Verificar se as informações estão corretamente armazenadas.**
+<br>
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/104398945/95cc43b3-e953-4277-a798-1e48f5ea1995)
 
 <br>
 
