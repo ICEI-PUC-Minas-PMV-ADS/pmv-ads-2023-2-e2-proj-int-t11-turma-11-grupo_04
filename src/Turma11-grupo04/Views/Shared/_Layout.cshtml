@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Turma11_grupo04</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/createCobrador.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Turma11_grupo04.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         header {
             min-height: 10vh;
@@ -97,7 +101,7 @@
                     <a class="nav-link text-dark">Entrar</a>
                 </li>
                 <li>
-                    <button class="nav-singup">Cadastrar </button>
+                    <a class="nav-singup" asp-area="" asp-controller="Cobradores" asp-action="Create">Cadastrar </a>
                 </li>
             </ul>
         </nav>

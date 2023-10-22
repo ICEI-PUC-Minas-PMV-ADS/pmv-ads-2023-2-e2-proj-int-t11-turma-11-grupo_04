@@ -27,5 +27,11 @@ namespace turma11_grupo04.Models
 
         [Required(ErrorMessage = "É obrigatório informar o E-mail.")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "É obrigatório informar a senha.")]
+        public string Senha { get; set; }
+
+        [Required(ErrorMessage = "É obrigatório confirmar a senha.")]
+        public string ConfirmaSenha { get; set; }
     }
 }
