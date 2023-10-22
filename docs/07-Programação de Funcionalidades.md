@@ -8,8 +8,8 @@ Por exemplo: a tabela a seguir deverá ser preenchida considerando os artefatos 
 
 |ID    | Descrição do Requisito  | Artefato(s) produzido(s) |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | tarefas.shtml / tarefas.cs / controllertarefas.cs | 
-|RF-002| Emitir um relatório de tarefas no mês   | relatorio.shtml |
+|RF-001| O sistema deve permitir o cobrador fazer cadastro no sistema | create.shtml / Cobrador.cs / CobradoresController.cs | 
+|RF-002| O sistema deve permitir exibir os dados do usuario em um perfil   | - |
 
 # Instruções de acesso
 
