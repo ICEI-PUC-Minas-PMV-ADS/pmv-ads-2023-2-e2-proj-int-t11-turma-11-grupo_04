@@ -10,6 +10,8 @@ Por exemplo: a tabela a seguir deverá ser preenchida considerando os artefatos 
 |------|-----------------------------------------|----|
 |RF-001| O sistema deve permitir o cobrador fazer cadastro no sistema | create.shtml / Cobrador.cs / CobradoresController.cs | 
 |RF-002| O sistema deve permitir exibir os dados do usuario em um perfil   | - |
+|RF-004| O sistema deve permitir o cobrador inserir clientes | Create.cshtml / Cliente2.cs / ClientesController.cs | 
+
 
 # Instruções de acesso
 
