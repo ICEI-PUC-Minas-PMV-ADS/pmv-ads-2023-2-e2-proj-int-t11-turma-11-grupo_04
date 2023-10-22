@@ -7,10 +7,12 @@
 | Requisito Associado 	| RF-001 - O sistema deve permitir o cobrador fazer cadastro no sistema. |
 | Objetivo do Teste 	| Verificar se o sistema cadastra corretamente as informações dos cobradores. |
 | Passos 	| - Preencher os dados do novo cobrador na parte de cadastro. <br> - Clicar em "criar conta". <br> - Verificar se as informações estão corretamente armazenadas. |
-| Critério de Êxito | Aparece imagem de sucesso e as informações do cobrador estão armazenadas corretamente no sistema. |
+| Critério de Êxito | Aparece texto de sucesso, os campos são validados e as informações do cobrador estão armazenadas corretamente no sistema. |
 <br>
 
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/128761321/9c0ece06-7073-42ab-96c3-ee4121f9de36
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/104398945/f579ae56-3a23-460f-aac1-a7c2971fec44
+
 
 O vídeo acima evidencia o cadastro de um cobrador no sistema e segue os seguintes critérios:
   1. O campo de Nome deve permitir apenas caracteres alfabéticos, incluindo acentos do alfabeto da língua portuguesa (pt-br).
@@ -61,7 +63,12 @@ Para cada caso de teste definido no Plano de Testes de Software, realize o regis
 
 ## Avaliação
 
-Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
+| **Caso de Teste** 	| **CT-01 – Cadastro de Cobrador** 	|
+|:---:	|:---:	|
+| Critério | Status  |
+| Aparece texto de sucesso | Sucesso |
+| Informações do cobrador estão armazenadas corretamente no sistema | Sucesso |
+| Os campos são validados | Falha |
 
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
+- Os campos ainda não estão sendo validados. Essa melhoria será feita para a próxima etapa.
+
