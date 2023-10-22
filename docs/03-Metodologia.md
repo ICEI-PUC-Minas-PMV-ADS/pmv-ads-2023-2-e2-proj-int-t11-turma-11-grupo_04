@@ -47,6 +47,7 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 Gerenciamento de Projeto| GitHub | https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/573/views/1 |
 | Comunicação entre os Stakeholders | WhatsApp e Teams | https://www.whatsapp.com/?lang=pt_BR , https://teams.microsoft.com |
 | Editor de código | Visual Studio | https://visualstudio.microsoft.com/pt-br/ |
+| Gerenciamento do backlog de desenvolvimento | Jira Software | [https://visualstudio.microsoft.com/pt-br/](https://g4pucminas.atlassian.net/jira/software/projects/KAN/boards/1) |
 
 ## Gerenciamento de Projeto
 
