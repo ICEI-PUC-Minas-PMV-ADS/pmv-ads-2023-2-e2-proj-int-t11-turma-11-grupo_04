@@ -42,11 +42,7 @@ namespace Turma11_grupo04.Controllers
 
             }
 
-            // Aguardar 5 segundos antes de redirecionar
-            await Task.Delay(5000);
-
-            // Limpar os inputs e redirecionar para a mesma ação (Create)
-            return RedirectToAction(nameof(Create));
+            return View();
         }
     }
 }
