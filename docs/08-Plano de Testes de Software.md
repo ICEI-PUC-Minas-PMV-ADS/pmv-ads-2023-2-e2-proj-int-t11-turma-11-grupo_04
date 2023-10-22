@@ -8,7 +8,8 @@ Este plano de testes tem como objetivo garantir que o Sistema de Automação de 
 **Cenários de Testes:**
 
 <br>
-| **Caso de Teste** 	| **CT-01 – Cadastro de Colaborador** 	|
+
+| **Caso de Teste** 	| **CT-01 – Cadastro de Cobrador** 	|
 |:---:	|:---:	|
 | Requisito Associado 	| RF-001 - O sistema deve permitir o cobrador fazer cadastro no sistema. |
 | Objetivo do Teste 	| Verificar se o sistema permite o cadastro de um novocobrador. |
