@@ -31,7 +31,7 @@ Dentre os passos descritos no Caso de Teste, foram verificados com êxito:<br>
 
 <br>
 
-| **Caso de Teste** 	| **CT-02 – Armazenamento de Informações de Clientes e Datas de Pagamento** 	|
+| **Caso de Teste** 	| **CT-03 – Armazenamento de Informações de Clientes e Datas de Pagamento** 	|
 |:---:	|:---:	|
 | Requisito Associado 	| RF-002 - Desenvolver um mecanismo de armazenamento de informações dos clientes e datas de pagamento. |
 | Objetivo do Teste 	| Verificar se o sistema armazena corretamente as informações dos clientes e datas de pagamento. |
@@ -49,7 +49,7 @@ O vídeo acima evidencia o cadastro de um cliente no sistema e segue os seguinte
 
 Dentre os passos descritos no Caso de Teste, foram verificados com êxito:<br>
   1. **Cadastrar um novo cliente no sistema.**<br>
-  2. Associar datas de pagamento a esse cliente.<br>
+  2. Associar datas de pagamento a esse cliente. (Será realizado na próxima etapa)<br>
   3. **Verificar se as informações estão corretamente armazenadas.**
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/128761321/601d0b14-0bd4-40dd-a699-35cacb4df0ff)
@@ -71,4 +71,3 @@ Para cada caso de teste definido no Plano de Testes de Software, realize o regis
 | Os campos são validados | Falha |
 
 - Os campos ainda não estão sendo validados. Essa melhoria será feita para a próxima etapa.
-
