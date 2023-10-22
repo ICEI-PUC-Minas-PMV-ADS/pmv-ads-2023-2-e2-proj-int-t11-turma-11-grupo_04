@@ -1,0 +1,127 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.modal-content > button:first-child {
+    border: none !important;
+    outline: none;
+    background: none;
+}
+
+
+/* Estilo para desfocar a página de fundo */
+.blur-background {
+    filter: blur(5px);
+}
+
+span {
+    border: none !important;
+    outline: none;
+}
+/* Centralize o modal */
+.modal {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-body {
+    width: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-content {
+    margin-top: 8em;
+    border-radius: 25px;
+    justify-content: center;
+    border: 1px;
+    border-color: #F3F3F3;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h5 {
+    font-size: 34px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.form-group > input {
+    border: none !important;
+    border-bottom: 1px solid #e6e6e6 !important;
+    outline: none;
+    width: 80%;
+    height: 2em;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+    .form-group > input::placeholder {
+        color: #BEBCBC;
+    }
+
+.close {
+    font-size: 50px;
+    color: #3BADCD;
+    margin-right: 10px;
+    text-align: end;
+}
+
+.form-group > .btn-primary {
+    width: 80%;
+    height: 2.5em;
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    color: #ffffff;
+    background-color: #3BADCD;
+    border: none;
+    border-radius: 5px;
+    margin: 50px auto;
+}
+
+    .btn-transparent {
+        background: transparent;
+        border: none;
+        color: #000; /* Defina a cor do texto desejada */
+        outline: none;
+    }
+
+    .btn-transparent:hover {
+        background: transparent;
+        color: #000; /* Defina a cor do texto para o "hover" desejada */
+    }
