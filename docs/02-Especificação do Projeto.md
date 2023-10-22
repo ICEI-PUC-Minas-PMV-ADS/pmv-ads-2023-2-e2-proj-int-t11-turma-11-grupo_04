@@ -73,12 +73,13 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| O sistema deve ter um layout padrão para os recibos| ALTA | 
-|RF-002| O sistema deve permitir aos cobradores criar e salvar layouts personalizados para os recibos| MÉDIA | 
-|RF-003| O sistema deve permitir o cobrador inserir clientes | ALTA | 
-|RF-004| Os cobradores devem ser capazes de selecionar os dados do cliente e a data de pagamento no layout   | ALTA |
-|RF-005| O sistema deve ser capaz de gerar automaticamente e enviar os recibos com base nos layouts cadastrados.| ALTA|
-|RF-006| Deve haver uma opção para gerenciar os layouts e recibos gerados.| MÉDIA |
+|RF-001| O sistema deve permitir o cobrador fazer cadastro no sistema| ALTA | 
+|RF-002| O sistema deve permitir exibir os dados do usuario em um perfil| ALTA |
+|RF-003| O sistema deve permitir aos cobradores criar e salvar layouts personalizados para os recibos| MÉDIA | 
+|RF-004| O sistema deve permitir o cobrador inserir clientes | ALTA | 
+|RF-005| Os cobradores devem ser capazes de selecionar os dados do cliente e a data de pagamento no layout   | ALTA |
+|RF-006| O sistema deve ser capaz de gerar automaticamente e enviar os recibos com base nos layouts cadastrados.| ALTA|
+|RF-007| Deve haver uma opção para gerenciar os layouts e recibos gerados.| MÉDIA |
  
 
 ### Requisitos não Funcionais
