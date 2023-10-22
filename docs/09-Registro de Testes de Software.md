@@ -2,6 +2,30 @@
 
 <br>
 
+| **Caso de Teste** 	| **CT-01 – Cadastro de Cobrador** 	|
+|:---:	|:---:	|
+| Requisito Associado 	| RF-001 - O sistema deve permitir o cobrador fazer cadastro no sistema. |
+| Objetivo do Teste 	| Verificar se o sistema cadastra corretamente as informações dos cobradores. |
+| Passos 	| - Preencher os dados do novo cobrador na parte de cadastro. <br> - Clicar em "criar conta". <br> - Verificar se as informações estão corretamente armazenadas. |
+| Critério de Êxito | Aparece imagem de sucesso e as informações do cobrador estão armazenadas corretamente no sistema. |
+<br>
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/128761321/9c0ece06-7073-42ab-96c3-ee4121f9de36
+
+O vídeo acima evidencia o cadastro de um cobrador no sistema e segue os seguintes critérios:
+  1. O campo de Nome deve permitir apenas caracteres alfabéticos, incluindo acentos do alfabeto da língua portuguesa (pt-br).
+  2. O campo de Email deve permitir somente formato de Email válido.
+  3. O campo CPF deve permitir somente números e exatos 11 dígitos e ao digitar o 11° número o sistema deve formatar para xxx.xxx.xxx-xx bloqueando a digitação de demais dígitos.
+  4. O campo Telefone deve permitir somente números e exatos 10 dígitos e o sistema deve formatar para (xx)xxxx-xxxx bloqueando a digitação de demais dígitos.
+  5. Ao inserir a senha nos campos Senha e Confirmar Senha, esses devem estar ocultos para visualização por questões de segurança.
+  6. Os campos Senha e Confirmar Senha devem ter valores iguais.
+
+Dentre os passos descritos no Caso de Teste, foram verificados com êxito:<br>
+  1. **Cadastrar um novo cobrador no sistema.**<br>
+  2. **Verificar se as informações estão corretamente armazenadas.**
+
+<br>
+
 | **Caso de Teste** 	| **CT-02 – Armazenamento de Informações de Clientes e Datas de Pagamento** 	|
 |:---:	|:---:	|
 | Requisito Associado 	| RF-002 - Desenvolver um mecanismo de armazenamento de informações dos clientes e datas de pagamento. |
