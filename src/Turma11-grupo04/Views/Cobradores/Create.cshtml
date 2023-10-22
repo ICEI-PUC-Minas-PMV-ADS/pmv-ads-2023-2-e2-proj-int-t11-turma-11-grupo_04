@@ -1,0 +1,88 @@
+﻿@model turma11_grupo04.Models.Cobrador
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<div class="row signup-container">
+    <div class="container-lateral" style="width:350px">
+        <h1 class="main-signuptitle">Otimize suas cobranças</h1>
+        <img src="https://www.grupocentralcobrancas.com.br/uploads/produto/2022-01-141642173036_fb39f44892a2d3fca8eb.png" width="350" alt="Imagem de aumento de vendas">
+    </div>
+    <div class="signup-form">
+        @* Exibir a mensagem se existir *@
+        @if (ViewBag.MensagemCadastro != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.MensagemCadastro
+            </div>
+        }
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       
+                <h1 class="main-title" style="text-align:center">Crie sua conta grátis!</h1>
+                <div class="form-group">
+                 <input asp-for="Nome" placeholder="Nome" class="form-control input-style" />
+                    <span asp-validation-for="Nome"  class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*  <label asp-for="EmailCobrador" class="control-label"></label> *@
+                    <input asp-for="Sobrenome" placeholder="Sobrenome" class="form-control input-style" />
+                    <span asp-validation-for="Sobrenome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*  <label asp-for="EmailCobrador" class="control-label"></label> *@
+                    <input asp-for="Cidade" placeholder="Cidade" class="form-control input-style" />
+                    <span asp-validation-for="Cidade" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*  <label asp-for="CPFCobrador" class="control-label"></label> *@
+                    <input asp-for="CPF" placeholder="CPF" class="form-control input-style" />
+                    <span asp-validation-for="CPF" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @* <label asp-for="CEPCobrador" class="control-label"></label> *@
+                    <input asp-for="CEP" placeholder="CEP" class="form-control input-style" />
+                    <span asp-validation-for="CEP" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @* <label asp-for="TelefoneCobrador" class="control-label"></label> *@
+                    <input asp-for="Telefone" placeholder="Telefone" class="form-control input-style" />
+                    <span asp-validation-for="Telefone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*  <label asp-for="EmailCobrador" class="control-label"></label> *@
+                    <input asp-for="Email" placeholder="E-mail" class="form-control input-style" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*  <label asp-for="EmailCobrador" class="control-label"></label> *@
+                    <input asp-for="Senha" type="password" placeholder="Senha" class="form-control input-style" />
+                    <span asp-validation-for="Senha" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @*  <label asp-for="EmailCobrador" class="control-label"></label> *@
+                <input asp-for="ConfirmaSenha" type="password" placeholder="Confirmar senha" class="form-control input-style" />
+                    <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Criar conta" class="btn-cadastro" style="width:500px; background-color:#3BADCD; border-style: none;" />
+                    <div class="texto-signin">
+                        <p style="margin-right:5px">Já tem uma conta?</p><a asp-action="Entrar">Entrar</a>
+                    </div>
+                </div>
+        </form>
+    </div>
+    
+
+ </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
