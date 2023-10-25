@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/src/Turma11-grupo04/.vs/Turma11-grupo04/config/applicationhost.config
+/src/Turma11-grupo04/.vs/Turma11-grupo04/v17/.suo
+/src/Turma11-grupo04/Turma11-grupo04.csproj

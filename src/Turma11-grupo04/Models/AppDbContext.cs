@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Turma11_grupo04.Models;
 
 namespace turma11_grupo04.Models
 {

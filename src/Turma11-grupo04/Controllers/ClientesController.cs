@@ -1,8 +1,8 @@
-using Cadastro_cliente.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using turma11_grupo04.Models;
 
-namespace Cadastro_cliente.Controllers
+namespace Turma11_grupo04.Controllers
 {
     public class ClientesController : Controller
     {
@@ -14,7 +14,7 @@ namespace Cadastro_cliente.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var dados = await _context.Clientes.ToListAsync();
+            var dados = await _context.Cliente.ToListAsync();
             
             return View(dados);
         }
@@ -29,7 +29,7 @@ namespace Cadastro_cliente.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Clientes.Add(cliente);
+                _context.Cliente.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

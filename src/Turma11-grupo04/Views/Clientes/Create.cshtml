@@ -1,4 +1,4 @@
-@model Cadastro_cliente.Models.Cliente
+@model turma11_grupo04.Models.Cliente
 
 @{
     ViewData["Title"] = "Create";
@@ -43,6 +43,9 @@
                         <div class="form-group">
                             <input asp-for="Telefone" class="form-control" placeholder="Telefone" />
                             <span asp-validation-for="Telefone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="CobradorId" class="control-label">1</input>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Cadastrar" class="btn btn-primary" />
