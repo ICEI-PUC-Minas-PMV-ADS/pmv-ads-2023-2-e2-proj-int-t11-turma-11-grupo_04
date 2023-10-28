@@ -17,6 +17,11 @@ body {
   margin-bottom: 60px;
 }
 
+span {
+    color: red;
+    font-family: 'Poppins', sans-serif;
+}
+
 .modal-content > button:first-child {
     border: none !important;
     outline: none;
@@ -29,17 +34,16 @@ body {
     filter: blur(5px);
 }
 
-span {
-    border: none !important;
-    outline: none;
-}
+
 /* Centralize o modal */
-.modal {
+.popup {
     text-align: center;
     align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+    width: 50vh;
+    height: 50vh;
 }
 
 .modal-dialog {
@@ -93,7 +97,7 @@ h5 {
         color: #BEBCBC;
     }
 
-.close {
+.close-button {
     font-size: 50px;
     color: #3BADCD;
     margin-right: 10px;
@@ -125,3 +129,5 @@ h5 {
         background: transparent;
         color: #000; /* Defina a cor do texto para o "hover" desejada */
     }
+
+

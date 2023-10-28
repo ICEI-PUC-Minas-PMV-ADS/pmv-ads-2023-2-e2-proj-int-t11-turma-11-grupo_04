@@ -8,55 +8,110 @@
 
 <h4>Cliente</h4>
 
-<link rel="stylesheet" href="~/css/PopupCadastroCliente.css">
+<link rel="stylesheet" href="/css/PopupCadastroCliente.css">
+
+
 
 <div class="container mt-5">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    <button type="button" id="openPopup">
         Cadastrar cliente
     </button>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-
-                <div class="modal-body">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar cliente</h5><br>
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <input asp-for="Nome" class="form-control" placeholder="Nome completo" />
-                            <span asp-validation-for="Nome" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="Email" class="form-control" placeholder="Email" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="CPF" class="form-control" id="cpfInput" placeholder="CPF" />
-                            <span asp-validation-for="CPF" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="Telefone" class="form-control" placeholder="Telefone" />
-                            <span asp-validation-for="Telefone" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input asp-for="CobradorId" class="control-label">1</input>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Cadastrar" class="btn btn-primary" />
-                        </div>
-                    </form>
-
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <button type="button" id="closePopup" class="close-button">×</button>
+            <h5 class="modal-title">Cadastrar cliente</h5><br>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="Nome" class="form-control" id="nomeInput" placeholder="Nome completo" />
+                    <br><span asp-validation-for="Nome" class="text-danger"></span>
                 </div>
-            </div>
+                <div class="form-group">
+                    <input asp-for="Email" class="form-control" id="emailInput" placeholder="Email" />
+                    <br><span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="CPF" class="form-control" id="cpfInput" placeholder="CPF" />
+                    <br><span asp-validation-for="CPF" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Telefone" class="form-control" id="telefoneInput" placeholder="Telefone" />
+                    <br><span asp-validation-for="Telefone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .popup-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 30px; 
+        width: 600px; 
+        max-width: 80%; 
+        height: 500px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+
+    .modal-title{
+        margin-top: 1em;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+
+        font-size: 50px;
+        color: #3BADCD;
+        margin-right: 10px;
+        text-align: end;
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Adicione margem inferior para dar espaçamento entre os grupos de inputs */
+    }
+
+</style>
+
+
+<script>
+    document.getElementById("openPopup").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "block";
+    });
+
+    document.getElementById("closePopup").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "none";
+    });
+</script>
+
 
 
 <div>
@@ -72,15 +127,16 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 
-    <style>
+<style>
 
-        
-    </style>
+
+</style>
 
 <script>
     const cpfInput = document.getElementById('cpfInput');
