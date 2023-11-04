@@ -1,0 +1,64 @@
+﻿@media (max-width: 768px) {
+    .vertical-center img {
+        display: none;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1090CB1A;
+    margin: auto auto;
+}
+
+.container {
+    margin-top: 10vh;
+}
+
+.btn_cadastrar_entrar{
+
+}
+#btn_cadastrar {
+    width: 22vh;
+    height: 51px;
+    background: #1090CB;
+    border-radius: 10px;
+    margin-right: 2em;
+    margin-top: 5em;
+
+}
+#btn_entrar {
+    width: 22vh;
+    height: 51px;
+    border: 1px solid #1090CB;
+    color: #1090CB;
+    font-size: 16px;
+    border-radius: 10px;
+}
+strong1 {
+    color: #1090CB;
+    font-weight: 600;
+}
+ul {
+    list-style: none;
+    align-items: flex-start;
+}
+
+.retangulo {
+    width: 79.74px;
+    height: 62px;
+    background-color: #EFEAFF;
+    border-radius: 20px; /* Adiciona um raio de 20px às bordas */
+    z-index: 9999;
+}
+
+#btn_cadastre {
+    margin-right: 10px;
+    width: 40px;
+    height: 35px;
+    z-index: 1;
+}
+
