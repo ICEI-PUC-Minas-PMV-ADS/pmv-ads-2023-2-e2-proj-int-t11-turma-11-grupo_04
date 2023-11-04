@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims;
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,25 +22,39 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cobradores" asp-action="Details" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Perfil</a>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav">
 
                         @if (User.Identity.IsAuthenticated)
                         {
+
+
+
                             <li class="nav-item">
-                                Olá, @User.Identity.Name <a class="nav-link text-dark" asp-area="" asp-controller="Cobradores" asp-action="Logout">Sair</a>
+                                <span class="mr-2">Olá, @User.Identity.Name</span>
+                                <a class="btn btn-success " asp-area="" asp-controller="Cobradores" asp-action="Logout">Sair</a>
                             </li>
+                            
+
+
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cobradores" asp-action="Login">Login</a>
+                                <a class="btn btn-primary text-white" asp-area="" asp-controller="Cobradores" asp-action="Login">Login</a>
                             </li>
                         }
 

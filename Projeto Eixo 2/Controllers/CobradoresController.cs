@@ -69,7 +69,7 @@ namespace Projeto_Eixo_2.Controllers
 
                 await HttpContext.SignInAsync(principal, props);
 
-                Redirect("/");
+                return RedirectToAction("Index", "Home"); // Redireciona para a homepage
             }
             else
             {
