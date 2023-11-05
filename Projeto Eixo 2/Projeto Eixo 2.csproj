@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Cobranca.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\css\PopupCadastroCliente.cs" />
   </ItemGroup>
 
