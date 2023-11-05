@@ -14,7 +14,9 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  font-family: Poppins;
+  letter-spacing: 1px;
+  height: 100%;
 }
 
 
