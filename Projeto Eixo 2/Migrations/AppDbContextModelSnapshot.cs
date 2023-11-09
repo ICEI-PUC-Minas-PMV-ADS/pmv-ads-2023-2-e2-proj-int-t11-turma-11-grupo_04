@@ -52,7 +52,7 @@ namespace Projeto_Eixo_2.Migrations
 
                     b.HasIndex("CobradorId");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Clientes", (string)null);
                 });
 
             modelBuilder.Entity("Projeto_Eixo_2.Models.Cobrador", b =>
@@ -89,7 +89,7 @@ namespace Projeto_Eixo_2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cobradores");
+                    b.ToTable("Cobradores", (string)null);
                 });
 
             modelBuilder.Entity("Projeto_Eixo_2.Models.Cliente", b =>
