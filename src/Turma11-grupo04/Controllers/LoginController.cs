@@ -45,8 +45,9 @@ namespace Turma11_grupo04.Controllers
                     else
                     {
 
-                        ModelState.AddModelError("", "Credenciais inválidas. Verifique seu email e senha.");
+                        TempData["MensagemErro"] =  $"Credenciais inválidas. Verifique seu email e senha.";
                     }
+
 
                 }
 

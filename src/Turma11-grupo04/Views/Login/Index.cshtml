@@ -20,15 +20,23 @@
 
 
     <div class="Login-signup-form">
+
         <h1 class="main-title" style="text-align:center">Faça seu Login</h1>
 
+
+        @if (TempData["MensagemErro"] != null)
+        {
+            <div class=" alert alert-danger">@TempData["MensagemErro"]</div>
+        }
 
 
         <form asp-controller="Login" asp-action="Entrar" method="post">
 
+
+
             <div class="form-label-group ">
 
-                <input type="text" id="login" name="username" class="form-control input-style" placeholder="Login" required autofocus>
+                <input type="text" id="login" name="Email" class="form-control input-style" placeholder="Login" required autofocus>
                 <label for="login"></label>
                 @Html.ValidationMessageFor(c=> c.Email)
                 
