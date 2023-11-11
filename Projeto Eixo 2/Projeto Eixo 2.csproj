@@ -8,9 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Clientes\**" />
     <Compile Remove="wwwroot\src\NovaPasta\**" />
+    <Content Remove="Views\Clientes\**" />
     <Content Remove="wwwroot\src\NovaPasta\**" />
+    <EmbeddedResource Remove="Views\Clientes\**" />
     <EmbeddedResource Remove="wwwroot\src\NovaPasta\**" />
+    <None Remove="Views\Clientes\**" />
     <None Remove="wwwroot\src\NovaPasta\**" />
   </ItemGroup>
 
@@ -34,6 +38,18 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Clientes\Create.cshtml" />
+    <None Include="Views\Clientes\Delete.cshtml" />
+    <None Include="Views\Clientes\Details.cshtml" />
+    <None Include="Views\Clientes\Edit.cshtml" />
+    <None Include="Views\Clientes\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Clientes\" />
   </ItemGroup>
 
 </Project>

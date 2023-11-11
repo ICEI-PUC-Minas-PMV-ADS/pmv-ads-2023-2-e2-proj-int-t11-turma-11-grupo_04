@@ -14,7 +14,7 @@
         <div class ="col-md-10 mx-auto my-auto">
             <form asp-action="Login">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                
                 <div class="form-group">
                     <label asp-for="Email" class="control-label"></label>
                     <input asp-for="Email" class="form-control mx-auto" />
@@ -26,9 +26,11 @@
                     <input asp-for="Senha" class="form-control mx-auto" />
                     <span asp-validation-for="Senha" class="text-danger"></span>
                 </div>
+                
                 <div class="form-group">
                     <input type="submit" value="Acessar" class="btn btn-primary" />
                 </div>
+                <h6 class="color text-danger">@ViewBag.Message</h6>
             </form>
         </div>
     </div>

@@ -11,8 +11,8 @@ using Projeto_Eixo_2.Models;
 namespace Projeto_Eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231104221156_AddColImagemTabCobrador")]
-    partial class AddColImagemTabCobrador
+    [Migration("20231111041223_AltTableCobrador")]
+    partial class AltTableCobrador
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,19 @@ namespace Projeto_Eixo_2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cidade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -73,12 +85,16 @@ namespace Projeto_Eixo_2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Imagem")
+                    b.Property<string>("Endereco")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeCobrador")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
 
                     b.Property<string>("Senha")
                         .IsRequired()
@@ -89,6 +105,10 @@ namespace Projeto_Eixo_2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UF")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using BCrypt.Net;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +12,9 @@ using Projeto_Eixo_2.Models;
 
 namespace Projeto_Eixo_2.Controllers
 {
+    [Authorize]
     public class CobradoresController : Controller
     {
-
         private readonly AppDbContext _context;
 
         public CobradoresController(AppDbContext context)
@@ -21,17 +22,19 @@ namespace Projeto_Eixo_2.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Cobradores
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cobradores.ToListAsync());
+              return View(await _context.Cobradores.ToListAsync());
         }
-
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(Cobrador cobrador)
         {
@@ -53,7 +56,7 @@ namespace Projeto_Eixo_2.Controllers
                 {
                      new Claim(ClaimTypes.Name, dados.NomeCobrador),
                      new Claim(ClaimTypes.NameIdentifier, dados.Id.ToString()), // Adicione o ID do cobrador como claim
-                     new Claim(ClaimTypes.Email, dados.Email.ToString())
+                     new Claim(ClaimTypes.Role, dados.Perfil.ToString())
                 };
 
                 var cobradorIdentity = new ClaimsIdentity(claims, "Login");
@@ -78,13 +81,13 @@ namespace Projeto_Eixo_2.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
 
             return RedirectToAction("Login", "Cobradores");
         }
-
         // GET: Cobradores/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -114,7 +117,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,Telefone,Senha,CEP,Endereco,Bairro,Cidade,UF,Perfil")] Cobrador cobrador)
+        public async Task<IActionResult> Create([Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,CEP,Endereco,Bairro,Cidade,UF,Telefone,Senha,Perfil")] Cobrador cobrador)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +150,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,CEP,Endereco,Bairro,Cidade,UF,Telefone,Senha")] Cobrador cobrador)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,CEP,Endereco,Bairro,Cidade,UF,Telefone,Senha,Perfil")] Cobrador cobrador)
         {
             if (id != cobrador.Id)
             {
@@ -210,14 +213,14 @@ namespace Projeto_Eixo_2.Controllers
             {
                 _context.Cobradores.Remove(cobrador);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CobradorExists(int id)
         {
-            return _context.Cobradores.Any(e => e.Id == id);
+          return _context.Cobradores.Any(e => e.Id == id);
         }
     }
 }

@@ -29,12 +29,24 @@ namespace Projeto_Eixo_2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CPFCliente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cidade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CobradorId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeCliente")
                         .IsRequired()
@@ -45,6 +57,10 @@ namespace Projeto_Eixo_2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelefoneCliente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UF")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

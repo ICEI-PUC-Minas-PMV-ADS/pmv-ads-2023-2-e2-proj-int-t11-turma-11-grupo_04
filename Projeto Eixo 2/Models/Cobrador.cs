@@ -47,7 +47,7 @@ namespace Projeto_Eixo_2.Models
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o perfil.")]
-        public Perfil Perfil { get; set; }
+        public Perfil Perfil { get; set; } = Perfil.User;
 
         public ICollection<Cliente> Cliente { get; set; }
     }

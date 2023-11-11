@@ -4,48 +4,34 @@
 
 namespace Projeto_Eixo_2.Migrations
 {
-    public partial class AltTableCobrador : Migration
+    public partial class AltTableCLiente : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
                 name: "Bairro",
-                table: "Cobradores",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "CEP",
-                table: "Cobradores",
+                table: "Clientes",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
                 name: "Cidade",
-                table: "Cobradores",
+                table: "Clientes",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
                 name: "Endereco",
-                table: "Cobradores",
+                table: "Clientes",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
 
-            migrationBuilder.AddColumn<int>(
-                name: "Perfil",
-                table: "Cobradores",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
-
             migrationBuilder.AddColumn<string>(
                 name: "UF",
-                table: "Cobradores",
+                table: "Clientes",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
@@ -55,27 +41,19 @@ namespace Projeto_Eixo_2.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "Bairro",
-                table: "Cobradores");
-
-            migrationBuilder.DropColumn(
-                name: "CEP",
-                table: "Cobradores");
+                table: "Clientes");
 
             migrationBuilder.DropColumn(
                 name: "Cidade",
-                table: "Cobradores");
+                table: "Clientes");
 
             migrationBuilder.DropColumn(
                 name: "Endereco",
-                table: "Cobradores");
-
-            migrationBuilder.DropColumn(
-                name: "Perfil",
-                table: "Cobradores");
+                table: "Clientes");
 
             migrationBuilder.DropColumn(
                 name: "UF",
-                table: "Cobradores");
+                table: "Clientes");
         }
     }
 }

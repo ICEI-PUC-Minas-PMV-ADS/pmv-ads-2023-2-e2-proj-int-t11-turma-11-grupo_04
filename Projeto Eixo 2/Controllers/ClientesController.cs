@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projeto_Eixo_2.Models;
 using System.Security.Claims;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projeto_Eixo_2.Controllers
 {
+    [Authorize]
     public class ClientesController : Controller
     {
         private readonly AppDbContext _context;
@@ -21,17 +22,30 @@ namespace Projeto_Eixo_2.Controllers
         }
 
         // GET: Clientes
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            // Obtenha o ID do cobrador logado (depende de como você implementou a autenticação)
-            var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            // Verificar se o usuário tem a função de administrador
+            bool isAdmin = User.IsInRole("Admin");
 
-            // Consulta para obter apenas os clientes do cobrador logado
-            var clientesDoCobrador = _context.Clientes.Where(c => c.CobradorId == cobradorId).ToList();
+            if (isAdmin)
+            {
+                // Se for administrador, lista todos os clientes
+                var todosOsClientes = await _context.Clientes.ToListAsync();
+                Console.WriteLine($"Número de clientes: {todosOsClientes.Count}");
 
-            return View(clientesDoCobrador);
+                return View(todosOsClientes);
+            }
+            else
+            {
+                // Se não for administrador, lista apenas os clientes do cobrador logado
+                var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var clientesDoCobrador = await _context.Clientes
+                    .Where(c => c.CobradorId == cobradorId)
+                    .ToListAsync();
+
+                return View(clientesDoCobrador);
+            }
         }
-
 
 
 
@@ -66,7 +80,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeCliente,SobrenomeCliente,CPFCliente,TelefoneCliente,CobradorId")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,NomeCliente,SobrenomeCliente,CPFCliente,Endereco,Bairro,Cidade,UF,TelefoneCliente,CobradorId")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +90,6 @@ namespace Projeto_Eixo_2.Controllers
             }
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Id", cliente.CobradorId);
             return View(cliente);
-
         }
 
         // GET: Clientes/Edit/5
@@ -101,7 +114,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCliente,SobrenomeCliente,CPFCliente,TelefoneCliente,CobradorId")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCliente,SobrenomeCliente,CPFCliente,Endereco,Bairro,Cidade,UF,TelefoneCliente,CobradorId")] Cliente cliente)
         {
             if (id != cliente.Id)
             {
@@ -128,7 +141,6 @@ namespace Projeto_Eixo_2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Id", cliente.CobradorId);
             return View(cliente);
         }

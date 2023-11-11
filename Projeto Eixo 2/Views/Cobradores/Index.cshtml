@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.NomeCobrador)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SobrenomeCobrador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CPF)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
@@ -27,7 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Telefone)
             </th>
-
+            <th>
+                @Html.DisplayNameFor(model => model.Perfil)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,13 +37,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.NomeCobrador)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SobrenomeCobrador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CPF)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
@@ -49,7 +51,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Telefone)
             </td>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.Perfil)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

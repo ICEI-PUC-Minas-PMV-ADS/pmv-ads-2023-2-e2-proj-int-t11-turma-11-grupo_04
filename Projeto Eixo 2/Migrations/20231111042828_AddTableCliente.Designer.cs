@@ -11,8 +11,8 @@ using Projeto_Eixo_2.Models;
 namespace Projeto_Eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231111015616_AltTableCobrador")]
-    partial class AltTableCobrador
+    [Migration("20231111042828_AddTableCliente")]
+    partial class AddTableCliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
