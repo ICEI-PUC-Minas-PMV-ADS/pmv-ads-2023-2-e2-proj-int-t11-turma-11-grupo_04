@@ -23,13 +23,37 @@ namespace Projeto_Eixo_2.Models
         [Required(ErrorMessage = "É obrigatório informar o Email.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "É obrigatório informar o Telefone.")]
+        [Required(ErrorMessage = "É obrigatório informar o CEP.")]
+        public string CEP { get; set; }
+
+        [Display(Name = "Endereço")]
+        [Required(ErrorMessage = "É obrigatório informar o endereço.")]
+        public string Endereco { get; set; }
+
+        [Required(ErrorMessage = "É obrigatório informar o bairro.")]
+        public string Bairro { get; set; }
+
+        [Required(ErrorMessage = "É obrigatório informar a cidade.")]
+        public string Cidade { get; set; }
+
+        [Required(ErrorMessage = "É obrigatório informar o estado.")]
+        public string UF { get; set; }
+
+        [Required(ErrorMessage = "É obrigatório informar o telefone.")]
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "É obrigatório informar a senha.")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
+        [Required(ErrorMessage = "Obrigatório informar o perfil.")]
+        public Perfil Perfil { get; set; }
+
         public ICollection<Cliente> Cliente { get; set; }
+    }
+    public enum Perfil
+    {
+        Admin,
+        User
     }
 }

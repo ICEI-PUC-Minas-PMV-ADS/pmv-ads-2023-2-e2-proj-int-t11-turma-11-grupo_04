@@ -114,7 +114,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,Telefone,Senha")] Cobrador cobrador)
+        public async Task<IActionResult> Create([Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,Telefone,Senha,CEP,Endereco,Bairro,Cidade,UF,Perfil")] Cobrador cobrador)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +147,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,Telefone,Senha")] Cobrador cobrador)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,CEP,Endereco,Bairro,Cidade,UF,Telefone,Senha")] Cobrador cobrador)
         {
             if (id != cobrador.Id)
             {
