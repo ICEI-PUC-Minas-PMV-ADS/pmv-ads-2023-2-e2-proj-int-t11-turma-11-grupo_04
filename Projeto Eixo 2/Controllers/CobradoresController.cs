@@ -106,6 +106,8 @@ namespace Projeto_Eixo_2.Controllers
             return View(cobrador);
         }
 
+        [AllowAnonymous]
+
         // GET: Cobradores/Create
         public IActionResult Create()
         {
@@ -117,6 +119,8 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+
         public async Task<IActionResult> Create([Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,CEP,Endereco,Bairro,Cidade,UF,Telefone,Senha,Perfil")] Cobrador cobrador)
         {
             if (ModelState.IsValid)

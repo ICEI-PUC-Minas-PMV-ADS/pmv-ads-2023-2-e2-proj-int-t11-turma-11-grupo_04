@@ -84,7 +84,35 @@
         </dd>
     </dl>
 </div>
+
+<dt class="col-sm-2">
+    @Html.DisplayName("Clientes")
+</dt>
+<dd class="col-sm-10">
+    @if (Model.Cliente != null && Model.Cliente.Any())
+    {
+        foreach (var cliente in Model.Cliente)
+        {
+            <div>
+                @cliente.NomeCliente
+                <!-- Adicione outras propriedades do cliente, se necessário -->
+            </div>
+        }
+    }
+    else
+    {
+        <div>Nenhum cliente associado a este cobrador.</div>
+    }
+</dd>
+
+
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<style>
+    body {
+        background-color: #1090CB1A;
+    }
+</style>

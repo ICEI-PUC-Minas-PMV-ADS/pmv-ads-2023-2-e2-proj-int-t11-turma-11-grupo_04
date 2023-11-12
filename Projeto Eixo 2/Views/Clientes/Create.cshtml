@@ -5,9 +5,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Cadastro de cliente</h1>
 
-<h4>Cliente</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -86,8 +85,11 @@
         document.getElementById("CobradorId").value = input;
     });
 </script>
-
-
+<style>
+body{
+    background-color: #1090CB1A;
+}
+</style>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

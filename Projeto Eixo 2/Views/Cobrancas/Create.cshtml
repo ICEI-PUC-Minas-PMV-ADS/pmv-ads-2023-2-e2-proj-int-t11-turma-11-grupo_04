@@ -1,7 +1,13 @@
 ﻿@model Projeto_Eixo_2.Models.Cobranca
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 @{
     ViewData["Title"] = "Create";
+    bool isAdmin = User.IsInRole("Admin"); // Ou qualquer outra lógica para verificar se o usuário é um administrador
+
 }
 
 <h1>Create</h1>
@@ -27,13 +33,16 @@
                 <input asp-for="Valor" class="form-control" />
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ClienteId" class="control-label"></label>
+            <div class="form-group" style="@(isAdmin ? "" : "display:none;")">
+                <label asp-for="CobradorId" class="control-label">Nome do Cobrador</label>
+                <select asp-for="CobradorId" class="form-control" asp-items="ViewBag.CobradorId"></select>
+            </div>
+            <div class="form-group" id="clienteSelectGroup" style="@(isAdmin ? "display:none;" : "")">
+                <label asp-for="ClienteId" class="control-label"> Nome do Cliente</label>
                 <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="CobradorId" class="control-label"></label>
-                <select asp-for="CobradorId" class ="form-control" asp-items="ViewBag.CobradorId"></select>
+            <div class="color text-danger" id="mensagemSemClientes" style="display: none;">
+                <p>Nenhum cliente disponível para este cobrador.</p>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -46,6 +55,56 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<style>
+    body {
+        background-color: #1090CB1A;
+    }
+</style>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+        $(document).ready(function () {
+            // Manipula o evento de alteração no seletor de cobradores
+            $("#CobradorId").change(function () {
+                var cobradorId = $(this).val();
+
+                // Verifica se o cobrador foi escolhido
+                if (cobradorId) {
+                    // Faça uma requisição AJAX para obter a lista de clientes do cobrador selecionado
+                    $.ajax({
+                        url: "/Cobrancas/GetClientesByCobrador",
+                        type: "GET",
+                        data: { cobradorId: cobradorId },
+                        success: function (data) {
+                            if (data.length > 0) {
+                                // Atualiza a lista de clientes com os dados recebidos
+                                $("#ClienteId").empty();
+                                $.each(data, function (index, item) {
+                                    $("#ClienteId").append('<option value="' + item.value + '">' + item.text + '</option>');
+                                });
+
+                                // Mostra o campo de seleção de cliente e esconde a mensagem
+                                $("#clienteSelectGroup").show();
+                                $("#mensagemSemClientes").hide();
+                            } else {
+                                // Esconde o campo de seleção de cliente e exibe a mensagem
+                                $("#clienteSelectGroup").hide();
+                                $("#mensagemSemClientes").show();
+                            }
+                        },
+                        error: function () {
+                            console.error("Erro ao obter a lista de clientes do cobrador.");
+                        }
+                    });
+                } else {
+                    // Oculta o campo de seleção de cliente e exibe a mensagem se o cobrador não foi escolhido
+                    $("#clienteSelectGroup").hide();
+                    $("#mensagemSemClientes").show();
+                }
+            });
+        });
+    </script>
 }

@@ -5,41 +5,55 @@
 }
 
 
-<div class="row">
-    <div class="col-md-4" style="background-color: #51C8BC; height: 100%">
+<div class="row h-100 pb-3">
+    <div class="col-md-4 my-auto">
         <h1 class="text-center font-weight-bold text-white">Otimize suas cobranças</h1>
         <img src="~/src/imagem_login.svg" />
     </div>
-    <div class="col-md-8 my-auto">
+    <div class="card p-5 col-md-8" style="background-color: white; height: 70vh; border-radius: 20px">
+        <div class="my-auto" id="margem">
         <div class ="col-md-10 mx-auto my-auto">
-            <form asp-action="Login">
+            <h2>Faça seu Login!</h2>
+            <form asp-action="Login" class="my-auto">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control mx-auto" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
 
-                <div class="form-group">
-                    <label asp-for="Senha" class="control-label"></label>
-                    <input asp-for="Senha" class="form-control mx-auto" />
-                    <span asp-validation-for="Senha" class="text-danger"></span>
-                </div>
+                    <div class="form-group">
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="Senha" class="form-control" placeholder="Senha" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+
                 
                 <div class="form-group">
-                    <input type="submit" value="Acessar" class="btn btn-primary" />
+                    <button type="submit" value="Entrar" class="btn btn-info btn-lg" style="width: 100%">Entrar</button>
                 </div>
+                <h7 class="text-black-50">Ainda não tem uma conta?<a asp-area="" asp-controller="Cobradores" asp-action="Create">Cadastrar</a></h7>
                 <h6 class="color text-danger">@ViewBag.Message</h6>
             </form>
+        </div>
         </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: #51C8BC;
+    }
+    /*#margem{
+        margin: 80px, auto;
+        padding: 5em;
+    }
+    */
 
+</style>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -15,9 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 </head>
-<body style="background-color: #1090CB1A;">
+<body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <h1>LOGO</h1>
@@ -48,15 +48,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cobrancas" asp-action="Index">Cobranças</a>
+                            </li>
                         }
                     </ul>
                     <ul class="navbar-nav">
 
                         @if (User.Identity.IsAuthenticated)
                         {
-
-
-
                             <li class="nav-item">
                                 <span class="mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#1090CB" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -93,9 +93,7 @@
 
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Projeto_Eixo_2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -103,3 +101,27 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<style>
+    .form-group input {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+        border-bottom: 1px solid #F5F5F5; /* Cor da borda inferior */
+        outline: none; /* Remover a borda de foco ao clicar */
+    }
+
+    .form-group input:focus {
+        border-color: #007bff; /* Cor da borda inferior ao receber foco */
+    }
+
+    .form-group input::placeholder {
+            color: #CCCCCC; /* Cor do placeholder padrão */
+    }
+
+    .form-group input:focus::placeholder {
+        color: #007bff; /* Cor do placeholder quando em foco */
+    }
+
+</style>

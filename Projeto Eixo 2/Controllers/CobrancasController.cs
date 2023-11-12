@@ -13,6 +13,17 @@ namespace Projeto_Eixo_2.Controllers
 {
     public class CobrancasController : Controller
     {
+        [HttpGet]
+        public IActionResult GetClientesByCobrador(int cobradorId)
+        {
+            var clientesDoCobrador = _context.Clientes
+                .Where(c => c.CobradorId == cobradorId)
+                .Select(c => new { Value = c.Id, Text = c.GetNomeCompleto() })
+                .ToList();
+
+            return Json(clientesDoCobrador);
+        }
+
         private readonly AppDbContext _context;
 
         public CobrancasController(AppDbContext context)
@@ -128,7 +139,7 @@ namespace Projeto_Eixo_2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", cobranca.ClienteId);
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Bairro", cobranca.CobradorId);
+            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cobranca.CobradorId);
             return View(cobranca);
         }
 
@@ -146,7 +157,7 @@ namespace Projeto_Eixo_2.Controllers
                 return NotFound();
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", cobranca.ClienteId);
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Bairro", cobranca.CobradorId);
+            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Nome Cobrador", cobranca.CobradorId);
             return View(cobranca);
         }
 
@@ -183,7 +194,7 @@ namespace Projeto_Eixo_2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", cobranca.ClienteId);
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Bairro", cobranca.CobradorId);
+            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cobranca.CobradorId);
             return View(cobranca);
         }
 

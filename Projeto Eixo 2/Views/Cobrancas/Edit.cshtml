@@ -33,11 +33,7 @@
                 <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
                 <span asp-validation-for="ClienteId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CobradorId" class="control-label"></label>
-                <select asp-for="CobradorId" class="form-control" asp-items="ViewBag.CobradorId"></select>
-                <span asp-validation-for="CobradorId" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -48,7 +44,11 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+<style>
+    body {
+        background-color: #1090CB1A;
+    }
+</style>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

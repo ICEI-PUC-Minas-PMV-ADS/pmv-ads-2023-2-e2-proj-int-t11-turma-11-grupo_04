@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.Valor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cliente.Bairro)
+                @Html.DisplayFor(modelItem => item.Cliente.NomeCliente)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cobrador.Bairro)
+                @Html.DisplayFor(modelItem => item.Cobrador.NomeCobrador)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -57,3 +57,8 @@
 }
     </tbody>
 </table>
+<style>
+    body {
+        background-color: #1090CB1A;
+    }
+</style>
