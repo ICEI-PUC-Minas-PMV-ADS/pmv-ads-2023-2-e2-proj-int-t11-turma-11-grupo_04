@@ -31,7 +31,6 @@ namespace Projeto_Eixo_2.Controllers
             {
                 // Se for administrador, lista todos os clientes
                 var todosOsClientes = await _context.Clientes.ToListAsync();
-                Console.WriteLine($"Número de clientes: {todosOsClientes.Count}");
 
                 return View(todosOsClientes);
             }
@@ -71,7 +70,7 @@ namespace Projeto_Eixo_2.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Id");
+            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador");
             return View();
         }
 
@@ -88,7 +87,7 @@ namespace Projeto_Eixo_2.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Id", cliente.CobradorId);
+            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cliente.CobradorId);
             return View(cliente);
         }
 

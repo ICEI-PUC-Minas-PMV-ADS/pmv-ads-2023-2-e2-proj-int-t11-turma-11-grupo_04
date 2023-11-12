@@ -9,5 +9,7 @@ namespace Projeto_Eixo_2.Models
         public DbSet<Cobrador> Cobradores { get; set; }
 
         public DbSet<Cliente> Clientes { get; set; }
+        
+        public DbSet<Cobranca> Cobranças { get; set; }
     }
 }

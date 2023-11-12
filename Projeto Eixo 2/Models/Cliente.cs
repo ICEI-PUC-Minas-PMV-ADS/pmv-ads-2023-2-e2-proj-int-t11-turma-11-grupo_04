@@ -44,4 +44,11 @@ namespace Projeto_Eixo_2.Models
         public Cobrador Cobrador { get; set; }
 
     }
+    public static class ClienteExtensions
+    {
+        public static string GetNomeCompleto(this Cliente cliente)
+        {
+            return $"{cliente.NomeCliente} {cliente.SobrenomeCliente}";
+        }
+    }
 }
