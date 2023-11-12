@@ -11,18 +11,18 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="text-center text-info">
             <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vencimento)
+                @Html.DisplayNameFor(model => model.Cliente)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Valor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cliente)
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vencimento)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cobrador)
@@ -32,21 +32,24 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class ="text-center">
+            <td>
+                @item.Cliente.NomeCliente @item.Cliente.SobrenomeCliente
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Vencimento)
             </td>
+
+
             <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente.NomeCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cobrador.NomeCobrador)
+                @item.Cobrador.NomeCobrador @item.Cobrador.SobrenomeCobrador
+
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

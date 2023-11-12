@@ -40,6 +40,7 @@
             <div class="form-group" id="clienteSelectGroup" style="@(isAdmin ? "display:none;" : "")">
                 <label asp-for="ClienteId" class="control-label"> Nome do Cliente</label>
                 <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
+
             </div>
             <div class="color text-danger" id="mensagemSemClientes" style="display: none;">
                 <p>Nenhum cliente disponível para este cobrador.</p>
@@ -63,8 +64,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-
     <script>
         $(document).ready(function () {
             $("#CobradorId").change(function () {

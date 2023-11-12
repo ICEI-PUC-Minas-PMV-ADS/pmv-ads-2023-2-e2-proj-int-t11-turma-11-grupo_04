@@ -137,20 +137,53 @@ namespace Projeto_Eixo_2.Controllers
         // GET: Cobrancas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Cobranças == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
             var cobranca = await _context.Cobranças.FindAsync(id);
+
             if (cobranca == null)
             {
                 return NotFound();
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", cobranca.ClienteId);
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Nome Cobrador", cobranca.CobradorId);
+
+            bool isAdmin = User.IsInRole("Admin");
+
+            if (isAdmin)
+            {
+                var clientes = _context.Clientes.ToList();
+                var cobradores = _context.Cobradores.ToList();
+
+                var clientesSelectList = clientes
+                    .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
+
+                ViewData["ClienteId"] = new SelectList(clientesSelectList, "Value", "Text", cobranca.ClienteId);
+                ViewData["CobradorId"] = new SelectList(cobradores, "Id", "NomeCobrador", cobranca.CobradorId);
+            }
+            else
+            {
+                var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+                var clientesDoCobrador = _context.Clientes
+                    .Where(c => c.CobradorId == cobradorId)
+                    .ToList();
+
+                var cobradoresDoCobrador = _context.Cobradores
+                    .Where(c => c.Id == cobradorId)
+                    .ToList();
+
+                var clientesSelectList = clientesDoCobrador
+                    .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
+
+                ViewData["ClienteId"] = new SelectList(clientesSelectList, "Value", "Text", cobranca.ClienteId);
+                ViewData["CobradorId"] = new SelectList(cobradoresDoCobrador, "Id", "NomeCobrador", cobranca.CobradorId);
+            }
+
             return View(cobranca);
         }
+
 
         // POST: Cobrancas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

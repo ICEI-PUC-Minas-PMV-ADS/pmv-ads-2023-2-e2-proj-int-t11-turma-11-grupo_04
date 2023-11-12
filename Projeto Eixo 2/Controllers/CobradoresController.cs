@@ -133,6 +133,7 @@ namespace Projeto_Eixo_2.Controllers
             return View(cobrador);
         }
 
+        [Authorize(Roles = "Admin,User")]
         // GET: Cobradores/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -146,9 +147,10 @@ namespace Projeto_Eixo_2.Controllers
             {
                 return NotFound();
             }
-            return View(cobrador);
+            return View("Views/Cobradores/Details", cobrador);
         }
 
+        [Authorize(Roles = "Admin,User")]
         // POST: Cobradores/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -182,7 +184,7 @@ namespace Projeto_Eixo_2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cobrador);
+            return View("Views/Cobradores/Details", cobrador);
         }
 
         // GET: Cobradores/Delete/5

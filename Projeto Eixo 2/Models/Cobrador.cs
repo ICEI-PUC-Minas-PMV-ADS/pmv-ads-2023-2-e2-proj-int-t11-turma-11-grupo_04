@@ -50,6 +50,8 @@ namespace Projeto_Eixo_2.Models
         public Perfil Perfil { get; set; } = Perfil.User;
 
         public ICollection<Cliente> Cliente { get; set; }
+        public ICollection<Cobranca> Cobranca { get; set; }
+
     }
     public enum Perfil
     {
