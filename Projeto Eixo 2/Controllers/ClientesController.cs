@@ -24,19 +24,16 @@ namespace Projeto_Eixo_2.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            // Verificar se o usuário tem a função de administrador
             bool isAdmin = User.IsInRole("Admin");
 
             if (isAdmin)
             {
-                // Se for administrador, lista todos os clientes
                 var todosOsClientes = await _context.Clientes.ToListAsync();
 
                 return View(todosOsClientes);
             }
             else
             {
-                // Se não for administrador, lista apenas os clientes do cobrador logado
                 var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 var clientesDoCobrador = await _context.Clientes
                     .Where(c => c.CobradorId == cobradorId)

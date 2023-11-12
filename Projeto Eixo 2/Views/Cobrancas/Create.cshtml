@@ -67,30 +67,24 @@
 
     <script>
         $(document).ready(function () {
-            // Manipula o evento de alteração no seletor de cobradores
             $("#CobradorId").change(function () {
                 var cobradorId = $(this).val();
 
-                // Verifica se o cobrador foi escolhido
                 if (cobradorId) {
-                    // Faça uma requisição AJAX para obter a lista de clientes do cobrador selecionado
                     $.ajax({
                         url: "/Cobrancas/GetClientesByCobrador",
                         type: "GET",
                         data: { cobradorId: cobradorId },
                         success: function (data) {
                             if (data.length > 0) {
-                                // Atualiza a lista de clientes com os dados recebidos
                                 $("#ClienteId").empty();
                                 $.each(data, function (index, item) {
                                     $("#ClienteId").append('<option value="' + item.value + '">' + item.text + '</option>');
                                 });
 
-                                // Mostra o campo de seleção de cliente e esconde a mensagem
                                 $("#clienteSelectGroup").show();
                                 $("#mensagemSemClientes").hide();
                             } else {
-                                // Esconde o campo de seleção de cliente e exibe a mensagem
                                 $("#clienteSelectGroup").hide();
                                 $("#mensagemSemClientes").show();
                             }
@@ -100,7 +94,6 @@
                         }
                     });
                 } else {
-                    // Oculta o campo de seleção de cliente e exibe a mensagem se o cobrador não foi escolhido
                     $("#clienteSelectGroup").hide();
                     $("#mensagemSemClientes").show();
                 }

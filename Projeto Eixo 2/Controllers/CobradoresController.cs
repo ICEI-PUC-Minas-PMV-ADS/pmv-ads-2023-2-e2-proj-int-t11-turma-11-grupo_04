@@ -55,7 +55,7 @@ namespace Projeto_Eixo_2.Controllers
                 var claims = new List<Claim>
                 {
                      new Claim(ClaimTypes.Name, dados.NomeCobrador),
-                     new Claim(ClaimTypes.NameIdentifier, dados.Id.ToString()), // Adicione o ID do cobrador como claim
+                     new Claim(ClaimTypes.NameIdentifier, dados.Id.ToString()),
                      new Claim(ClaimTypes.Role, dados.Perfil.ToString())
                 };
 
@@ -71,7 +71,7 @@ namespace Projeto_Eixo_2.Controllers
 
                 await HttpContext.SignInAsync(principal, props);
 
-                return RedirectToAction("Index", "Home"); // Redireciona para a homepage
+                return RedirectToAction("Index", "Home");
             }
             else
             {

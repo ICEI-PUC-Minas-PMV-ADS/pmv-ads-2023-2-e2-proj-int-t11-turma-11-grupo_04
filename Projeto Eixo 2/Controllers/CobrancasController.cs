@@ -40,16 +40,13 @@ namespace Projeto_Eixo_2.Controllers
 
             if (isAdmin)
             {
-                // Se for administrador, listar todas as cobranças do banco de dados
                 cobrancasQuery = _context.Cobranças.Include(c => c.Cliente).Include(c => c.Cobrador);
             }
             else
             {
-                // Se não for administrador, obter o ID do cobrador logado
                 var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-                // Consulta para obter apenas as cobranças do cobrador logado
-                cobrancasQuery = _context.Cobranças
+                 cobrancasQuery = _context.Cobranças
                     .Where(c => c.CobradorId == cobradorId)
                     .Include(c => c.Cliente)
                     .Include(c => c.Cobrador);
@@ -86,11 +83,9 @@ namespace Projeto_Eixo_2.Controllers
 
             if (isAdmin)
             {
-                // Se for administrador, carregar todos os clientes e todos os cobradores
                 var clientes = _context.Clientes.ToList();
                 var cobradores = _context.Cobradores.ToList();
 
-                // Use o método de extensão GetNomeCompleto para obter o nome completo
                 var clientesSelectList = clientes
                     .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
 
@@ -99,20 +94,16 @@ namespace Projeto_Eixo_2.Controllers
             }
             else
             {
-                // Obtenha o ID do cobrador logado (depende de como você implementou a autenticação)
                 var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-                // Filtrar os clientes associados ao cobrador logado
                 var clientesDoCobrador = _context.Clientes
                     .Where(c => c.CobradorId == cobradorId)
                     .ToList();
 
-                // Filtrar os cobradores associados ao cobrador logado
                 var cobradoresDoCobrador = _context.Cobradores
                     .Where(c => c.Id == cobradorId)
                     .ToList();
 
-                // Use o método de extensão GetNomeCompleto para obter o nome completo
                 var clientesSelectList = clientesDoCobrador
                     .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
 
