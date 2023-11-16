@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Projeto_Eixo_2.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+
 
 namespace Projeto_Eixo_2.Controllers
 {
@@ -16,10 +19,13 @@ namespace Projeto_Eixo_2.Controllers
     public class CobradoresController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public CobradoresController(AppDbContext context)
+        public CobradoresController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
+ 
         }
 
         [Authorize(Roles = "Admin")]
@@ -121,10 +127,36 @@ namespace Projeto_Eixo_2.Controllers
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
 
-        public async Task<IActionResult> Create([Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,CEP,Endereco,Bairro,Cidade,UF,Telefone,Senha,Perfil")] Cobrador cobrador)
+        public async Task<IActionResult> Create([Bind("Id,NomeCobrador,SobrenomeCobrador,CPF,Email,CEP,Endereco,Bairro,Cidade,UF,Telefone,Senha,Perfil, FotoArquivo")] Cobrador cobrador)
         {
             if (ModelState.IsValid)
             {
+                if (cobrador.FotoArquivo != null && cobrador.FotoArquivo.Length > 0)
+                {
+                    // Gere um nome único para o arquivo para evitar conflitos
+                    var nomeArquivo = Guid.NewGuid().ToString() + "_" + Path.GetFileName(cobrador.FotoArquivo.FileName);
+
+                    // Caminho do diretório onde o arquivo será salvo na pasta wwwroot (por exemplo, wwwroot/imagens)
+                    var diretorioDestino = Path.Combine(_env.WebRootPath, "imagens");
+
+                    // Verifique se o diretório de destino existe, se não, crie-o
+                    if (!Directory.Exists(diretorioDestino))
+                    {
+                        Directory.CreateDirectory(diretorioDestino);
+                    }
+
+                    // Caminho completo onde o arquivo será salvo
+                    var caminhoCompleto = Path.Combine(diretorioDestino, nomeArquivo);
+
+                    using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
+                    {
+                        await cobrador.FotoArquivo.CopyToAsync(stream);
+                    }
+
+                    // Salve o nome do arquivo no banco de dados
+                    cobrador.FotoUrl = "/imagens/" + nomeArquivo;
+                }
+
                 cobrador.Senha = BCrypt.Net.BCrypt.HashPassword(cobrador.Senha);
                 _context.Add(cobrador);
                 await _context.SaveChangesAsync();

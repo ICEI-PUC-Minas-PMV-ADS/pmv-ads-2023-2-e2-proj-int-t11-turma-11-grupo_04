@@ -49,6 +49,13 @@ namespace Projeto_Eixo_2.Models
         [Required(ErrorMessage = "Obrigatório informar o perfil.")]
         public Perfil Perfil { get; set; } = Perfil.User;
 
+        [Display(Name = "Foto")]
+        public string FotoUrl { get; set; } // Caminho ou URL da foto
+
+        [NotMapped] // Esta propriedade não será mapeada no banco de dados
+        [Display(Name = "Carregar Foto")]
+        public IFormFile FotoArquivo { get; set; } // Propriedade para lidar com o upload do arquivo
+
         public ICollection<Cliente> Cliente { get; set; }
         public ICollection<Cobranca> Cobranca { get; set; }
 

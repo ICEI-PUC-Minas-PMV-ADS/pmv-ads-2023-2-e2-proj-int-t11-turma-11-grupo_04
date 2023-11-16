@@ -13,7 +13,7 @@
         <div class="my-auto" id="margem">
             <div class="col-md-10 mx-auto my-auto">
                 <h2>Crie sua conta grátis!</h2>
-                <form asp-action="Create">
+                <form asp-action="Create" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <input asp-for="NomeCobrador" class="form-control" placeholder="Nome"/>
@@ -64,7 +64,11 @@
                         <select asp-for="Perfil" class="form-control" asp-items="Html.GetEnumSelectList<Perfil>()"></select>
                         <span asp-validation-for="Perfil" class="text-danger"></span>
                     </div>
-
+                    <div class="form-group">
+                        <label asp-for="FotoArquivo" class="control-label"></label>
+                        <input asp-for="FotoArquivo" type="file" class="form-control" />
+                        <span asp-validation-for="FotoArquivo" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="Criar conta" class="btn btn-info btn-lg" style="width: 100%" />
                     </div>
