@@ -202,6 +202,8 @@ namespace Projeto_Eixo_2.Controllers
                     cobrador.Senha = BCrypt.Net.BCrypt.HashPassword(cobrador.Senha);
                     _context.Update(cobrador);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction("Details", "Cobradores");
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {

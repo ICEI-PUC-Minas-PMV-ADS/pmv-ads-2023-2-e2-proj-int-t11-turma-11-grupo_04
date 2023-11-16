@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projeto_Eixo_2.Models
 {
-    [Table("Cobranças")]
+    [Table("Cobranca")]
     public class Cobranca
     {
         [Key]

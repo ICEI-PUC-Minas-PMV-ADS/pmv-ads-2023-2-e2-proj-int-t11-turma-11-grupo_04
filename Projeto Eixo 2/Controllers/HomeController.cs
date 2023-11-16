@@ -17,6 +17,10 @@ namespace Projeto_Eixo_2.Controllers
         {
             return View();
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
