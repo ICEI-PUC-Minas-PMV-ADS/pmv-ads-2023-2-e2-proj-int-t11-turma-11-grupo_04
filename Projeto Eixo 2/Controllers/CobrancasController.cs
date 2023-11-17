@@ -168,7 +168,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Vencimento,Valor,ClienteId,CobradorId")] Cobranca cobranca)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Vencimento,Valor")] Cobranca cobranca)
         {
             if (id != cobranca.Id)
             {

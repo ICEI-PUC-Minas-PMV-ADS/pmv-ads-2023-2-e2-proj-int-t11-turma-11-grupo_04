@@ -163,7 +163,7 @@ namespace Projeto_Eixo_2.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Clientes", new {id = cliente.Cobrador});
+            return RedirectToAction("Index", "Clientes", new {id = cliente.CobradorId});
         }
 
         private bool ClienteExists(int id)
