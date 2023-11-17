@@ -5,12 +5,12 @@
 }
 
 
-<div class="row h-100 pb-3">
-    <div class="col-md-4 my-auto">
-        <h1 class="text-center font-weight-bold text-white">Otimize suas cobranças</h1>
+<div class="row bg-primary ">
+   <div class="col-md-4 my-auto">
+        <h1 class="text-center font-weight-bold text-white" style="margin-top: 18%;">Otimize suas cobranças</h1>
         <img src="~/src/imagem_login.svg" />
     </div>
-    <div class="card p-5 col-md-8" style="background-color: white; height: 70vh; border-radius: 20px">
+    <div class="card p-5 col-md-8 w-50" style="background-color: white; !important; border-top: 0px; border-radius: 0px 0px 20px 20px">
         <div class="my-auto" id="margem">
         <div class ="col-md-10 mx-auto my-auto">
             <h2>Faça seu Login!</h2>
@@ -44,15 +44,9 @@
         margin: 0;
         padding: 0;
     }
-    body{
-        background-color: #51C8BC;
+    .bg-primary {
+        background-color: #51C8BC !important;
     }
-    /*#margem{
-        margin: 80px, auto;
-        padding: 5em;
-    }
-    */
-
 </style>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

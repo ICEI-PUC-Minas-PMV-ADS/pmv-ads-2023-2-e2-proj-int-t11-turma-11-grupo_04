@@ -10,6 +10,6 @@ namespace Projeto_Eixo_2.Models
 
         public DbSet<Cliente> Clientes { get; set; }
         
-        public DbSet<Cobranca> Cobranças { get; set; }
+        public DbSet<Cobranca> Cobranca { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Projeto_Eixo_2.Migrations
 {
-    public partial class M03AddTableCobranca : Migration
+    public partial class m01EstruturaTabelas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,7 +58,7 @@ namespace Projeto_Eixo_2.Migrations
                         column: x => x.CobradorId,
                         principalTable: "Cobradores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(

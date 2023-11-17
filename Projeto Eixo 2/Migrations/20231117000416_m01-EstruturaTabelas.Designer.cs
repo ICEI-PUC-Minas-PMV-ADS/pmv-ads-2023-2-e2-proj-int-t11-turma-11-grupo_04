@@ -12,8 +12,8 @@ using Projeto_Eixo_2.Models;
 namespace Projeto_Eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231116215607_M01-InsertingAllTables")]
-    partial class M01InsertingAllTables
+    [Migration("20231117000416_m01-EstruturaTabelas")]
+    partial class m01EstruturaTabelas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -166,7 +166,7 @@ namespace Projeto_Eixo_2.Migrations
 
                     b.HasIndex("CobradorId");
 
-                    b.ToTable("Cobranças");
+                    b.ToTable("Cobranca");
                 });
 
             modelBuilder.Entity("Projeto_Eixo_2.Models.Cliente", b =>

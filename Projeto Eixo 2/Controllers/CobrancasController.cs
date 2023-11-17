@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Projeto_Eixo_2.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Humanizer.Localisation.TimeToClockNotation;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 
 namespace Projeto_Eixo_2.Controllers
 {
@@ -32,39 +34,37 @@ namespace Projeto_Eixo_2.Controllers
         }
 
         // GET: Cobrancas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
             bool isAdmin = User.IsInRole("Admin");
 
-            IQueryable<Cobranca> cobrancasQuery;
+            var cobrador = await _context.Cobradores
+                .FirstAsync(c => c.Id == id);
 
-            if (isAdmin)
+            if (cobrador == null)
             {
-                cobrancasQuery = _context.Cobranças.Include(c => c.Cliente).Include(c => c.Cobrador);
+                return NotFound();
             }
-            else
-            {
-                var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            
+            var cobrancasCobrador = await _context.Cobranca
+                .Include(cobranca => cobranca.Cliente)
+                .Where(cobranca => cobranca.CobradorId == id)
+                .ToListAsync();
 
-                 cobrancasQuery = _context.Cobranças
-                    .Where(c => c.CobradorId == cobradorId)
-                    .Include(c => c.Cliente)
-                    .Include(c => c.Cobrador);
-            }
-
-            return View(await cobrancasQuery.ToListAsync());
+            ViewBag.CobradorInfo = cobrador;
+            return View(cobrancasCobrador);
         }
 
 
         // GET: Cobrancas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Cobranças == null)
+            if (id == null || _context.Cobranca == null)
             {
                 return NotFound();
             }
 
-            var cobranca = await _context.Cobranças
+            var cobranca = await _context.Cobranca
                 .Include(c => c.Cliente)
                 .Include(c => c.Cobrador)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -77,39 +77,19 @@ namespace Projeto_Eixo_2.Controllers
         }
 
         // GET: Cobrancas/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int id)
         {
-            bool isAdmin = User.IsInRole("Admin");
+            var cobrador = await _context.Cobradores
+                .FirstAsync(cobrador => cobrador.Id == id);
 
-            if (isAdmin)
+            if (cobrador == null)
             {
-                var clientes = _context.Clientes.ToList();
-                var cobradores = _context.Cobradores.ToList();
-
-                var clientesSelectList = clientes
-                    .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
-
-                ViewData["ClienteId"] = new SelectList(clientesSelectList, "Value", "Text");
-                ViewData["CobradorId"] = new SelectList(cobradores, "Id", "NomeCobrador");
+                // Tratar como validar dps 
+                return NotFound();
             }
-            else
-            {
-                var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-                var clientesDoCobrador = _context.Clientes
-                    .Where(c => c.CobradorId == cobradorId)
-                    .ToList();
-
-                var cobradoresDoCobrador = _context.Cobradores
-                    .Where(c => c.Id == cobradorId)
-                    .ToList();
-
-                var clientesSelectList = clientesDoCobrador
-                    .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
-
-                ViewData["ClienteId"] = new SelectList(clientesSelectList, "Value", "Text");
-                ViewData["CobradorId"] = new SelectList(cobradoresDoCobrador, "Id", "NomeCobrador");
-            }
+            ViewBag.CobradorInfo = cobrador;
+            ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(c => c.CobradorId == cobrador.Id), "Id", "NomeCliente");
 
             return View();
         }
@@ -121,16 +101,14 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Data,Vencimento,Valor,ClienteId,CobradorId")] Cobranca cobranca)
+        public async Task<IActionResult> Create([Bind("Data,Vencimento,Valor,ClienteId,CobradorId")] Cobranca cobranca)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(cobranca);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", cobranca.ClienteId);
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cobranca.CobradorId);
+                return RedirectToAction("index", "Cobrancas", new { id = cobranca.CobradorId });
+            } 
             return View(cobranca);
         }
 
@@ -142,7 +120,7 @@ namespace Projeto_Eixo_2.Controllers
                 return NotFound();
             }
 
-            var cobranca = await _context.Cobranças.FindAsync(id);
+            var cobranca = await _context.Cobranca.FindAsync(id);
 
             if (cobranca == null)
             {
@@ -225,12 +203,12 @@ namespace Projeto_Eixo_2.Controllers
         // GET: Cobrancas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Cobranças == null)
+            if (id == null || _context.Cobranca  == null)
             {
                 return NotFound();
             }
 
-            var cobranca = await _context.Cobranças
+            var cobranca = await _context.Cobranca
                 .Include(c => c.Cliente)
                 .Include(c => c.Cobrador)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -247,23 +225,23 @@ namespace Projeto_Eixo_2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Cobranças == null)
+            if (_context.Cobranca == null)
             {
                 return Problem("Entity set 'AppDbContext.Cobranças'  is null.");
             }
-            var cobranca = await _context.Cobranças.FindAsync(id);
+            var cobranca = await _context.Cobranca.FindAsync(id);
             if (cobranca != null)
             {
-                _context.Cobranças.Remove(cobranca);
+                _context.Cobranca.Remove(cobranca);
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Cobrancas",new { id = cobranca.CobradorId });
         }
 
         private bool CobrancaExists(int id)
         {
-          return _context.Cobranças.Any(e => e.Id == id);
+          return _context.Cobranca.Any(e => e.Id == id);
         }
     }
 }

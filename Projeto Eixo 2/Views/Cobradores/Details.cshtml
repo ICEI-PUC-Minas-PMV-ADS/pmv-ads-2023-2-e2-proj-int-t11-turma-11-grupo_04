@@ -3,11 +3,9 @@
 @{
     ViewData["Title"] = "Details";
 }
+
 <div class="container mt-lg-5">
-    <div class="main-body">
-
-
-
+    <div class="main-body">        
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
@@ -18,8 +16,8 @@
                                 <h4>@($"{Model.NomeCobrador}")</h4>
                                 <p class="text-secondary mb-1">Cobrador</p>
                                 <p class="text-muted font-size-sm">@Model.Endereco</p>
-                                <button class="btn btn-primary">Clientes</button>
-                                <button class="btn btn-outline-primary">Cobranças</button>
+                                <button onclick="location.href='@Url.Action("Index", "Clientes", new {id = @Model.Id})'" class="btn btn-primary">Clientes</button>
+                                <button onClick="location.href='@Url.Action("Index","Cobrancas", new {id = @Model.Id})'" class="btn btn-outline-primary">Cobranças</button>
                             </div>
                         </div>
                     </div>
@@ -199,14 +197,18 @@
 
             <div class="modal-body">
                 <h2 class="modal-title" id="exampleModalLabel">Editar perfil</h2><br>
-                <form asp-action="Create">
+                    <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <input asp-for="NomeCobrador" class="form-control" placeholder="Nome completo" />
+                        <input asp-for="Id" value="@Model.Id" type="hidden" />
+                        <input asp-for="Senha" value="@Model.Senha" type="hidden"/>
+                        <input asp-for="FotoUrl" value="@Model.FotoUrl" type="hidden" />
+
+                        <input asp-for="NomeCobrador" class="form-control" placeholder="Nome" />
                         <span asp-validation-for="NomeCobrador" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="SobrenomeCobrador" class="form-control" placeholder="Nome completo" />
+                        <input asp-for="SobrenomeCobrador" class="form-control" placeholder="Sobrenome" />
                         <span asp-validation-for="SobrenomeCobrador" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -223,28 +225,24 @@
                         <span asp-validation-for="Telefone" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Endereco" class="form-control" placeholder="Telefone" />
+                        <input asp-for="Endereco" class="form-control" placeholder="Endereçp" />
                         <span asp-validation-for="Endereco" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Bairro" class="form-control" placeholder="Telefone" />
+                        <input asp-for="Bairro" class="form-control" placeholder="Bairro" />
                         <span asp-validation-for="Bairro" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Cidade" class="form-control" placeholder="Telefone" />
+                        <input asp-for="Cidade" class="form-control" placeholder="Cidade" />
                         <span asp-validation-for="Cidade" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="UF" class="form-control" placeholder="Telefone" />
+                        <input asp-for="UF" class="form-control" placeholder="UF" />
                         <span asp-validation-for="UF" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="CEP" class="form-control" placeholder="Telefone" />
+                        <input asp-for="CEP" class="form-control" placeholder="CEP" />
                         <span asp-validation-for="CEP" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="Senha" class="form-control" placeholder="Senha" />
-                        <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Editar" class="btn btn-primary" />

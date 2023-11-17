@@ -51,20 +51,11 @@
                 <label asp-for="TelefoneCliente" class="control-label"></label>
                 <input asp-for="TelefoneCliente" class="form-control" />
                 <span asp-validation-for="TelefoneCliente" class="text-danger"></span>
-            </div>
+            </div>          
             <div class="form-group">
-                @if (User.IsInRole("Admin"))
-                {
-                    <label asp-for="CobradorId" class="control-label">Nome do cobrador</label>
-                    <select asp-for="CobradorId" class="form-control" asp-items="ViewBag.CobradorId"></select>
-                }
-                else
-                {
-                    <select asp-for="CobradorId" class="form-control" asp-items="ViewBag.CobradorId" hidden></select>
-                    <input id="teste" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" hidden/>
-                }
-
+                <input asp-for="CobradorId" class="form-control" hidden value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
             </div>
+             
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -77,14 +68,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var input = document.getElementById("teste").value;
-
-        document.getElementById("CobradorId").value = input;
-    });
-</script>
 <style>
 body{
     background-color: #1090CB1A;

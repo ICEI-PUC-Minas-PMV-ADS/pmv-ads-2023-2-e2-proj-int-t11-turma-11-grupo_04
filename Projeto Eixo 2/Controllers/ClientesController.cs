@@ -22,25 +22,14 @@ namespace Projeto_Eixo_2.Controllers
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            bool isAdmin = User.IsInRole("Admin");
+            var clientesCobrador = await _context.Clientes
+                .Where(c => c.CobradorId == id)
+                .ToListAsync();
 
-            if (isAdmin)
-            {
-                var todosOsClientes = await _context.Clientes.ToListAsync();
-
-                return View(todosOsClientes);
-            }
-            else
-            {
-                var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var clientesDoCobrador = await _context.Clientes
-                    .Where(c => c.CobradorId == cobradorId)
-                    .ToListAsync();
-
-                return View(clientesDoCobrador);
-            }
+            return View(clientesCobrador);
+            
         }
 
 
@@ -67,7 +56,6 @@ namespace Projeto_Eixo_2.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador");
             return View();
         }
 
@@ -82,7 +70,7 @@ namespace Projeto_Eixo_2.Controllers
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Clientes", new {id = cliente.CobradorId });
             }
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cliente.CobradorId);
             return View(cliente);
@@ -101,7 +89,6 @@ namespace Projeto_Eixo_2.Controllers
             {
                 return NotFound();
             }
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Id", cliente.CobradorId);
             return View(cliente);
         }
 
@@ -135,7 +122,7 @@ namespace Projeto_Eixo_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Clientes", new { id = cliente.CobradorId});
             }
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Id", cliente.CobradorId);
             return View(cliente);
@@ -176,7 +163,7 @@ namespace Projeto_Eixo_2.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Clientes", new {id = cliente.Cobrador});
         }
 
         private bool ClienteExists(int id)

@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-route-id="@ViewBag.CobradorInfo.Id">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -24,9 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Vencimento)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cobrador)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -34,7 +31,7 @@
 @foreach (var item in Model) {
         <tr class ="text-center">
             <td>
-                @item.Cliente.NomeCliente @item.Cliente.SobrenomeCliente
+                @Html.DisplayFor(modelItem => item.Cliente.NomeCliente)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Valor)
@@ -44,12 +41,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Vencimento)
-            </td>
-
-
-            <td>
-                @item.Cobrador.NomeCobrador @item.Cobrador.SobrenomeCobrador
-
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

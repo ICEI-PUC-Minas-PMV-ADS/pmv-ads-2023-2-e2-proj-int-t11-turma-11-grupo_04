@@ -164,7 +164,7 @@ namespace Projeto_Eixo_2.Migrations
 
                     b.HasIndex("CobradorId");
 
-                    b.ToTable("Cobranças");
+                    b.ToTable("Cobranca");
                 });
 
             modelBuilder.Entity("Projeto_Eixo_2.Models.Cliente", b =>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Projeto_Eixo_2.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Projeto_Eixo_2.Controllers
 {
@@ -15,6 +16,11 @@ namespace Projeto_Eixo_2.Controllers
 
         public IActionResult Index()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId != null)
+            {
+                return RedirectToAction("Details", "Cobradores", new {id = userId});
+            }
             return View();
         }
         public IActionResult AboutUs()
