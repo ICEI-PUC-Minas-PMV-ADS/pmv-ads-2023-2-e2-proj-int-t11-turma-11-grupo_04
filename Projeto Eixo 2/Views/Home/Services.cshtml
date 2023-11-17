@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Services";
+}
+
+<h1 class="title-services">Sua paz financeira começa com um <strong>clique</strong>. <br /> E sua <strong>folga</strong> também.</h1>
+
+<div class="row my-4 justify-content-center">
+    <div class="col-ms-3">
+        <span class="badge bg-secondary">Plataforma gratuita</span></h1>
+     </div>
+    <div class="col-ms-3">
+        <span class="badge bg-secondary">Controle de cobranças</span></h1>
+    </div>
+    <div class="col-ms-3">
+        <span class="badge bg-secondary">Cadastro de clientes</span></h1>
+    </div>
+    <div class="col-ms-3">
+        <span class="badge bg-secondary">Agendamento de cobranças</span></h1>
+    </div>
+   
+</div>
+
+<img src="../sand.png" alt="Imagem da Areia" class="background-image">
+<img src="../pig.png" alt="Imagem do Porquinho" class="foreground-image">
+
+<style>
+    body {
+        background-color: #1090CB1A;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Impede a barra de rolagem horizontal */
+    }
+
+    .background-image {
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        z-index: 1; /* Certifica-se de que a imagem do porquinho fique em cima */
+        bottom: 0;
+        left: 0;
+    }
+
+    .foreground-image {
+        max-width: 392px;
+        height: 315px;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        margin-left: -196px; /* Metade da largura da imagem para centralizar */
+        z-index: 2; /* A imagem do porquinho deve estar acima da imagem da areia */
+    }
+
+    strong {
+        color: #1090CB;
+    }
+
+    .title-services {
+        font-size: 35px;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .bg-secondary {
+        background-color: #1090CB !important;
+        color: #fff;
+        border-radius: 20px;
+        font-size: 16px;
+        padding: 30px;
+        width: 190px;
+        text-align: center;
+        text-wrap: wrap;
+        font-weight: 400;
+        margin: 10px 10px 10px 0;
+    }
+</style>
