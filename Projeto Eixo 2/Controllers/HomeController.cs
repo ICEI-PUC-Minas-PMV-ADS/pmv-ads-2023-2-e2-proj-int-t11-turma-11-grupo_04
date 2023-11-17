@@ -28,6 +28,11 @@ namespace Projeto_Eixo_2.Controllers
             return View();
         }
 
+        public IActionResult Services()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

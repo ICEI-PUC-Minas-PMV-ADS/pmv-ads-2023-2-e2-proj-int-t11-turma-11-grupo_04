@@ -12,12 +12,16 @@
 body {
     background-color: #1090CB1A;
 }
+
+
 strong1 {
     color: #1090CB;
     font-weight: 600;
 }
+
 ul {
     list-style: none;
     align-items: flex-start;
 }
+
 
