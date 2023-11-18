@@ -1,15 +1,19 @@
 ﻿@model Projeto_Eixo_2.Models.Cobranca
 
 @{
-    ViewData["Title"] = "Details";
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    ViewData["Title"] = "Teste";
 }
+<head>
+    <title>Teste</title>
+</head>
 
 <h1>Details</h1>
 
 <div>
     <h4>Cobranca</h4>
     <hr />
-    <dl class="row">
+    <dl class="row" id="testePDF">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Data)
         </dt>
@@ -42,6 +46,7 @@
         </dd>
     </dl>
 </div>
+<button onclick="gerarPDF()">Gerar PDF</button>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
@@ -51,3 +56,13 @@
         background-color: #1090CB1A;
     }
 </style>
+
+<script>
+    function gerarPDF() {
+        const elemento = document.body;
+
+        html2pdf()
+            .from(elemento)
+            .save('arquivo.pdf');
+    }
+</script>
