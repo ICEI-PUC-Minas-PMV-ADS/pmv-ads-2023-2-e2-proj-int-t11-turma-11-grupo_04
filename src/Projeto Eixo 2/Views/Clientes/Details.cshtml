@@ -4,11 +4,15 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Cliente</h4>
-    <hr />
+<div class="p-4">
+    <h4 mb-3>Cliente</h4>
+   
+    <div class="row mb-3">
+        <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = Model.CobradorId})'" class="btn btn-primary">Voltar</button>
+        <button onclick="location.href='@Url.Action("Edit", "Clientes", new {id = Model.Id})'" class="btn btn-sucess">Editar</button>
+    </div>
+
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.NomeCliente)
@@ -66,12 +70,9 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index" asp-route-id="@Model.CobradorId">Back to List</a>
-</div>
+
 <style>
     body {
-        background-color: #1090CB1A;
+        background-color: white;
     }
 </style>

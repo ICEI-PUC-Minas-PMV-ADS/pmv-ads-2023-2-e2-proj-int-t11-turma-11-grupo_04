@@ -1,18 +1,23 @@
 ﻿@model Projeto_Eixo_2.Models.Cliente
+@using System.Security.Claims;
 
 @{
     ViewData["Title"] = "Edit";
+    var cobradorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    
 }
 
-<h1>Edit</h1>
+<div class="column p-4">
+    <div class="row mb-3">
+        <h1 class="title mr-2">Alterar cliente</h1>
+        <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = cobradorId})'" class="btn btn-primary">Voltar</button>
+    </div>
 
-<h4>Cliente</h4>
-<hr />
-<div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CobradorId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
             <div class="form-group">
                 <label asp-for="NomeCliente" class="control-label"></label>
                 <input asp-for="NomeCliente" class="form-control" />
@@ -65,13 +70,9 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index" asp-route-id="@Model.CobradorId">Back to List</a>
-</div>
 <style>
     body {
-        background-color: #1090CB1A;
+        background-color: white;
     }
 </style>
 @section Scripts {

@@ -70,7 +70,7 @@ namespace Projeto_Eixo_2.Controllers
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Clientes", new {id = cliente.CobradorId });
+                return RedirectToAction("Details", "Cobradores", new {id = cliente.CobradorId });
             }
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cliente.CobradorId);
             return View(cliente);
@@ -122,7 +122,7 @@ namespace Projeto_Eixo_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index", "Clientes", new { id = cliente.CobradorId});
+                return RedirectToAction("Details", "Cobradores", new { id = cliente.CobradorId});
             }
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "Id", cliente.CobradorId);
             return View(cliente);

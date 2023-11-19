@@ -10,13 +10,13 @@
 
 }
 
-@ViewBag.CobradorInfo.Id
 
-<h1>Create</h1>
 
-<h4>Cobranca</h4>
-<hr />
-<div class="row">
+<div class="column p-4">
+    <div class="row mb-3 ">
+        <h1 class="title mr-2">Cadastro de cobrança</h1>
+        <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = ViewBag.CobradorInfo.Id})'" class="btn btn-primary">Voltar</button>
+    </div>
     <div class="col-md-4">
         <form asp-action="Create">
             <input type="hidden" value="@ViewBag.CobradorInfo.Id" asp-for="CobradorId" />
@@ -51,51 +51,14 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 <style>
     body {
-        background-color: #1090CB1A;
+        background-color: white;
     }
 </style>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script>
-        $(document).ready(function () {
-            $("#CobradorId").change(function () {
-                var cobradorId = $(this).val();
-
-                if (cobradorId) {
-                    $.ajax({
-                        url: "/Cobrancas/GetClientesByCobrador",
-                        type: "GET",
-                        data: { cobradorId: cobradorId },
-                        success: function (data) {
-                            if (data.length > 0) {
-                                $("#ClienteId").empty();
-                                $.each(data, function (index, item) {
-                                    $("#ClienteId").append('<option value="' + item.value + '">' + item.text + '</option>');
-                                });
-
-                                $("#clienteSelectGroup").show();
-                                $("#mensagemSemClientes").hide();
-                            } else {
-                                $("#clienteSelectGroup").hide();
-                                $("#mensagemSemClientes").show();
-                            }
-                        },
-                        error: function () {
-                            console.error("Erro ao obter a lista de clientes do cobrador.");
-                        }
-                    });
-                } else {
-                    $("#clienteSelectGroup").hide();
-                    $("#mensagemSemClientes").show();
-                }
-            });
-        });
-    </script>
 }

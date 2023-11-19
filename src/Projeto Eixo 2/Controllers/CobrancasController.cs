@@ -77,10 +77,12 @@ namespace Projeto_Eixo_2.Controllers
         }
 
         // GET: Cobrancas/Create
-        public async Task<IActionResult> Create(int id)
+        public async Task<IActionResult> Create(int? id)
         {
+            var cobradorId = Int16.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
             var cobrador = await _context.Cobradores
-                .FirstAsync(cobrador => cobrador.Id == id);
+                .FirstAsync(cobrador => cobrador.Id == cobradorId);
 
             if (cobrador == null)
             {
@@ -107,7 +109,7 @@ namespace Projeto_Eixo_2.Controllers
             {
                 _context.Add(cobranca);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("index", "Cobrancas", new { id = cobranca.CobradorId });
+                return RedirectToAction("Details", "Cobradores", new { id = cobranca.CobradorId });
             } 
             return View(cobranca);
         }
@@ -121,44 +123,15 @@ namespace Projeto_Eixo_2.Controllers
             }
 
             var cobranca = await _context.Cobranca.FindAsync(id);
+            var cobrador = await _context.Cobradores
+                .FirstAsync(cobrador => cobrador.Id == cobranca.CobradorId);
 
             if (cobranca == null)
             {
                 return NotFound();
             }
 
-            bool isAdmin = User.IsInRole("Admin");
-
-            if (isAdmin)
-            {
-                var clientes = _context.Clientes.ToList();
-                var cobradores = _context.Cobradores.ToList();
-
-                var clientesSelectList = clientes
-                    .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
-
-                ViewData["ClienteId"] = new SelectList(clientesSelectList, "Value", "Text", cobranca.ClienteId);
-                ViewData["CobradorId"] = new SelectList(cobradores, "Id", "NomeCobrador", cobranca.CobradorId);
-            }
-            else
-            {
-                var cobradorId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-                var clientesDoCobrador = _context.Clientes
-                    .Where(c => c.CobradorId == cobradorId)
-                    .ToList();
-
-                var cobradoresDoCobrador = _context.Cobradores
-                    .Where(c => c.Id == cobradorId)
-                    .ToList();
-
-                var clientesSelectList = clientesDoCobrador
-                    .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.GetNomeCompleto() });
-
-                ViewData["ClienteId"] = new SelectList(clientesSelectList, "Value", "Text", cobranca.ClienteId);
-                ViewData["CobradorId"] = new SelectList(cobradoresDoCobrador, "Id", "NomeCobrador", cobranca.CobradorId);
-            }
-
+            ViewBag.cobradorInfo = cobrador;
             return View(cobranca);
         }
 
@@ -168,7 +141,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Vencimento,Valor")] Cobranca cobranca)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Vencimento,Valor, CobradorId")] Cobranca cobranca)
         {
             if (id != cobranca.Id)
             {
@@ -193,7 +166,7 @@ namespace Projeto_Eixo_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Cobradores", new {id = cobranca.CobradorId} );
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", cobranca.ClienteId);
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cobranca.CobradorId);
