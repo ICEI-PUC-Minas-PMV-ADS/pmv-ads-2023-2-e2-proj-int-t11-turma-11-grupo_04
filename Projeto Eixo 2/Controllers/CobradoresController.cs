@@ -101,22 +101,25 @@ namespace Projeto_Eixo_2.Controllers
                 return NotFound();
             }
 
-            var cobrador = await _context.Cobradores
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var cobrador = await _context.Cobradores.FirstOrDefaultAsync(m => m.Id == id);
+
             if (cobrador == null)
             {
                 return NotFound();
             }
 
+            // Encontre todos os clientes associados a esse cobrador usando a chave estrangeira
+            var clientesDoCobrador = await _context.Clientes
+                                            .Where(c => c.CobradorId == cobrador.Id)
+                                            .ToListAsync();
+            ViewBag.ClientesDoCobrador = clientesDoCobrador; // Passe os clientes para a view usando ViewBag
+
+            var cobrancasDoCobrador = await _context.Cobranca
+                                            .Where(c => c.CobradorId == cobrador.Id)
+                                            .ToListAsync();
+            ViewBag.CobrancasDoCobrador = cobrancasDoCobrador;
+
             return View(cobrador);
-        }
-
-        [AllowAnonymous]
-
-        // GET: Cobradores/Create
-        public IActionResult Create()
-        {
-            return View();
         }
 
         // POST: Cobradores/Create
