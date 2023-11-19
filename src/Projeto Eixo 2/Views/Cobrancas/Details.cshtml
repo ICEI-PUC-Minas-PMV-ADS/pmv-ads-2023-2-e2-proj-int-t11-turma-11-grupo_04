@@ -8,49 +8,229 @@
     <title>Teste</title>
 </head>
 
-<h1>Details</h1>
+<h1>Detalhes da cobrança</h1>
 
 <div>
-    <h4>Cobranca</h4>
     <hr />
     <dl class="row" id="testePDF">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Data)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Data)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Vencimento)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Vencimento)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Valor)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Valor)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cliente)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cliente.NomeCliente)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cobrador)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cobrador.NomeCobrador)
         </dd>
     </dl>
-</div>
-<button onclick="gerarPDF()">Gerar PDF</button>
-<div>
+
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#escolherNota">
+    Escolher modelo da nota e gerar PDF
+</button>
+
+<!-- Modal de seleção -->
+<div class="modal fade" id="escolherNota" tabindex="-1" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitulo">Modelos de Nota de Cobrança</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <li class="list-group-item mx-auto align-items-center border-0">
+                        <button type="button" class="btn btn-sm btn-outline-info border-0" onclick="abrirRecibo('modeloRecibo1')">
+                            <img src="~/src/recibo1.png" style="width: 200px; border: 1px solid #000" />
+                        </button>
+                    </li>
+                    <li class="list-group-item mx-auto align-items-center border-0">
+                        <button type="button" class="btn btn-sm btn-outline-info border-0" onclick="abrirRecibo('modeloRecibo2')">
+                            <img src="~/src/recibo2.png" style="width: 200px; border: 1px solid #000" />
+                        </button>
+                    </li>
+                    <li class="list-group-item mx-auto align-items-center border-0">
+                        <button type="button" class="btn btn-sm btn-outline-info border-0" onclick="abrirRecibo('modeloRecibo3')">
+                            <img src="~/src/recibo3.png" style="width: 200px; border: 1px solid #000" />
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conteúdo do Modelo 1 -->
+<div id="modeloRecibo1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalRecibo1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalRecibo1">
+                    Recibo de cobrança
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+                        <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+                        <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z" />
+                    </svg>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="recibo-content">
+                    <div class="recibo-header">
+                        <h3>@Model.Cliente.NomeCliente @Model.Cliente.SobrenomeCliente</h3>
+                    </div>
+                    <div class="recibo-details">
+                        <p>
+                            Valor a receber de <span id="nomeClienteRecibo1">@Model.Cliente.NomeCliente</span> na quantia de R$
+                            <span id="valorRecibo1">@Model.Valor</span>
+                        </p>
+                        <p>Data da cobrança: @Model.Data</p>
+                        <p>Data do vencimento: @Model.Vencimento</p>
+                        <p>Prestador: @Model.Cobrador.NomeCobrador @Model.Cobrador.SobrenomeCobrador</p>
+
+                    </div>
+                    <div class="recibo-footer">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="gerarPDFModelo('modeloRecibo1')" class="btn btn-info w-100">Gerar PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conteúdo do Modelo 2 -->
+<div id="modeloRecibo2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalRecibo2" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color: #f9f9f9; color: #333;">
+            <div class="modal-header" style="background-color: #ddd; color: #333;">
+                <h5 class="modal-title" id="modalRecibo2">
+                    Recibo de cobrança
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+                        <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+                        <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z" />
+                    </svg>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="recibo-content">
+                    <div class="recibo-header">
+                        <h3 style="color: #555;">Recibo</h3>
+                    </div>
+                    <div class="recibo-details">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Cliente: <span id="nomeClienteRecibo2" style="color: #777;">@Model.Cliente.NomeCliente @Model.Cliente.SobrenomeCliente</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Data da cobrança: @Model.Data</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Prestador: <span id="servicoRecibo2" style="color: #777;">@Model.Cobrador.NomeCobrador @Model.Cobrador.SobrenomeCobrador</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Data do vencimento: @Model.Vencimento</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>A quantia de: <span id="valorRecibo2" style="color: #777;">@Model.Valor</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #ddd;">
+                <button onclick="gerarPDFModelo('modeloRecibo2')" class="btn btn-info w-100">Gerar PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Conteúdo do Modelo 3-->
+<div id="modeloRecibo3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalRecibo3" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color: #f5f5f5; color: #333;">
+            <div class="modal-header" style="background-color: #ddd; color: #333;">
+                <h5 class="modal-title" id="modalRecibo3">
+                    Recibo de cobrança
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+                        <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+                        <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z" />
+                    </svg>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="recibo-content">
+                    <div class="recibo-header">
+                        <h4 style="color: #555;">Cobrança do prestador @Model.Cobrador.NomeCobrador @Model.Cobrador.SobrenomeCobrador</h4>
+                    </div>
+                    <div class="recibo-details">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Cliente: <span id="nomeClienteRecibo3" style="color: #777;">@Model.Cliente.NomeCliente @Model.Cliente.SobrenomeCliente</span></p>
+                                <p>A quantia de: <span id="valorRecibo3" style="color: #777;">@Model.Valor</span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Data da cobrança: @Model.Data</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Data de vencimento: <span style="color: #777;">@Model.Vencimento</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #ddd;">
+                <button onclick="gerarPDFModelo('modeloRecibo3')" class="btn btn-info w-100">Gerar PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     body {
         background-color: #1090CB1A;
@@ -58,11 +238,19 @@
 </style>
 
 <script>
-    function gerarPDF() {
-        const elemento = document.body;
+    function abrirRecibo(modelo) {
+        $('#' + modelo).modal('show');
+    }
+
+    function gerarPDFModelo(modelo) {
+        const elementoModelo = document.getElementById(modelo).querySelector('.modal-content');
 
         html2pdf()
-            .from(elemento)
-            .save('arquivo.pdf');
+            .from(elementoModelo)
+            .save('recibo_' + modelo + '.pdf');
     }
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
