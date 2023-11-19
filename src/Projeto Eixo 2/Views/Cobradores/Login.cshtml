@@ -1,0 +1,53 @@
+﻿@model Projeto_Eixo_2.Models.Cobrador
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="row bg-primary ">
+   <div class="col-md-4 my-auto">
+        <h1 class="text-center font-weight-bold text-white" style="margin-top: 18%;">Otimize suas cobranças</h1>
+        <img src="~/src/imagem_login.svg" />
+    </div>
+    <div class="card p-5 col-md-8 w-50" style="background-color: white; !important; border-top: 0px; border-radius: 0px 0px 20px 20px">
+        <div class="my-auto" id="margem">
+        <div class ="col-md-10 mx-auto my-auto">
+            <h2>Faça seu Login!</h2>
+            <form asp-action="Login" class="my-auto">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="Senha" class="form-control" placeholder="Senha" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+
+                
+                <div class="form-group">
+                    <button type="submit" value="Entrar" class="btn btn-info btn-lg" style="width: 100%">Entrar</button>
+                </div>
+                <h7 class="text-black-50">Ainda não tem uma conta?<a asp-area="" asp-controller="Cobradores" asp-action="Create">Cadastrar</a></h7>
+                <h6 class="color text-danger">@ViewBag.Message</h6>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .bg-primary {
+        background-color: #51C8BC !important;
+    }
+</style>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="~/css/home.css">
+
+<div class="container" style="margin-top: 20px; margin-bottom: 30px;">
+    <div class="row">
+        <div class="col-md-7 align-items-center">
+            <h1 class="display-4"><strong>A Solução <strong1>ágil</strong1> para cobranças de <strong1>sucesso</strong1>.</strong></h1>
+            <h2 class="display-6" style="margin-bottom: 10px;">Quer ter uma gestão financeira eficiente e resultados satisfatórios em suas cobranças?</h2>
+            <button class="btn btn-primary btn-lg" onclick="window.location.href='Cobradores/Create'" style="width: 10em">Cadastrar</button>
+            <button class="btn btn-outline-primary btn-lg" onclick="window.location.href='Cobradores/Login'" style="width: 10em">Entrar</button>
+        </div>
+        <div class="col-md-5">
+            <img id="btn_cadastre" src="~/src/cobrança 1.png" style="width:100%; height: auto;">
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-bottom: 100px;">
+    <div class="row my-4">
+        <div class="col-ms-3">
+            <div class="card p-3 bg-transparent align-items-center border-0">
+                <div class="d-flex flex-row mb-1">
+                    <img src="~/src/cadastre_icon.svg" style="width: 75px" />
+                    <div class="d-flex flex-column ml-2">
+                        <span class="font-weight-bold">Cadastre</span><span>É rápido e simples</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-ms-3">
+            <div class="card p-3 bg-transparent align-items-center border-0">
+                <div class="d-flex flex-row mb-1">
+                    <img src="~/src/clientes_icon.svg" style="width: 75px" />
+                    <div class="d-flex flex-column ml-2"><span class="font-weight-bold">Clientes</span><span>Cadastre clientes</span></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-ms-3">
+            <div class="card p-3 bg-transparent align-items-center border-0">
+                <div class="d-flex flex-row mb-1">
+                    <img src="~/src/cobranca_icon.svg" style="width: 75px" />
+                    <div class="d-flex flex-column ml-2"><span class="font-weight-bold">Cobranças</span><span>Registre cobranças</span></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-ms-3">
+            <div class="card p-3 bg-transparent align-items-center border-0">
+                <div class="d-flex flex-row mb-1">
+                    <img src="~/src/envio_icon.svg" style="width: 75px" />
+                    <div class="d-flex flex-column ml-2"><span class="font-weight-bold">Envio</span><span>Envie cobranças</span></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    strong1 {
+        color: #1090CB;
+        font-weight: 600;
+    }
+    ul {
+        list-style: none;
+        align-items: flex-start;
+    }
+    #btnEntrar
+    {
+        width: 10em;
+        height: 3em;
+    }
+</style>

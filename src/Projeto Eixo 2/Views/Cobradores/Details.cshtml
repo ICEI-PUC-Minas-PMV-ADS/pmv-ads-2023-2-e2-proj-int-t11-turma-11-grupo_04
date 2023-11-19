@@ -1,0 +1,430 @@
+﻿@model Projeto_Eixo_2.Models.Cobrador
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container p-2">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="@($"{Model.FotoUrl}")" class="rounded-circle" width="130" height="130" style="aspect-ratio: 1 / 1; object-fit: cover;" />                            <div class="mt-3">
+                                <h4 style="margin-bottom: 2em;">@($"{Model.NomeCobrador} {Model.SobrenomeCobrador}")</h4>
+                                <button id="toggleButtonClientes" class="btn btn-outline-primary">Clientes</button>
+                                <button id="toggleButtonCobrancas" class="btn btn-outline-primary">Cobranças</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                       
+                        <div class="row mb-2">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0 text-primary">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @($"{Model.Email}")
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0 text-primary">Telefone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @($"{Model.Telefone}")
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0 text-primary">CPF</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @($"{Model.CPF}")
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0 text-primary">Endereço</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @($"{Model.Endereco}")
+                            </div>
+                            <div class="col-sm-3">
+                                <h6 class="mb-0 text-primary"></h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @($"{Model.Bairro}")
+                            </div>
+                            <div class="col-sm-3">
+                                <h6 class="mb-0 text-primary"></h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @($"{Model.Cidade}{" - "}{Model.UF}")
+                            </div>
+                            <div class="col-sm-3">
+                                <h6 class="mb-0 text-primary"></h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @($"{"CEP: "}{Model.CEP}")
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary" style="width:100%" data-toggle="modal" data-target="#myModal">Editar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="collapse col-md-12" id="tabelaClientes" style="display: block;">
+                <div class="card mb-3 col-md-12">
+                    <div class="card-body">
+                        <button style="background-color: white; border: none; outline: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#007bff" class=" " viewBox="0 0 16 16">  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" /></svg>
+                        </button>
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr class="table table-borderless">
+                                        <th>Nome do cliente</th>
+                                        <th>CPF</th>
+                                        <th>Telefone</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var cliente in ViewBag.ClientesDoCobrador)
+                                    {
+                                        <tr>
+                                            <td>@(cliente.NomeCliente + " " + cliente.SobrenomeCliente)</td>
+                                            <td>@cliente.CPFCliente</td>
+                                            <td>@cliente.TelefoneCliente</td>
+                                            <td>
+                                                <a asp-controller="Clientes" asp-action="Details" asp-route-id="@cliente.Id">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                                    </svg>
+                                                </a>
+                                                <a asp-controller="Clientes" asp-action="Edit" asp-route-id="@cliente.Id">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg>
+                                                </a>
+                                                <a asp-controller="Clientes" asp-action="Delete" asp-route-id="@cliente.Id">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                    </svg>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapse col-md-12" id="tabelaCobrancas" style="display: none;">
+                    <div class="card mb-3 col-md-12">
+                        <div class="card-body">
+                        <div class="col-md-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr class="table table-borderless">
+                                            <th>Nome do cliente</th>
+                                            <th>Valor</th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var cobranca in ViewBag.CobrancasDoCobrador)
+                                        {
+                                            <tr>
+                                                <td>@cobranca.Cliente.NomeCliente</td>
+                                                <td>@cobranca.Valor</td>
+                                                <td>@cobranca.Data</td>
+                                                <td>
+                                                    <a asp-controller="Cobrancas" asp-action="Details" asp-route-id="@cobranca.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                                        </svg>
+                                                    </a>
+                                                    <a asp-controller="Cobrancas" asp-action="Edit" asp-route-id="@cobranca.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                        </svg>
+                                                    </a>
+                                                    <a asp-controller="Cobrancas" asp-action="Delete" asp-route-id="@cobranca.Id">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div> 
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--              -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <h2 class="modal-title" id="exampleModalLabel">Editar perfil</h2><br>
+               
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input asp-for="NomeCobrador" class="form-control" placeholder="Nome completo" />
+                        <input asp-for="Id" value="@Model.Id" type="hidden" />
+                        <input asp-for="Senha" value="@Model.Senha" type="hidden" />
+                        <input asp-for="FotoUrl" value="@Model.FotoUrl" type="hidden" />
+
+                        <span asp-validation-for="NomeCobrador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="SobrenomeCobrador" class="form-control" placeholder="Sobrenome" />
+                        <span asp-validation-for="SobrenomeCobrador" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="CPF" class="form-control" id="cpfInput" placeholder="CPF" />
+                        <span asp-validation-for="CPF" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="Telefone" class="form-control" placeholder="Telefone" />
+                        <span asp-validation-for="Telefone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Endereco" class="form-control" placeholder="Endereçp" />
+                        <span asp-validation-for="Endereco" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Bairro" class="form-control" placeholder="Bairro" />
+                        <span asp-validation-for="Bairro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Cidade" class="form-control" placeholder="Cidade" />
+                        <span asp-validation-for="Cidade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="UF" class="form-control" placeholder="UF" />
+                        <span asp-validation-for="UF" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="CEP" class="form-control" placeholder="CEP" />
+                        <span asp-validation-for="CEP" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Editar" class="btn btn-primary" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    body {
+        background-color: #1090CB1A;
+    }
+
+    .custom-modal-body {
+        width: 50vh;
+    }
+
+    .modal-content > button:first-child {
+        border: none !important;
+        outline: none;
+        background: none;
+    }
+
+
+    /* Estilo para desfocar a página de fundo */
+    .blur-background {
+        filter: blur(5px);
+    }
+
+    span {
+        border: none !important;
+        outline: none;
+    }
+    /* Centralize o modal */
+    .modal {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .modal-dialog {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .modal-body {
+        width: 50vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .modal-content {
+        border-radius: 25px;
+        justify-content: center;
+        border: 1px;
+        border-color: #F3F3F3;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-group > input {
+        border: none !important;
+        border-bottom: 1px solid #e6e6e6 !important;
+        outline: none;
+        width: 80%;
+        height: 2em;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: 1px;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+        .form-group > input::placeholder {
+            color: #BEBCBC;
+        }
+
+    .close {
+        font-size: 50px;
+        color: #3BADCD;
+        margin-right: 10px;
+        text-align: end;
+    }
+
+    .form-group > .btn-primary {
+        width: 80%;
+        height: 2.5em;
+        font-size: 16px;
+        font-weight: 800;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: 1px;
+        color: #ffffff;
+        background-color: #3BADCD;
+        border: none;
+        border-radius: 5px;
+        margin: 50px auto;
+    }
+
+    .btn-transparent {
+        background: transparent;
+        border: none;
+        color: #000; /* Defina a cor do texto desejada */
+        outline: none;
+    }
+
+        .btn-transparent:hover {
+            background: transparent;
+            color: #000; /* Defina a cor do texto para o "hover" desejada */
+        }
+
+</style>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#toggleButtonClientes').click(function () {
+                // Verifica se a tabela de cobranças está visível e a esconde
+                if ($('#tabelaCobrancas').is(':visible')) {
+                    $('#tabelaCobrancas').fadeOut('fast', function () {
+                        // Mostra a tabela de clientes após esconder a tabela de cobranças
+                        $('#tabelaClientes').fadeIn('fast');
+                    });
+                } else {
+                    // Se a tabela de cobranças não estiver visível, mostra a tabela de clientes
+                    $('#tabelaClientes').fadeToggle();
+                }
+            });
+
+            $('#toggleButtonCobrancas').click(function () {
+                // Verifica se a tabela de clientes está visível e a esconde
+                if ($('#tabelaClientes').is(':visible')) {
+                    $('#tabelaClientes').fadeOut('fast', function () {
+                        // Mostra a tabela de cobranças após esconder a tabela de clientes
+                        $('#tabelaCobrancas').fadeIn('fast');
+                    });
+                } else {
+                    // Se a tabela de clientes não estiver visível, mostra a tabela de cobranças
+                    $('#tabelaCobrancas').fadeToggle();
+                }
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#toggleButtonClientes').click(function () {
+                $('#toggleButtonClientes').addClass('active');
+                $('#toggleButtonCobrancas').removeClass('active');
+
+                $('#tabelaClientes').collapse('show');
+                $('#tabelaCobrancas').collapse('hide');
+            });
+
+            $('#toggleButtonCobrancas').click(function () {
+                $('#toggleButtonCobrancas').addClass('active');
+                $('#toggleButtonClientes').removeClass('active');
+
+                $('#tabelaCobrancas').collapse('show');
+                $('#tabelaClientes').collapse('hide');
+            });
+        });
+    </script>
+
+}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

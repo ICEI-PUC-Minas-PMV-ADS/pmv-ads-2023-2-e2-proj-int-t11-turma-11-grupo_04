@@ -1,0 +1,31 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  .custom-max-width {
+    max-width: 1800px; /* Para telas maiores ou iguais a 769px */
+  }
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  font-family: Poppins;
+  letter-spacing: 1px;
+  height: 100%;
+}
+
+
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewData["Title"] = "AboutUs";
+}
+
+<h1 class="display-6 title-aboutus">Quem somos?</h1>
+
+<p class="text-aboutus">Somos um grupo de estudantes da PUC Minas com intuito de colocar em prática nossos aprendizados teóricos. A ideia do projeto surgiu através de uma conversa entre um dos alunos do grupo com um conhecido.</p>
+
+<div class="d-flex flex-wrap container-photos">
+       <div class="d-inline-flex align-items-center mb-3">
+            <img src="../teste.jpg" alt="foto de perfil" class="img-aboutus" />
+            <div class="d-flex flex-column ml-3">
+            <div class="p-2 nome">Bárbara Sena </div>
+                <div class="p-2 social-media">LinkedIn</div>
+            </div>
+        </div>
+
+        <div class="d-inline-flex align-items-center mb-3">
+                <img src="../eduarda.jpeg" alt="foto de perfil" class="img-aboutus" />
+            <div class="d-flex flex-column ml-3">
+                <div class="p-2 nome">Eduarda Silva</div>
+                <div class="p-2 social-media">LinkedIn</div>
+            </div>
+        </div>
+
+        <div class="d-inline-flex align-items-center mb-3">
+                <img src="../lucas.png" alt="foto de perfil" class="img-aboutus" />
+            <div class="d-flex flex-column ml-3">
+                    <div class="p-2 nome">Lucas Sampaio</div>
+                <div class="p-2 social-media">LinkedIn</div>
+            </div>
+        </div>
+
+        <div class="d-inline-flex align-items-center mb-3">
+                <img src="../cassio.png" alt="foto de perfil" class="img-aboutus" />
+            <div class="d-flex flex-column ml-3">
+                    <div class="p-2 nome">Cassio Tadashi</div>
+                <div class="p-2 social-media">LinkedIn</div>
+            </div>
+        </div>
+
+        <div class="d-inline-flex align-items-center mb-3">
+            <img src="../gleyston.png" alt="foto de perfil" class="img-aboutus" />
+            <div class="d-flex flex-column ml-3">
+                    <div class="p-2 nome">Gleyston Silva</div>
+                <div class="p-2 social-media">LinkedIn</div>
+            </div>
+        </div>
+
+        <div class="d-inline-flex align-items-center mb-3">
+                <img src="../lucy.jpeg" alt="foto de perfil" class="img-aboutus" />
+            <div class="d-flex flex-column ml-3">
+                    <div class="p-2 nome">Lucy Suxo</div>
+                <div class="p-2 social-media">LinkedIn</div>
+            </div>
+        </div>
+
+</div>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: #1090CB1A;
+    }
+
+    .title-aboutus {
+        font-size: 30px;
+        color: #1090CB;
+        margin: 20px 0;
+    }
+
+    .text-aboutus {
+        max-width: 600px;
+        margin-bottom: 50px;
+    }
+
+    .container-photos {
+        justify-content: flex-start; 
+        flex-wrap: wrap; 
+    }
+
+    .d-inline-flex {
+        align-items: center;
+    }
+
+    .img-aboutus {
+        margin-bottom: 20px;
+        width: 117px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+
+    .nome,
+    .social-media {
+        margin-left: 5px;
+    }
+
+    .nome {
+        font-size: 20px;
+    }
+
+    .social-media {
+        font-size: 15px;
+        color: #969696;
+    }
+</style>
