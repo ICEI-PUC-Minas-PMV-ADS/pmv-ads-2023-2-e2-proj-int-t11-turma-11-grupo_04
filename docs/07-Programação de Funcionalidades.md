@@ -1,30 +1,47 @@
 # Programação de Funcionalidades
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>, <a href="4-Metodologia.md"> Metodologia</a>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>, <a href="5-Arquitetura da Solução.md"> Arquitetura da Solução</a>
+### Implementação
 
-Implementação do sistema descrita por meio dos requisitos funcionais e/ou não funcionais. Deve relacionar os requisitos atendidos com os artefatos criados (código fonte), deverão apresentadas as instruções para acesso e verificação da implementação que deve estar funcional no ambiente de hospedagem.
+A implementação do sistema foi realizada de acordo com os requisitos funcionais e/ou não funcionais especificados na [Especificação do Projeto](/docs/2-Especificação%20do%20Projeto.md). Abaixo estão listados alguns dos requisitos atendidos juntamente com os artefatos produzidos.
 
-Por exemplo: a tabela a seguir deverá ser preenchida considerando os artefatos desenvolvidos.
+### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Artefato(s) produzido(s) |
-|------|-----------------------------------------|----|
-|RF-001| O sistema deve permitir o cobrador fazer cadastro no sistema | create.shtml / Cobrador.cs / CobradoresController.cs | 
-|RF-002| O sistema deve permitir exibir os dados do usuario em um perfil   | - |
-|RF-004| O sistema deve permitir o cobrador inserir clientes | Create.cshtml / Cliente2.cs / ClientesController.cs | 
+| ID    | Descrição do Requisito  | Artefato(s) produzido(s) |
+|-------|--------------------------|--------------------------|
+| RF-001 | O sistema deve permitir o cobrador fazer cadastro no sistema | `create.shtml` / `Cobrador.cs` / `CobradoresController.cs` | 
+| RF-002 | O sistema deve permitir exibir os dados do usuário em um perfil | - |
+| RF-003 | O sistema deve permitir aos cobradores criar e salvar layouts personalizados para os recibos | `vwClientes/Create.cshtml` / `vwCobradores/Create.cshtml` |
+| RF-004 | O sistema deve permitir o cobrador inserir clientes | `ClientesController.cs` / `vwClientes/Create.cshtml` |
+| RF-005 | Os cobradores devem ser capazes de selecionar os dados do cliente e a data de pagamento no layout | `vwCobradores/Edit.cshtml` |
+| RF-006 | O sistema deve ser capaz de gerar automaticamente e enviar os recibos com base nos layouts cadastrados | - |
+| RF-007 | Deve haver uma opção para gerenciar os layouts e recibos gerados | - |
 
+### Requisitos Não Funcionais
 
-# Instruções de acesso
+| ID    | Descrição do Requisito  | Artefato(s) produzido(s) |
+|-------|--------------------------|--------------------------|
+| RNF-001 | O sistema deve ser responsivo para proporcionar a melhor experiência ao usuário em qualquer dispositivo | Implementação de design responsivo nas páginas |
+| RNF-002 | O sistema deve ter um tempo de resposta rápido ao gerar os recibos | Otimizações na lógica de geração de recibos |
+| RNF-003 | A segurança dos dados do cliente deve ser uma prioridade, protegendo informações sensíveis | Implementação de medidas de segurança, como HTTPS e criptografia |
+| RF-004 | O sistema deve ter uma interface de usuário intuitiva e amigável | Implementação de design amigável nas páginas |
 
-Não deixe de informar o link onde a aplicação estiver disponível para acesso (por exemplo: https://adota-pet.herokuapp.com/src/index.html).
+## Instruções de Acesso
 
-Se houver usuário de teste, o login e a senha também deverão ser informados aqui (por exemplo: usuário - admin / senha - admin).
+Para acessar e verificar a implementação, siga as instruções abaixo:
 
-O link e o usuário/senha descritos acima são apenas exemplos de como tais informações deverão ser apresentadas.
+1. **Ambiente de Hospedagem:**
+   - O sistema está atualmente hospedado no ambiente de desenvolvimento.
 
-> **Links Úteis**:
->
-> - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
-> - [JSON Tutorial](https://www.w3resource.com/JSON)
-> - [JSON Data Set Sample](https://opensource.adobe.com/Spry/samples/data_region/JSONDataSetSample.html)
-> - [JSON - Introduction (W3Schools)](https://www.w3schools.com/js/js_json_intro.asp)
-> - [JSON Tutorial (TutorialsPoint)](https://www.tutorialspoint.com/json/index.htm)
+2. **Acesso ao Sistema:**
+   - Abra um navegador da web e acesse:
+
+3. **Verificação de Funcionalidades:**
+   - Utilize as seguintes funcionalidades para verificar a implementação:
+     - Cadastro de Cobrador: Navegue até a página de cadastro e preencha as informações necessárias.
+     - Cadastro de Cliente: Acesse a página de cadastro de clientes e insira os detalhes conforme necessário.
+     - Criação de Layout de Recibo: Utilize as páginas de criação de layouts para criar layouts personalizados.
+
+4. **Perfil do Usuário:**
+   - Para verificar o perfil do usuário, aguarde a implementação completa dessa funcionalidade.
+
+Essas são instruções básicas para acessar e verificar a implementação. Certifique-se de que o ambiente de hospedagem esteja configurado corretamente para evitar problemas de acesso.
