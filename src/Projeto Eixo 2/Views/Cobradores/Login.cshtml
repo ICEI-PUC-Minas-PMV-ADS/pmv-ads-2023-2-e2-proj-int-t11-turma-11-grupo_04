@@ -5,34 +5,38 @@
 }
 
 
-<div class="row bg-primary ">
+<div class="form-login row bg-primary ">
+
    <div class="col-md-4 my-auto">
-        <h1 class="text-center font-weight-bold text-white" style="margin-top: 18%;">Otimize suas cobranças</h1>
+        <h1 class=" text-center font-weight-bold text-white">Otimize suas cobranças</h1>
         <img src="~/src/imagem_login.svg" />
     </div>
-    <div class="card p-5 col-md-8 w-50" style="background-color: white; !important; border-top: 0px; border-radius: 0px 0px 20px 20px">
+
+    <div class="card col-md-6 w-30">
+
         <div class="my-auto" id="margem">
-        <div class ="col-md-10 mx-auto my-auto">
+        <div class ="titulo col-md-10 mx-auto my-auto">
             <h2>Faça seu Login!</h2>
+                <h6 class="color text-danger">@ViewBag.Message</h6>
             <form asp-action="Login" class="my-auto">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                    <div class="form-group">
+                    <div class="form-group-login">
                         <input asp-for="Email" class="form-control" placeholder="Email" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group-login">
                         <input asp-for="Senha" class="form-control" placeholder="Senha" />
                         <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
 
                 
-                <div class="form-group">
+                <div class="form-group-login">
                     <button type="submit" value="Entrar" class="btn btn-info btn-lg" style="width: 100%">Entrar</button>
                 </div>
                 <h7 class="text-black-50">Ainda não tem uma conta?<a asp-area="" asp-controller="Cobradores" asp-action="Create">Cadastrar</a></h7>
-                <h6 class="color text-danger">@ViewBag.Message</h6>
+                
             </form>
         </div>
         </div>
@@ -44,10 +48,75 @@
         margin: 0;
         padding: 0;
     }
+    .form-login{
+
+       
+       margin:auto;
+
+    }
+
+    .titulo{
+
+        text-align:center;
+       
+
+    }
+
+    .form-group-login {
+
+        
+        position: relative;
+        margin-top: 1rem;
+
+    }
+
+    .form-group-login > input,
+    .form-group-login > label {
+        
+        border-radius: 2rem;
+        height: 3rem;
+    }
+
+
+    .card{
+
+        
+        background-color: white ;
+        border-radius: 15px 15px 15px 15px;
+        margin: 15px 15px 15px 15px;
+    }
+
+    .btn-info {
+        font-size: 1rem;
+        letter-spacing: 0.05rem;
+        padding: 0.75rem 1rem;
+        border-radius: 2rem;
+    }
+
+
+
     .bg-primary {
         background-color: #51C8BC !important;
+        
     }
 </style>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Verifica se há uma mensagem na ViewBag e a exibe
+            var message = '@ViewBag.Message';
+            if (message && message.length > 0) {
+                $('.message-container').text(message).show();
+            }
+
+            // Adiciona um evento para esconder a mensagem quando a página é recarregada
+            $(window).on('beforeunload', function () {
+                $('.message-container').hide();
+            });
+        });
+    </script>
 }
