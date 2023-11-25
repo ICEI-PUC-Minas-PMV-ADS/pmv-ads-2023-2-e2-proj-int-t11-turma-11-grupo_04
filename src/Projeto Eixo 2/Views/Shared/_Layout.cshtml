@@ -16,11 +16,11 @@
 
 </head>
 <body>
-    <header>
+    <header style="height: 7vh;">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <h1>LOGO</h1>
+                    <img src="/imagens/logo1.png" alt="" width="50"/>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -55,7 +55,7 @@
                                      </svg>
                                      Olá, @User.Identity.Name
                                  </span>-->
-                                <a class="btn btn-success " asp-area="" asp-controller="Cobradores" asp-action="Logout">Sair</a>
+                                <a class="btn btn-normal botao" asp-area="" asp-controller="Cobradores" asp-action="Logout">Sair</a>
                             </li>
                        
                         }
@@ -71,15 +71,10 @@
             </div>
         </nav>
     </header>
-    <div class="d-flex flex-column">
-        <main role="main">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" style="height: 91vh; width: 100vw;">
+        @RenderBody()
+    </main>
 
-    <footer class="border-top footer text-muted">
-
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -110,6 +105,12 @@
     }
 
     svg:hover {
+        cursor: pointer;
+    }
+
+    .botao:hover {
+        background-color: #0069d9;
+        color: white;
         cursor: pointer;
     }
 </style>

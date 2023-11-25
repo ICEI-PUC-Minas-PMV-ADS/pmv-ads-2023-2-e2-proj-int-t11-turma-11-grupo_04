@@ -1,5 +1,7 @@
 html {
   font-size: 14px;
+  max-height: 100vw;
+  max-width: 100vw;
 }
 
 @media (min-width: 768px) {
@@ -11,17 +13,12 @@ html {
   }
 }
 
-html {
-  min-height: 100%;
-}
 
 body {
   font-family: Poppins;
   letter-spacing: 1px;
   height: 100%;
 }
-
-
 
 .vertical-center {
     display: flex;
