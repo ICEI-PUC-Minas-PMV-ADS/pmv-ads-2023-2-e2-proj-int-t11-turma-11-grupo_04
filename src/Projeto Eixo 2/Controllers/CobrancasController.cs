@@ -141,7 +141,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Vencimento,Valor, CobradorId")] Cobranca cobranca)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Vencimento,Valor, CobradorId, ClienteId")] Cobranca cobranca)
         {
             if (id != cobranca.Id)
             {
@@ -152,24 +152,26 @@ namespace Projeto_Eixo_2.Controllers
             {
                 try
                 {
-                    _context.Update(cobranca);
+                    Cobranca ValidatedCobranca = await _context.Cobranca.FindAsync(id);
+
+                    if (ValidatedCobranca == null)
+                    {
+                        ViewBag.ErrorMessage = "Cobrança não encontrada no sistema";
+                        return View(cobranca);
+                    }
+
+                    ValidatedCobranca.Valor = cobranca.Valor;
+                    ValidatedCobranca.Vencimento = cobranca.Vencimento;
+                    ValidatedCobranca.Data = cobranca.Data;
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CobrancaExists(cobranca.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
                 return RedirectToAction("Details", "Cobradores", new {id = cobranca.CobradorId} );
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCliente", cobranca.ClienteId);
-            ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cobranca.CobradorId);
             return View(cobranca);
         }
 

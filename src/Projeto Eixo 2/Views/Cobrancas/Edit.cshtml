@@ -31,12 +31,6 @@
                 <input asp-for="Valor" class="form-control" />
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
-            <div class="form-group" hidden>
-                <label asp-for="ClienteId" class="control-label"></label>
-                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
-                <span asp-validation-for="ClienteId" class="text-danger"></span>
-            </div>
-
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

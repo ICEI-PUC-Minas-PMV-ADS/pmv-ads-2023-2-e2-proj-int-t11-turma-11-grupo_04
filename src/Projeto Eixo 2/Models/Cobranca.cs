@@ -16,6 +16,13 @@ namespace Projeto_Eixo_2.Models
         [Required(ErrorMessage = "É obrigatório inserir uma data de vencimento.")]
         public DateTime Vencimento { get; set; }
 
+
+        [Display(Name = "Data de pagamento")]
+        public DateTime? Pagamento { get; set; }
+
+        [Display(Name = "Status da cobrança")]
+        public int CodigoStatus { get; set; }
+
         [Column(TypeName = "decimal(18,2)")]
         [Required(ErrorMessage = "É obrigatório informar o valor.")]
         public decimal Valor { get; set; }
