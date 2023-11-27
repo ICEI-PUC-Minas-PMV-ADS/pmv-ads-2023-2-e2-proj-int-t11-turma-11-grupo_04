@@ -3,7 +3,9 @@
     ViewData["Title"] = "AboutUs";
 }
 
-<h1 class="display-6 title-aboutus">Quem somos?</h1>
+<div class="d-flex flex-wrap ">
+
+    <h1 class=" title-aboutus">Quem somos?</h1>
 
 <p class="text-aboutus">
     Somos um grupo de estudantes da PUC Minas, unidos por nossa paixão por resolver problemas complexos e transformar ideias em realidade.
@@ -66,6 +68,7 @@
             </div>
         </div>
 
+    </div>
 </div>
 
 <style>
@@ -74,34 +77,37 @@
         padding: 0;
     }
 
+
+
     body {
         background-color: #1090CB1A;
     }
 
+
+
     .title-aboutus {
-        font-size: 30px;
+        
+        margin:auto;
+        font-size: 25px;
         color: #1090CB;
-        margin: 10px 0;
-        text-align: center;
+        margin-top: 30px;
+        
     }
 
     .text-aboutus {
 
-        margin-left: 2px;
-        margin-right: 2px;
-        margin-bottom: 30px;
+        margin:auto;
+        margin-bottom: 20px;
         text-align: center;
     }
 
     .container-photos {
+        
         justify-content: flex-start; 
         flex-wrap: wrap; 
         margin-left: 1rem;
     }
 
-    .d-inline-flex {
-        align-items: center;
-    }
 
     .img-aboutus {
         margin-bottom: 20px;
