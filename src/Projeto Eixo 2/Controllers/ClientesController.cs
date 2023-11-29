@@ -64,7 +64,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NomeCliente,SobrenomeCliente,CPFCliente,Endereco,Bairro,Cidade,UF,TelefoneCliente,CobradorId")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("NomeCliente,SobrenomeCliente,CPFCliente,Endereco,Bairro,Cidade,UF,TelefoneCliente,Email,CobradorId")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {

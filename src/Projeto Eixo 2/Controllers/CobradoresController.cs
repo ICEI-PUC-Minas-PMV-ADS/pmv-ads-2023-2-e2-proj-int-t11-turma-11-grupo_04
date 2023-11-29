@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Projeto_Eixo_2.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
-
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Projeto_Eixo_2.Controllers
 {
@@ -20,22 +20,23 @@ namespace Projeto_Eixo_2.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly IEmailService _emailService;
 
-        public CobradoresController(AppDbContext context, IWebHostEnvironment env)
+        public CobradoresController(AppDbContext context, IWebHostEnvironment env, IEmailService emailService)
         {
             _context = context;
             _env = env;
- 
+            _emailService = emailService;
         }
 
         [Authorize(Roles = "Admin")]
         // GET: Cobradores
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Cobradores.ToListAsync());
+            return View(await _context.Cobradores.ToListAsync());
         }
         [AllowAnonymous]
-        
+
         public IActionResult Login()
         {
             return View();
@@ -86,14 +87,14 @@ namespace Projeto_Eixo_2.Controllers
             return View();
         }
 
-		[AllowAnonymous]
-		// GET: Cobradores/Create
-		public IActionResult Create()
-		{
-			return View();
-		}
+        [AllowAnonymous]
+        // GET: Cobradores/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-		[AllowAnonymous]
+        [AllowAnonymous]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
@@ -163,7 +164,7 @@ namespace Projeto_Eixo_2.Controllers
                     }
 
                     // Salve o nome do arquivo no banco de dados
-                    cobrador.FotoUrl = "/imagens/" + nomeArquivo;
+                    cobrador.FotoUrl = nomeArquivo;
                 }
 
                 cobrador.Senha = BCrypt.Net.BCrypt.HashPassword(cobrador.Senha);
@@ -175,9 +176,9 @@ namespace Projeto_Eixo_2.Controllers
             return View(cobrador);
         }
 
-		
 
-		/* [Authorize(Roles = "Admin,User")]
+
+        /* [Authorize(Roles = "Admin,User")]
 		  GET: Cobradores/Edit/5
 		 public async Task<IActionResult> Edit(int? id)
 		 {
@@ -195,7 +196,7 @@ namespace Projeto_Eixo_2.Controllers
 		 }
 		*/
 
-		[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin,User")]
         // POST: Cobradores/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -215,7 +216,7 @@ namespace Projeto_Eixo_2.Controllers
                 {
                     _context.Update(cobrador);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Details", "Cobradores", new {id = cobrador.Id});
+                    return RedirectToAction("Details", "Cobradores", new { id = cobrador.Id });
 
                 }
                 catch (DbUpdateConcurrencyException)
@@ -266,14 +267,99 @@ namespace Projeto_Eixo_2.Controllers
             {
                 _context.Cobradores.Remove(cobrador);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CobradorExists(int id)
         {
-          return _context.Cobradores.Any(e => e.Id == id);
+            return _context.Cobradores.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<JsonResult> UpdateImage([FromForm] ImageUpdateRequest request, int id)
+        {
+            var cobrador = await _context.Cobradores.FindAsync(id);
+
+            if (cobrador == null)
+            {
+                return Json(new {
+                    error = 1,
+                    msg = "Cobrador não encontrado no sistema"
+                });
+
+            }
+
+            if (cobrador.FotoUrl != null)
+            {
+                var diretorioImagem = Path.Combine(_env.WebRootPath, "imagens");
+                var diretorioFoto = Path.Combine(diretorioImagem, cobrador.FotoUrl);
+                
+                if (System.IO.File.Exists(diretorioFoto))
+                {
+                    System.IO.File.Delete(diretorioFoto);
+                }
+            }
+
+            var nomeArquivo = Guid.NewGuid().ToString() + "_" + Path.GetFileName(request.File.FileName);
+            var diretorioDestino = Path.Combine(_env.WebRootPath, "imagens");
+            var diretorioCompleto = Path.Combine(diretorioDestino, nomeArquivo);
+
+            using (var stream = new FileStream(diretorioCompleto, FileMode.Create))
+            {
+                await request.File.CopyToAsync(stream);
+            }
+
+            cobrador.FotoUrl = nomeArquivo;
+
+            _context.Update(cobrador);
+            await _context.SaveChangesAsync();
+
+            return Json(new { error = '0', msg = "Foto atualizada com sucesso", newFoto = cobrador.FotoUrl });
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> SendEmail(int id)
+        {
+            var cobranca = await _context.Cobranca
+                .Include(cliente => cliente.Cliente)
+                .Include(cobrador => cobrador.Cobrador)
+                .FirstAsync(cobranca => cobranca.Id == id);
+            
+            if (cobranca == null)
+            {
+                return StatusCode(500);
+            }
+
+            if (cobranca.CodigoStatus == 2)
+            {
+                return StatusCode(406);
+            }
+
+            string nomeCompleto = cobranca.Cobrador.NomeCobrador + cobranca.Cobrador.SobrenomeCobrador;
+           
+            EmailDto request = new EmailDto();
+            request.To = cobranca.Cliente.Email;
+            request.Subject = nomeCompleto + " - Cobrança de serviços prestados";
+            request.Body = "<h1>Cobrança de " + cobranca.Valor + " paga com sucesso</h1>";
+            
+            _emailService.SendEmail(request);
+
+            cobranca.CodigoStatus = 2;
+            cobranca.StatusCobranca = "Pago";
+            cobranca.Pagamento = DateTime.Now;
+            _context.Update(cobranca);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+    }
+
+    public class ImageUpdateRequest
+    {
+        public IFormFile File { get; set; }
     }
 }

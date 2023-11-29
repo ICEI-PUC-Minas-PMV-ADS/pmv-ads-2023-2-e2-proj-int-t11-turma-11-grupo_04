@@ -22,6 +22,7 @@ namespace Projeto_Eixo_2.Models
 
         [Display(Name = "Status da cobrança")]
         public int CodigoStatus { get; set; }
+        public string StatusCobranca { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         [Required(ErrorMessage = "É obrigatório informar o valor.")]

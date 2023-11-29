@@ -4,20 +4,36 @@
 @{
     ViewData["Title"] = "Details";
     var cobradorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var fotoUrl = "/imagens/" + Model.FotoUrl;
 }
 
-<div class="container p-2">
+
+<div class="toast alert-sucess" style="position: absolute; top: 80px; right: 30px; ">
+    <div class="toast-body">
+        Hello, world! This is a toast message.
+    </div>
+</div>
+<div class="container p-2" style="position: relative;">
+    
     <div class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="@($"{Model.FotoUrl}")" class="rounded-circle" width="130" height="130" style="aspect-ratio: 1 / 1; object-fit: cover;" />                            <div class="mt-3">
-                                <h4 style="margin-bottom: 2em;">@($"{Model.NomeCobrador} {Model.SobrenomeCobrador}")</h4>
-                                <button id="toggleButtonClientes" class="btn btn-outline-primary">Clientes</button>
-                                <button id="toggleButtonCobrancas" class="btn btn-outline-primary">Cobranças</button>
-                            </div>
+                    <div class="d-flex flex-column align-items-center text-center" style="padding-top: 1em; padding-bottom: 1em;">
+                        <div style="display: flex; flex-direction: column;">
+                            <img id="ProfilePicture" src="@fotoUrl" class="rounded-circle" width="130" height="130" style="aspect-ratio: 1 / 1; object-fit: cover; margin-bottom: .6em;" />
+                            <label>
+                                <input id="CameraInput" style="display: none;" type="file" class="hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#007bff" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                    <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0" />
+                                </svg>
+                            </label>
+                        </div>
+                        <div class="mt-3">
+                            <h4 style="margin-bottom: .7em;">@($"{Model.NomeCobrador} {Model.SobrenomeCobrador}")</h4>
+                            <button id="toggleButtonClientes" class="btn btn-outline-primary">Clientes</button>
+                            <button id="toggleButtonCobrancas" class="btn btn-outline-primary">Cobranças</button>
                         </div>
                     </div>
                 </div>
@@ -26,7 +42,6 @@
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
-                       
                         <div class="row mb-2">
                             <div class="col-sm-3">
                                 <h6 class="mb-0 text-primary">Email</h6>
@@ -148,8 +163,10 @@
                                     <thead>
                                         <tr class="table table-borderless">
                                             <th>Nome do cliente</th>
+                                            <th>Vencimento</th>
                                             <th>Valor</th>
-                                            <th>Data</th>
+                                            <th>StatusCobranca</th>
+                                            <th>Data Pagamento</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,8 +174,10 @@
                                         {
                                             <tr>
                                                 <td>@cobranca.Cliente.NomeCliente</td>
+                                                <td>@cobranca.Vencimento</td>
                                                 <td>@cobranca.Valor</td>
-                                                <td>@cobranca.Data</td>
+                                                <td>@cobranca.StatusCobranca</td>
+                                                <td>@cobranca.Pagamento</td>
                                                 <td>
                                                     <a asp-controller="Cobrancas" asp-action="Details" asp-route-id="@cobranca.Id">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -178,6 +197,10 @@
                                                             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                                         </svg>
                                                     </a>
+                                                <svg onclick="handleSendEmail(@cobranca.Id, @cobranca.CodigoStatus)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#007bff" class="bi bi-envelope-arrow-down-fill" viewBox="0 0 16 16">
+                                                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558zm.192 8.159 6.57-4.027L8 9.586l1.239-.757.367.225A4.49 4.49 0 0 0 8 12.5c0 .526.09 1.03.256 1.5H2a2 2 0 0 1-1.808-1.144ZM16 4.697v4.974A4.491 4.491 0 0 0 12.5 8a4.49 4.49 0 0 0-1.965.45l-.338-.207z" />
+                                                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-1.646a.5.5 0 0 1-.722-.016l-1.149-1.25a.5.5 0 1 1 .737-.676l.28.305V11a.5.5 0 0 1 1 0v1.793l.396-.397a.5.5 0 0 1 .708.708l-1.25 1.25Z" />
+                                                    </svg>
                                                 </td>
                                             </tr>
                                         }
@@ -192,11 +215,12 @@
     </div>
 </div>
 
+
 <!--              -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #0069d9">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -250,7 +274,7 @@
                         <span asp-validation-for="CEP" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Editar" class="btn btn-primary" />
+                        <input type="submit" value="Salvar" class="btn btn-primary" style="background-color: #0069d9" />
                     </div>
                 </form>
 
@@ -258,7 +282,6 @@
         </div>
     </div>
 </div>
-
 
 <style>
     body {
@@ -376,6 +399,9 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
+
+            console.log('Email de cobrança enviado com sucesso!! \n Atualize a páagina para mais informações')
+
             $('#toggleButtonClientes').click(function () {
                 // Verifica se a tabela de cobranças está visível e a esconde
                 if ($('#tabelaCobrancas').is(':visible')) {
@@ -421,6 +447,77 @@
                 $('#tabelaClientes').collapse('hide');
             });
         });
+
+
+        async function handleSendEmail(Cobranca, status) {
+            if (status == 2) {
+                $('.toast').toast({ delay: 1500 })
+                $('.toast').children('.toast-body').html('Cobrança com pagamento já realizado!')
+                $('.toast').toast('show')
+                return null
+            }
+
+            const url = 'https://localhost:44351/Cobradores/SendEmail/'+ Cobranca.toString() 
+            const response = await fetch(url, {
+                method: 'post'
+            })
+
+            if (response.status == 200) {
+                $('.toast').toast({ delay: 2500 })
+                $('.toast').children('.toast-body').html('Email de cobrança enviado com sucesso!! \n Atualize a páagina para mais informações')
+                $('.toast').toast('show')
+            } else if (response.status == 406){
+                $('.toast').toast({ delay: 1500 })
+                $('.toast').children('.toast-body').html('Cobrança com pagamento já realizado!')
+                $('.toast').toast('show')
+            } else {
+                $('.toast').toast({ delay: 1500 })
+                $('.toast').children('.toast-body').html('Erro ao enviar email de cobrança!')
+                $('.toast').toast('show')
+            }
+        }
+
+        async function updateImage(img) {
+            const url = 'https://localhost:44351/Cobradores/UpdateImage/' + @cobradorId
+            const formData = new FormData()
+            formData.append('File', img)
+
+            response = await fetch(url, {
+                method: 'post',
+                body: formData
+            })
+            json = await response.json()
+            
+            if (json.error == 0) {
+                $('#ProfilePicture').attr('src', '/imagens/'+json.newFoto)
+                $('.toast').toast({ delay: 1500 })
+                $('.toast').children('.toast-body').html('Foto atualizada com sucesso!')
+                $('.toast').toast('show')
+            } else {
+                $('.toast').toast({ delay: 2000 })
+                $('.toast').children('.toast-body').html(json.msg)
+                $('.toast').toast('show')
+            }
+            
+        }
+
+        $("#CameraInput").on("change", () => {
+            if ($("#CameraInput").val()) {
+                const img = $("#CameraInput")[0].files[0]
+                const extensao = img.name.split('.').pop()
+                const extensoesSuportadas = ['jpeg', 'jpg', 'png']
+                
+                if (!extensoesSuportadas.includes(extensao)) {
+                    alert('Extensão de arquivo não suportada, apenas Imagens.')
+                    return
+                }
+                updateImage(img)
+                
+            }
+        })
+
+       
+
     </script>
 
 }

@@ -1,11 +1,14 @@
+global using Projeto_Eixo_2.Services.EmailService;
+global using Projeto_Eixo_2.Models;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Projeto_Eixo_2.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
