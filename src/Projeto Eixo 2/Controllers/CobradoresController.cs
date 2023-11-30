@@ -148,6 +148,9 @@ namespace Projeto_Eixo_2.Controllers
                     return View(cobrador);
                 }
 
+                // Retira o ponto e o tracinho do CPF antes de validar
+                cobrador.CPF = cobrador.CPF.Replace(".", "").Replace("-", "");
+
                 // Verifica se o CPF tem 11 dígitos e se tem apenas números
 
                 if (cobrador.CPF.Length != 11 || !cobrador.CPF.All(char.IsDigit))
@@ -156,6 +159,8 @@ namespace Projeto_Eixo_2.Controllers
                     return View(cobrador);
                 }
 
+                // Retira o tracinho do CEP antes de validar
+                cobrador.CEP = cobrador.CEP.Replace("-", "");
                 // Verifica o formato do CEP
                 if (cobrador.CEP.Length != 8 || !cobrador.CEP.All(char.IsDigit))
                 {
