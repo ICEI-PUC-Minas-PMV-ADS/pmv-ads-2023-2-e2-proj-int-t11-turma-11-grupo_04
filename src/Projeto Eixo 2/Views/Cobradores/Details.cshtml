@@ -5,6 +5,8 @@
     ViewData["Title"] = "Details";
     var cobradorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     var fotoUrl = "/imagens/" + Model.FotoUrl;
+    var imageEndPoint = Url.ActionLink("UpdateImage", "Cobradores");
+    var emailEndPoint = Url.ActionLink("SendEmail", "Cobradores");
 }
 
 
@@ -13,15 +15,15 @@
         Hello, world! This is a toast message.
     </div>
 </div>
+
 <div class="container p-2" style="position: relative;">
-    
     <div class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="d-flex flex-column align-items-center text-center" style="padding-top: 1em; padding-bottom: 1em;">
                         <div style="display: flex; flex-direction: column;">
-                            <img id="ProfilePicture" src="@fotoUrl" class="rounded-circle" width="130" height="130" style="aspect-ratio: 1 / 1; object-fit: cover; margin-bottom: .6em;" />
+                            <img id="ProfilePicture" src="/imagens/@Model.FotoUrl" class="rounded-circle" width="130" height="130" style="aspect-ratio: 1 / 1; object-fit: cover; margin-bottom: .6em;" />
                             <label>
                                 <input id="CameraInput" style="display: none;" type="file" class="hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#007bff" class="bi bi-camera-fill" viewBox="0 0 16 16">
@@ -400,8 +402,6 @@
     <script>
         $(document).ready(function () {
 
-            console.log('Email de cobrança enviado com sucesso!! \n Atualize a páagina para mais informações')
-
             $('#toggleButtonClientes').click(function () {
                 // Verifica se a tabela de cobranças está visível e a esconde
                 if ($('#tabelaCobrancas').is(':visible')) {
@@ -457,7 +457,7 @@
                 return null
             }
 
-            const url = 'https://localhost:44351/Cobradores/SendEmail/'+ Cobranca.toString() 
+            const url = '@emailEndPoint' + '/' + Cobrnaca.toString();
             const response = await fetch(url, {
                 method: 'post'
             })
@@ -478,7 +478,7 @@
         }
 
         async function updateImage(img) {
-            const url = 'https://localhost:44351/Cobradores/UpdateImage/' + @cobradorId
+            const url = '@imageEndPoint' + '/' + @cobradorId
             const formData = new FormData()
             formData.append('File', img)
 
