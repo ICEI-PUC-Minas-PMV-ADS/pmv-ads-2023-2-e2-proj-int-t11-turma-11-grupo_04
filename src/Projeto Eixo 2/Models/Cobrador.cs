@@ -21,6 +21,7 @@ namespace Projeto_Eixo_2.Models
         public string CPF { get; set; }
 
         [Required(ErrorMessage = "É obrigatório informar o Email.")]
+        [EmailAddress(ErrorMessage = "Por favor, informe um endereço de e-mail válido.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "É obrigatório informar o CEP.")]

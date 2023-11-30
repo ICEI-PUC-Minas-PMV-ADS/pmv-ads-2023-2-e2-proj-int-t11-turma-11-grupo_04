@@ -141,6 +141,35 @@ namespace Projeto_Eixo_2.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Verifica o tamanho mínimo da senha
+                if (cobrador.Senha.Length < 6)
+                {
+                    ModelState.AddModelError("Senha", "A senha deve ter no mínimo 6 caracteres.");
+                    return View(cobrador);
+                }
+
+                // Verifica se o CPF tem 11 dígitos e se tem apenas números
+
+                if (cobrador.CPF.Length != 11 || !cobrador.CPF.All(char.IsDigit))
+                {
+                    ModelState.AddModelError("CPF", "O CPF deve ter exatamente 11 dígitos e conter apenas números.");
+                    return View(cobrador);
+                }
+
+                // Verifica o formato do CEP
+                if (cobrador.CEP.Length != 8 || !cobrador.CEP.All(char.IsDigit))
+                {
+                    ModelState.AddModelError("CEP", "O CEP deve ter exatamente 8 dígitos e conter apenas números.");
+                    return View(cobrador);
+                }
+
+                // Verifica se telefone tem apenas dígitos
+                if (!cobrador.Telefone.All(char.IsDigit))
+                {
+                    ModelState.AddModelError("Telefone", "O telefone deve conter apenas números.");
+                    return View(cobrador);
+                }
+
                 if (cobrador.FotoArquivo != null && cobrador.FotoArquivo.Length > 0)
                 {
                     // Gere um nome único para o arquivo para evitar conflitos
