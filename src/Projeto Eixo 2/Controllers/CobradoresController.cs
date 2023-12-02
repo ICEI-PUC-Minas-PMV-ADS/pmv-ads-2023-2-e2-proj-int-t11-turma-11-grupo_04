@@ -246,13 +246,14 @@ namespace Projeto_Eixo_2.Controllers
 
             if (ModelState.IsValid)
             {
+
                 try
                 {
                     _context.Update(cobrador);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Details", "Cobradores", new { id = cobrador.Id });
-
                 }
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!CobradorExists(cobrador.Id))
@@ -264,9 +265,11 @@ namespace Projeto_Eixo_2.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                
             }
-            return RedirectToAction("Details", "Cobradores", new { id = cobrador.Id });
+
+            // Se houver erros de validação, permaneça na mesma view para exibir mensagens de erro.
+            return View(cobrador);
         }
 
         // GET: Cobradores/Delete/5

@@ -10,10 +10,12 @@ namespace Projeto_Eixo_2.Models
         public int Id { get; set; }
         [Display(Name = "Data de cobrança")]
         [Required(ErrorMessage = "É obrigatório inserir uma data para a cobrança.")]
+        [DataType(DataType.Date)]
         public DateTime Data { get; set; }
 
         [Display(Name = "Data de Vencimento")]
         [Required(ErrorMessage = "É obrigatório inserir uma data de vencimento.")]
+        [DataType(DataType.Date)]
         public DateTime Vencimento { get; set; }
 
 
@@ -26,6 +28,7 @@ namespace Projeto_Eixo_2.Models
 
         [Column(TypeName = "decimal(18,2)")]
         [Required(ErrorMessage = "É obrigatório informar o valor.")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "O valor deve ser maior que zero.")]
         public decimal Valor { get; set; }
 
         [Required(ErrorMessage = "É obrigatório informar o cliente.")]

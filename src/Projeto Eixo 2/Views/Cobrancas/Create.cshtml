@@ -9,55 +9,67 @@
     bool isAdmin = User.IsInRole("Admin"); // Ou qualquer outra lógica para verificar se o usuário é um administrador
 
 }
+<div class="column d-flex justify-content-center">
+            <div class="mb-3 justify-content-center align-content-sm-center" style="background-color: white; border-radius: 20px; padding: 50px; margin-top: 40px; height: calc(100vh - 130px); width: 700px">
+            <h1 class="title mr-2">Cadastro de cobrança</h1>
+                <form asp-action="Create" id="createFormCobranca">
+                    <input type="hidden" value="@ViewBag.CobradorInfo.Id" asp-for="CobradorId" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Data" class="control-label"></label>
+                        <input asp-for="Data" type="date" class="form-control" />
+                        <span asp-validation-for="Data" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Vencimento" class="control-label"></label>
+                <input asp-for="Vencimento" type="date" class="form-control" />
+                        <span asp-validation-for="Vencimento" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Valor" class="control-label"></label>
+                        <input asp-for="Valor" id="valor" class="form-control" />
+                        <span asp-validation-for="Valor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="clienteSelectGroup">
+                        <label asp-for="ClienteId" class="control-label"> Nome do Cliente</label>
+                        <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
 
-
-
-<div class="column p-4">
-    <div class="row mb-3 ">
-        <h1 class="title mr-2">Cadastro de cobrança</h1>
-        <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = ViewBag.CobradorInfo.Id})'" class="btn btn-primary">Voltar</button>
-    </div>
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <input type="hidden" value="@ViewBag.CobradorInfo.Id" asp-for="CobradorId" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
-                <span asp-validation-for="Data" class="text-danger"></span>
+                    </div>
+                    <div class="color text-danger" id="mensagemSemClientes" style="display: none;">
+                        <p>Nenhum cliente disponível para este cobrador.</p>
+                    </div>
+                <div class="d-md-inline-flex">
+                    <div class="form-group">
+                        <button type="button" onclick="document.getElementById('createFormCobranca').submit();" style="border-radius: 5px; margin-right: 10px; padding: 6px 12px;" class="btn btn-success">Cadastrar</button>
+                    </div>
+                    <div class="form-group">
+                        <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = ViewBag.CobradorInfo.Id})'" class="btn btn-primary">Voltar</button>
+                    </div>
+                </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Vencimento" class="control-label"></label>
-                <input asp-for="Vencimento" class="form-control" />
-                <span asp-validation-for="Vencimento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input asp-for="Valor" class="form-control" />
-                <span asp-validation-for="Valor" class="text-danger"></span>
-            </div>
-            <div class="form-group" id="clienteSelectGroup">
-                <label asp-for="ClienteId" class="control-label"> Nome do Cliente</label>
-                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
-
-            </div>
-            <div class="color text-danger" id="mensagemSemClientes" style="display: none;">
-                <p>Nenhum cliente disponível para este cobrador.</p>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
 </div>
+
 
 
 
 <style>
     body {
-        background-color: white;
+        background-color: #1889be66;
+    }
+
+    .title {
+        color: #0069d9;
     }
 </style>
+
+<script>
+    // Máscara
+    $(document).ready(function () {
+        // Máscara para dinheiro
+        $('#valor').mask('R$ 000.000.000,00', { reverse: true });
+    });
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

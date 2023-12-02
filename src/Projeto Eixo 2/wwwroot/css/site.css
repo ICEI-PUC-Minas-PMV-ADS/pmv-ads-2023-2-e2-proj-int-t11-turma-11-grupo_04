@@ -26,3 +26,30 @@ body {
     justify-content: center;
     height: 100%;
 }
+
+@media (max-width: 800px) {
+    .title-services {
+        font-size: 25px !important; /* Ocupar a largura total da tela em telas menores */
+    }
+
+    .foreground-image {
+        max-width: 290px !important;
+        height: 200px !important;
+        margin-left: -145px !important;
+    }
+
+    @media (max-width: 400px) {
+        .title-services {
+            font-size: 25px !important; /* Ocupar a largura total da tela em telas menores */
+        }
+
+        .foreground-image {
+            display: none !important;
+        }
+
+        .background-image {
+            display: none !important;
+        }
+    }
+}
+

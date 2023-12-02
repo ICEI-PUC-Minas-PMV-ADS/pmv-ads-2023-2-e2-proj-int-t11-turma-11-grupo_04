@@ -37,6 +37,7 @@ namespace Projeto_Eixo_2.Models
         [Display(Name = "Telefone")]
         [Required(ErrorMessage = "Obrigatório informar o telefone do cliente.")]
         public string TelefoneCliente { get; set; }
+
         [Display(Name = "E-mail")]
         [Required(ErrorMessage = "Obrigatório informar o e-mail do cliente")]
         public string Email { get; set; }

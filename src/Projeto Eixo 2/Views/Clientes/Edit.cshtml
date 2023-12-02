@@ -7,14 +7,10 @@
     
 }
 
-<div class="column p-4">
-    <div class="row mb-3">
+<div class="column d-flex justify-content-center">
+    <div class="mb-3 justify-content-center align-content-sm-center" style="background-color: white; border-radius: 20px; padding: 50px; margin-top: 40px; height: calc(100vh - 130px); width: 700px">
         <h1 class="title mr-2">Alterar cliente</h1>
-        <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = cobradorId})'" class="btn btn-primary">Voltar</button>
-    </div>
-
-    <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" id="editForm" class="formulario" style="overflow: auto; height: 80%">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="CobradorId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
@@ -30,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CPFCliente" class="control-label"></label>
-                <input asp-for="CPFCliente" class="form-control" />
+                <input asp-for="CPFCliente" id="CPFCliente" class="form-control" />
                 <span asp-validation-for="CPFCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -58,23 +54,51 @@
                 <input asp-for="TelefoneCliente" class="form-control" />
                 <span asp-validation-for="TelefoneCliente" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+
             <div class="form-group" hidden>
                 <label asp-for="CobradorId" class="control-label"></label>
                 <input asp-for="CobradorId" class="form-control" />
                 <span asp-validation-for="CobradorId" class="text-danger"></span>
             </div>
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
         </form>
+        <div class="d-md-inline-flex">
+            <div class="form-group">
+                <button type="button" onclick="document.getElementById('editForm').submit();" style="border-radius: 5px; margin-right: 10px; padding: 6px 12px;" class="btn btn-success">Salvar</button>
+            </div>
+            <div class="form-group">
+                <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = cobradorId})'" class="btn btn-primary">Voltar</button>
+            </div>
+        </div>
     </div>
 </div>
+
+
+<script>
+    //Mascara
+    $(document).ready(function () {
+        // Máscara para CPF
+        $('#CPFCliente').mask('000.000.000-00', { reverse: true });
+
+    });
+</script>
+
 <style>
     body {
-        background-color: white;
+        background-color: #1889be66;
+    }
+
+    .title {
+        color: #0069d9;
     }
 </style>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

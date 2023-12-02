@@ -3,28 +3,35 @@
     ViewData["Title"] = "Services";
 }
 
-<h1 class="title-services">Sua paz financeira começa com um <strong>clique</strong>. <br /> E sua <strong>folga</strong> também.</h1>
+<link rel="stylesheet" href="~/css/home.css">
 
-<div class="row my-4 justify-content-center">
-    <div class="col-ms-3">
-        <span class="badge bg-secondary">Plataforma gratuita</span></h1>
-     </div>
-    <div class="col-ms-3">
-        <span class="badge bg-secondary">Controle de cobranças</span></h1>
-    </div>
-    <div class="col-ms-3">
-        <span class="badge bg-secondary">Cadastro de clientes</span></h1>
-    </div>
-    <div class="col-ms-3">
-        <span class="badge bg-secondary">Agendamento de cobranças</span></h1>
-    </div>
+
+<div class="d-flex-column justify-content-center align-items-center">
+
+    <h1 class="title-services">Sua paz financeira começa com um <strong>clique</strong>. <br /> E sua <strong>folga</strong> também.</h1>
+
+    <div class="row my-4 justify-content-center">
+        <div class="col-ms-3">
+            <span class="badge bg-secondary">Plataforma gratuita</span>
+         </div>
+        <div class="col-ms-3">
+            <span class="badge bg-secondary">Controle de cobranças</span>
+        </div>
+        <div class="col-ms-3">
+            <span class="badge bg-secondary">Cadastro de clientes</span>
+        </div>
+        <div class="col-ms-3">
+            <span class="badge bg-secondary">Agendamento de cobranças</span>
+        </div>
    
+    </div>
 </div>
 
 <img src="../sand.png" alt="Imagem da Areia" class="background-image">
 <img src="../pig.png" alt="Imagem do Porquinho" class="foreground-image">
 
 <style>
+
     body {
         background-color: #1090CB1A;
         margin: 0;
@@ -39,6 +46,11 @@
         z-index: 1; /* Certifica-se de que a imagem do porquinho fique em cima */
         bottom: 0;
         left: 0;
+    }
+
+    .row {
+        margin-right: 0;
+        margin-left: 0;
     }
 
     .foreground-image {
@@ -56,7 +68,7 @@
     }
 
     .title-services {
-        font-size: 25px;
+        font-size: 40px;
         text-align: center;
         margin-top: 50px;
     }

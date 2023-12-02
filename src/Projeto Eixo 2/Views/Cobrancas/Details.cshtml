@@ -8,51 +8,55 @@
     <title>Teste</title>
 </head>
 
-<h1>Detalhes da cobrança</h1>
-
-<div>
-    <hr />
-    <dl class="row" id="testePDF">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Vencimento)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Vencimento)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Valor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Valor)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cliente.NomeCliente)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cobrador)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cobrador.NomeCobrador)
-        </dd>
-    </dl>
-
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="p-4">
+   
+    <div class="column d-flex justify-content-center">
+        <div class="mb-3 justify-content-center align-content-sm-center" style="background-color: white; border-radius: 20px; padding: 50px; margin-top: 40px; width: 700px">
+            <h1 class="title mr-2">Detalhes da cobrança</h1>
+            <dl class="row" id="testePDF">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Data)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Data)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Vencimento)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Vencimento)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Valor)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Valor)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Cliente)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Cliente.NomeCliente)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Cobrador)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Cobrador.NomeCobrador)
+                </dd>
+            </dl>
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-success">Editar</a>
+            <button onclick="location.href='@Url.Action("Details", "Cobradores", new {id = Model.CobradorId})'" style="border-radius: 5px; margin-right: 10px; padding: 6px 12px;" class="btn btn-primary">Voltar</button>           
+            <div class="d-md-inline-flex">
+                <div class="form-group">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#escolherNota">
+                        Escolher modelo da nota e gerar PDF
+                    </button>
+                </div>
+            </div>
+        </div>       
+    </div>    
 </div>
-
-
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#escolherNota">
-    Escolher modelo da nota e gerar PDF
-</button>
 
 <!-- Modal de seleção -->
 <div class="modal fade" id="escolherNota" tabindex="-1" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">

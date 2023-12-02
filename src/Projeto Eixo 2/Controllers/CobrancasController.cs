@@ -211,7 +211,7 @@ namespace Projeto_Eixo_2.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Cobrancas",new { id = cobranca.CobradorId });
+            return RedirectToAction("Details", "Cobradores", new { id = cobranca.CobradorId });
         }
 
         private bool CobrancaExists(int id)

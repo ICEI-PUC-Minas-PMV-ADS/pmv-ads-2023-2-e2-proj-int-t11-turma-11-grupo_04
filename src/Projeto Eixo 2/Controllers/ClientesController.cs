@@ -68,10 +68,31 @@ namespace Projeto_Eixo_2.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                // Retira o ponto e o tracinho do CPF antes de validar
+                cliente.CPFCliente = cliente.CPFCliente.Replace(".", "").Replace("-", "");
+
+                // Verifica se o CPF tem 11 dígitos e se tem apenas números
+
+                if (cliente.CPFCliente.Length != 11 || !cliente.CPFCliente.All(char.IsDigit))
+                {
+                    ModelState.AddModelError("CPFCliente", "O CPF deve ter exatamente 11 dígitos e conter apenas números.");
+                    return View(cliente);
+                }
+
+
+                // Verifica se telefone tem apenas dígitos
+                if (!cliente.TelefoneCliente.All(char.IsDigit))
+                {
+                    ModelState.AddModelError("TelefoneCliente", "O telefone deve conter apenas números.");
+                    return View(cliente);
+                }
+
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", "Cobradores", new {id = cliente.CobradorId });
             }
+
             ViewData["CobradorId"] = new SelectList(_context.Cobradores, "Id", "NomeCobrador", cliente.CobradorId);
             return View(cliente);
         }
@@ -97,7 +118,7 @@ namespace Projeto_Eixo_2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCliente,SobrenomeCliente,CPFCliente,Endereco,Bairro,Cidade,UF,TelefoneCliente,CobradorId")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeCliente,SobrenomeCliente,CPFCliente,Endereco,Bairro,Cidade,UF,TelefoneCliente,Email,CobradorId")] Cliente cliente)
         {
             if (id != cliente.Id)
             {
@@ -106,6 +127,25 @@ namespace Projeto_Eixo_2.Controllers
 
             if (ModelState.IsValid)
             {
+                // Retira o ponto e o tracinho do CPF antes de validar
+                cliente.CPFCliente = cliente.CPFCliente.Replace(".", "").Replace("-", "");
+
+                // Verifica se o CPF tem 11 dígitos e se tem apenas números
+
+                if (cliente.CPFCliente.Length != 11 || !cliente.CPFCliente.All(char.IsDigit))
+                {
+                    ModelState.AddModelError("CPFCliente", "O CPF deve ter exatamente 11 dígitos e conter apenas números.");
+                    return View(cliente);
+                }
+
+
+                // Verifica se telefone tem apenas dígitos
+                if (!cliente.TelefoneCliente.All(char.IsDigit))
+                {
+                    ModelState.AddModelError("TelefoneCliente", "O telefone deve conter apenas números.");
+                    return View(cliente);
+                }
+
                 try
                 {
                     _context.Update(cliente);
@@ -159,11 +199,15 @@ namespace Projeto_Eixo_2.Controllers
             var cliente = await _context.Clientes.FindAsync(id);
             if (cliente != null)
             {
+                // Excluir cobranças associadas ao cliente
+                var cobrancasDoCliente = _context.Cobranca.Where(c => c.ClienteId == id);
+                _context.Cobranca.RemoveRange(cobrancasDoCliente);
+                // Excluir o cliente
                 _context.Clientes.Remove(cliente);
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Clientes", new {id = cliente.CobradorId});
+            return RedirectToAction("Details", "Cobradores", new {id = cliente.CobradorId });
         }
 
         private bool ClienteExists(int id)

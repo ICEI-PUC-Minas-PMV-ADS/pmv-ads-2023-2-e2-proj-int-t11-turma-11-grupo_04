@@ -3,72 +3,74 @@
     ViewData["Title"] = "AboutUs";
 }
 
-<div class="d-flex flex-wrap ">
+<div class="d-flex flex-column justify-content-center align-items-center">
 
-    <h1 class=" title-aboutus">Quem somos?</h1>
-
-<p class="text-aboutus">
-    Somos um grupo de estudantes da PUC Minas, unidos por nossa paixão por resolver problemas complexos e transformar ideias em realidade.
-    Cada membro do nosso grupo traz uma perspectiva única e valiosa, enriquecendo nosso trabalho e permitindo que abordemos os desafios de maneiras inovadoras.
-
-    <br />
-    O tema do nosso projeto é a “Otimização de Cobranças”. A ideia surgiu de uma conversa casual entre um dos nossos membros e um conhecido que expressou frustrações
-    com o processo de cobrança atual. Isso nos levou a questionar: “Como podemos tornar este processo mais eficiente e menos estressante para
-    todos os envolvidos?” Assim, embarcamos nesta jornada para desenvolver uma solução que não apenas atenda às necessidades dos negócios,
-    mas também facilite a vida dos clientes.
-
-</p>
-
-<div class="d-flex flex-wrap container-photos">
-       <div class="d-inline-flex align-items-center mb-3">
-            <img src="../teste.jpg" alt="foto de perfil" class="img-aboutus" />
-            <div class="d-flex flex-column ml-3">
-            <div class="p-2 nome">Bárbara Sena </div>
-                <div class="p-2 social-media">LinkedIn</div>
+    <h1 class="title-aboutus">Quem somos?</h1>
+    <div class="jumbotron d-flex flex-column w-75" style="background-color: white">
+        <p class="lead text-aboutus">
+            Somos um grupo de estudantes da PUC Minas, unidos por nossa paixão por resolver problemas complexos e transformar ideias em realidade.
+            Cada membro do nosso grupo traz uma perspectiva única e valiosa, enriquecendo nosso trabalho e permitindo que abordemos os desafios de maneiras inovadoras.
+        </p>
+        
+        <p class="text-aboutus">
+            O tema do nosso projeto é a “Otimização de Cobranças”. A ideia surgiu de uma conversa casual entre um dos nossos membros e um conhecido que expressou frustrações
+            com o processo de cobrança atual. Isso nos levou a questionar: “Como podemos tornar este processo mais eficiente e menos estressante para
+            todos os envolvidos?” Assim, embarcamos nesta jornada para desenvolver uma solução que não apenas atenda às necessidades dos negócios,
+            mas também facilite a vida dos clientes
+        </p>
+        <hr class="my-4">
+        <div class="d-flex flex-wrap container-photos justify-content-around">
+            <div class="d-inline-flex align-items-center mb-3 flex-fill">
+                <img src="../teste.jpg" alt="foto de perfil" class="img-aboutus" />
+                <div class="d-flex flex-column ml-3">
+                    <div class="p-2 nome">Bárbara Sena </div>
+                    <div class="p-2 social-media">LinkedIn</div>
+                </div>
             </div>
-        </div>
 
-        <div class="d-inline-flex align-items-center mb-3">
+            <div class="d-inline-flex align-items-center mb-3 flex-fill">
                 <img src="../eduarda.jpeg" alt="foto de perfil" class="img-aboutus" />
-            <div class="d-flex flex-column ml-3">
-                <div class="p-2 nome">Eduarda Silva</div>
-                <div class="p-2 social-media">LinkedIn</div>
+                <div class="d-flex flex-column ml-3">
+                    <div class="p-2 nome">Eduarda Silva</div>
+                    <div class="p-2 social-media">LinkedIn</div>
+                </div>
             </div>
-        </div>
 
-        <div class="d-inline-flex align-items-center mb-3">
+            <div class="d-inline-flex align-items-center mb-3 flex-fill">
                 <img src="../lucas.png" alt="foto de perfil" class="img-aboutus" />
-            <div class="d-flex flex-column ml-3">
+                <div class="d-flex flex-column ml-3">
                     <div class="p-2 nome">Lucas Sampaio</div>
-                <div class="p-2 social-media">LinkedIn</div>
+                    <div class="p-2 social-media">LinkedIn</div>
+                </div>
             </div>
-        </div>
 
-        <div class="d-inline-flex align-items-center mb-3">
+            <div class="d-inline-flex align-items-center mb-3 flex-fill">
                 <img src="../cassioo.png" alt="foto de perfil" class="img-aboutus" />
-            <div class="d-flex flex-column ml-3">
+                <div class="d-flex flex-column ml-3">
                     <div class="p-2 nome">Cassio Kawamura</div>
-                <div class="p-2 social-media">LinkedIn</div>
+                    <div class="p-2 social-media">LinkedIn</div>
+                </div>
             </div>
-        </div>
 
-        <div class="d-inline-flex align-items-center mb-3">
-            <img src="../gleyston.png" alt="foto de perfil" class="img-aboutus" />
-            <div class="d-flex flex-column ml-3">
+            <div class="d-inline-flex align-items-center mb-3 flex-fill">
+                <img src="../gleyston.png" alt="foto de perfil" class="img-aboutus" />
+                <div class="d-flex flex-column ml-3">
                     <div class="p-2 nome">Gleyston Silva</div>
-                <div class="p-2 social-media">LinkedIn</div>
+                    <div class="p-2 social-media">LinkedIn</div>
+                </div>
             </div>
-        </div>
 
-        <div class="d-inline-flex align-items-center mb-3">
+            <div class="d-inline-flex align-items-center mb-3 flex-fill">
                 <img src="../lucy.jpeg" alt="foto de perfil" class="img-aboutus" />
-            <div class="d-flex flex-column ml-3">
+                <div class="d-flex flex-column ml-3">
                     <div class="p-2 nome">Lucy Suxo</div>
-                <div class="p-2 social-media">LinkedIn</div>
+                    <div class="p-2 social-media">LinkedIn</div>
+                </div>
             </div>
-        </div>
-
     </div>
+
+    
+   </div>
 </div>
 
 <style>
@@ -88,9 +90,10 @@
     .title-aboutus {
         
         margin:auto;
-        font-size: 25px;
+        font-size: 35px;
         color: #1090CB;
-        margin-top: 30px;
+        margin-top: 80px;
+        margin-bottom: 40px;
         
     }
 
@@ -98,7 +101,6 @@
 
         margin:auto;
         margin-bottom: 20px;
-        text-align: center;
     }
 
     .container-photos {
@@ -106,6 +108,7 @@
         justify-content: flex-start; 
         flex-wrap: wrap; 
         margin-left: 1rem;
+        flex: 1;
     }
 
 

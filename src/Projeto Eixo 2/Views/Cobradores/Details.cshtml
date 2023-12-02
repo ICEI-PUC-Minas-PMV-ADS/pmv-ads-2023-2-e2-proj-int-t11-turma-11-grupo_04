@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="container p-2" style="position: relative;">
+<div class="container p-2" style="position: relative; top: 40px;">
     <div class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -176,7 +176,7 @@
                                         {
                                             <tr>
                                                 <td>@cobranca.Cliente.NomeCliente</td>
-                                                <td>@cobranca.Vencimento</td>
+                                            <td>@cobranca.Vencimento.ToShortDateString()</td>
                                                 <td>@cobranca.Valor</td>
                                                 <td>@cobranca.StatusCobranca</td>
                                                 <td>@cobranca.Pagamento</td>
@@ -243,7 +243,7 @@
                         <span asp-validation-for="SobrenomeCobrador" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="CPF" class="form-control" id="cpfInput" placeholder="CPF" />
+                        <input asp-for="CPF"  class="form-control" id="cpfInput" placeholder="CPF" />
                         <span asp-validation-for="CPF" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -256,25 +256,25 @@
                         <span asp-validation-for="Telefone" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Endereco" class="form-control" placeholder="Endereçp" />
+                        <input asp-for="CEP" id="cep" class="form-control" placeholder="CEP" />
+                        <span asp-validation-for="CEP" id="cep-error" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Endereco" id="rua" class="form-control" placeholder="Endereço" />
                         <span asp-validation-for="Endereco" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Bairro" class="form-control" placeholder="Bairro" />
+                        <input asp-for="Bairro" id="bairro" class="form-control" placeholder="Bairro" />
                         <span asp-validation-for="Bairro" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="Cidade" class="form-control" placeholder="Cidade" />
+                        <input asp-for="Cidade" id="cidade"  class="form-control" placeholder="Cidade" />
                         <span asp-validation-for="Cidade" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input asp-for="UF" class="form-control" placeholder="UF" />
+                        <input asp-for="UF" id="estado" class="form-control" placeholder="UF" />
                         <span asp-validation-for="UF" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="CEP" class="form-control" placeholder="CEP" />
-                        <span asp-validation-for="CEP" class="text-danger"></span>
-                    </div>
+                    </div>                 
                     <div class="form-group">
                         <input type="submit" value="Salvar" class="btn btn-primary" style="background-color: #0069d9" />
                     </div>
@@ -286,8 +286,13 @@
 </div>
 
 <style>
+
     body {
         background-color: #1090CB1A;
+    }
+
+    a:hover {
+        text-decoration: none;
     }
 
     .custom-modal-body {
@@ -516,7 +521,46 @@
             }
         })
 
-       
+        //Mascara
+        $(document).ready(function () {
+            // Máscara para CPF
+            $('#cpfInput').mask('000.000.000-00', { reverse: true });
+
+            // Máscara para CEP
+            $('#cep').mask('00000-000');
+
+        document.getElementById('cep').addEventListener('blur', function () {
+            const cep = this.value.replace(/\D/g, '');
+
+            if (cep.length === 8) {
+                consultarCEP(cep);
+            }
+        });
+
+        function consultarCEP(cep) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        preencherCamposEndereco(data);
+                    } else {
+                        document.getElementById('cep-error').innerText = 'CEP não encontrado';
+                    }
+                })
+                .catch(error => console.error('Erro ao consultar CEP:', error));
+        }
+
+        function preencherCamposEndereco(data) {
+            document.getElementById('cep-error').innerText = '';
+
+            // Preencha os campos desejados com os dados obtidos da API
+            document.getElementById('cidade').value = data.localidade;
+            document.getElementById('estado').value = data.uf;
+            document.getElementById('rua').value = data.logradouro;
+            document.getElementById('bairro').value = data.bairro;
+
+        }
+            });
 
     </script>
 

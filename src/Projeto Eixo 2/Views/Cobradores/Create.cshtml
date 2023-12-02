@@ -12,7 +12,7 @@
    
     <div class="mb-3 justify-content-center" style="background-color: white; border-radius: 20px; padding: 50px; margin-top: 40px; height: calc(100vh - 130px); width: 600px">
         <h2 style="text-align: center; margin-bottom: 10px">Crie sua conta grátis!</h2>
-        <form asp-action="Create" style="overflow: auto; height: 80%" enctype="multipart/form-data">
+        <form asp-action="Create" style="overflow: auto; height: 80%" id="cadastro" enctype="multipart/form-data">
             <div class="mb-3 form-group">
                 <input asp-for="NomeCobrador" class="form-control" placeholder="Nome" />
                 <span asp-validation-for="NomeCobrador" class="text-danger"></span>
@@ -31,22 +31,22 @@
             </div>
             <div class="mb-3 form-group">
                 <input asp-for="CEP" id="cep" class="form-control" placeholder="CEP" />
-                <span asp-validation-for="CEP" class="text-danger"></span>
+                <span asp-validation-for="CEP" id="cep-error" class="text-danger"></span>
             </div>
             <div class="mb-3 form-group">
-                <input asp-for="Endereco" class="form-control" placeholder="Endereço" />
+                <input asp-for="Endereco" id="rua" class="form-control" placeholder="Endereço" />
                 <span asp-validation-for="Endereco" class="text-danger"></span>
             </div>
             <div class="mb-3 form-group">
-                <input asp-for="Bairro" class="form-control" placeholder="Bairro" />
+                <input asp-for="Bairro" id="bairro" class="form-control" placeholder="Bairro" />
                 <span asp-validation-for="Bairro" class="text-danger"></span>
             </div>
             <div class="mb-3 form-group">
-                <input asp-for="Cidade" class="form-control" placeholder="Cidade" />
+                <input asp-for="Cidade" id="cidade" class="form-control" placeholder="Cidade" />
                 <span asp-validation-for="Cidade" class="text-danger"></span>
             </div>
             <div class="mb-3 form-group">
-                <input asp-for="UF" class="form-control" placeholder="Estado" />
+                <input asp-for="UF" id="estado" class="form-control" placeholder="Estado" />
                 <span asp-validation-for="UF" class="text-danger"></span>
             </div>
             <div class="mb-3 form-group">
@@ -73,18 +73,100 @@
             <h7 class="text-black-50">Já possui uma conta?<a asp-area="" asp-controller="Cobradores" asp-action="Login">Entrar</a></h7>
         </form>
     </div>
+
+   @*  <div id="loading" style="display: block; ">
+        <img style="width: 40px; height: 40px; margin: 0 auto; " src="/src/loading.gif" alt="Loading..." />
+    </div> *@
+
 </div>
 
 
-<script>
 
+
+<script>
+    //Mascara
     $(document).ready(function () {
         // Máscara para CPF
         $('#cpf').mask('000.000.000-00', { reverse: true });
 
         // Máscara para CEP
         $('#cep').mask('00000-000');
+
+    //Loading
+     @*
+        // Captura do formulário
+    var form = $('#cadastro');
+
+        // Adiciona um manipulador de evento para o envio do formulário
+        form.submit(function (e) {
+            e.preventDefault(); // Evita o envio padrão do formulário
+
+            // Exibe o indicador de carregamento
+            $('#loading').show();
+
+            // Obtém os dados do formulário
+            var formData = new FormData(form[0]);
+
+            // Realiza a requisição assíncrona (Ajax)
+            $.ajax({
+                url:'/Cobradores/Create', // URL do seu endpoint de cadastro
+                type: 'POST', // Método HTTP do formulário (por exemplo, POST)
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    // Lida com o sucesso da requisição
+                    console.log('Cadastro realizado com sucesso!', data);
+
+                    // Oculta o indicador de carregamento
+                    $('#loading').hide();
+                },
+                error: function (error) {
+                    // Lida com falhas na requisição
+                    console.error('Erro ao cadastrar:', error);
+
+                    // Oculta o indicador de carregamento
+                    $('#loading').hide();
+            }
+        });
+
+
+            });*@
+
+            document.getElementById('cep').addEventListener('blur', function () {
+                const cep = this.value.replace(/\D/g, '');
+
+                if (cep.length === 8) {
+                    consultarCEP(cep);
+                }
+            });
+
+        function consultarCEP(cep) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        preencherCamposEndereco(data);
+                    } else {
+                        document.getElementById('cep-error').innerText = 'CEP não encontrado';
+                    }
+                })
+                .catch(error => console.error('Erro ao consultar CEP:', error));
+        }
+
+        function preencherCamposEndereco(data) {
+            document.getElementById('cep-error').innerText = '';
+
+            // Preencha os campos desejados com os dados obtidos da API
+            document.getElementById('cidade').value = data.localidade;
+            document.getElementById('estado').value = data.uf;
+            document.getElementById('rua').value = data.logradouro;
+            document.getElementById('bairro').value = data.bairro;
+
+        }
     });
+
+
 
 </script>
 

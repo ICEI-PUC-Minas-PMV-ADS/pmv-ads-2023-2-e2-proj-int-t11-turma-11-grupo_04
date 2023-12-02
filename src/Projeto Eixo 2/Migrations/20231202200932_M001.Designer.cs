@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projeto_Eixo_2.Models;
 
@@ -11,9 +12,10 @@ using Projeto_Eixo_2.Models;
 namespace Projeto_Eixo_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231202200932_M001")]
+    partial class M001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,7 +75,7 @@ namespace Projeto_Eixo_2.Migrations
 
                     b.HasIndex("CobradorId");
 
-                    b.ToTable("Clientes", (string)null);
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("Projeto_Eixo_2.Models.Cobrador", b =>
@@ -136,7 +138,7 @@ namespace Projeto_Eixo_2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cobradores", (string)null);
+                    b.ToTable("Cobradores");
                 });
 
             modelBuilder.Entity("Projeto_Eixo_2.Models.Cobranca", b =>
@@ -177,7 +179,7 @@ namespace Projeto_Eixo_2.Migrations
 
                     b.HasIndex("CobradorId");
 
-                    b.ToTable("Cobranca", (string)null);
+                    b.ToTable("Cobranca");
                 });
 
             modelBuilder.Entity("Projeto_Eixo_2.Models.Cliente", b =>
