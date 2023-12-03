@@ -247,6 +247,26 @@ namespace Projeto_Eixo_2.Controllers
             if (ModelState.IsValid)
             {
 
+                // Retira o ponto e o tracinho do CPF antes de validar
+                cobrador.CPF = cobrador.CPF.Replace(".", "").Replace("-", "");
+
+                // Verifica se o CPF tem 11 dígitos e se tem apenas números
+
+                if (cobrador.CPF.Length != 11 || !cobrador.CPF.All(char.IsDigit))
+                {
+                    TempData["ErrorMessage"] = "O CPF deve ter exatamente 11 digitos.";
+                    return RedirectToAction("Details", "Cobradores", new { id = cobrador.Id });
+                }
+
+                // Retira o tracinho do CEP antes de validar
+                cobrador.CEP = cobrador.CEP.Replace("-", "");
+                // Verifica o formato do CEP
+                if (cobrador.CEP.Length != 8 || !cobrador.CEP.All(char.IsDigit))
+                {
+                    TempData["ErrorMessage"] = "O CEP deve ter exatamente 8 digitos.";
+                    return RedirectToAction("Details", "Cobradores", new { id = cobrador.Id });
+                }
+
                 try
                 {
                     _context.Update(cobrador);
