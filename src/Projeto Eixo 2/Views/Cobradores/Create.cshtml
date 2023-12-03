@@ -66,12 +66,12 @@
                 <label asp-for="FotoArquivo" class="control-label"></label>
                 <input asp-for="FotoArquivo" type="file" class="form-control" />
                 <span asp-validation-for="FotoArquivo" class="text-danger"></span>
-            </div>
-            <div class="mb-3 form-group">
-                <input type="submit" value="Criar conta" class="btn btn-info btn-lg" style="width: 100%" />
-            </div>
-            <h7 class="text-black-50">Já possui uma conta?<a asp-area="" asp-controller="Cobradores" asp-action="Login">Entrar</a></h7>
+            </div>                         
         </form>
+            <div class="mb-3 form-group d-flex flex-column">
+                <button type="button" onclick="document.getElementById('cadastro').submit();" style="width: 100%;" class="btn btn-info btn-lg">Cadastrar</button>
+            <h7 class="text-black-50 mt-2" style="align-self:center">Já possui uma conta?<a asp-area="" asp-controller="Cobradores" asp-action="Login">Entrar</a></h7>
+            </div>
     </div>
 
    @*  <div id="loading" style="display: block; ">
