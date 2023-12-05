@@ -4,6 +4,18 @@
     ViewData["Title"] = "Delete";
 }
 
+<script>
+    let obj = JSON.parse(sessionStorage.getItem('Modal'))
+    if (!obj.isClienteSelected) {
+        obj = {
+            isClienteSelected: true,
+            isCobrancaSelected: false
+        }
+
+        sessionStorage.setItem('Modal', JSON.stringify(obj))
+    }
+</script>
+
 
 <div class="p-4">
     <div class="column d-flex justify-content-center">

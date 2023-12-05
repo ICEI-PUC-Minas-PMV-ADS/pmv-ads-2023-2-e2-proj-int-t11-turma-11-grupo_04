@@ -4,6 +4,17 @@
     ViewData["Title"] = "Edit";
 }
 
+<script>
+    let obj = JSON.parse(sessionStorage.getItem('Modal'))
+    if (!obj.isCobrancaSelected){
+        obj = {
+            isClienteSelected: false,
+            isCobrancaSelected: true
+        }
+
+        sessionStorage.setItem('Modal', JSON.stringify(obj))
+    }
+</script>
 
 
 <div class="column d-flex justify-content-center">

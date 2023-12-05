@@ -4,6 +4,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     ViewData["Title"] = "Teste";
 }
+
+<script>
+    let obj = JSON.parse(sessionStorage.getItem('Modal'))
+    if (!obj.isCobrancaSelected){
+        obj = {
+            isClienteSelected: false,
+            isCobrancaSelected: true
+        }
+
+        sessionStorage.setItem('Modal', JSON.stringify(obj))
+    }
+</script>
+
 <head>
     <title>Teste</title>
 </head>

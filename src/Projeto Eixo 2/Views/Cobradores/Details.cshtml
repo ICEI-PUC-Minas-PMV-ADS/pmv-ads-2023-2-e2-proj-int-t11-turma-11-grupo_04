@@ -5,7 +5,6 @@
     ViewData["Title"] = "Details";
     var cobradorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     var fotoUrl = "/imagens/" + Model.FotoUrl;
-    var imageEndPoint = Url.ActionLink("UpdateImage", "Cobradores");
     var emailEndPoint = Url.ActionLink("SendEmail", "Cobradores");
 }
 
@@ -26,7 +25,7 @@
                 <div class="card">
                     <div class="d-flex flex-column align-items-center text-center" style="padding-top: 1em; padding-bottom: 1em;">
                         <div style="display: flex; flex-direction: column;">
-                            <img id="ProfilePicture" src="/imagens/@Model.FotoUrl" class="rounded-circle" width="130" height="130" style="aspect-ratio: 1 / 1; object-fit: cover; margin-bottom: .6em;" />
+                            <img id="ProfilePicture" src="@fotoUrl" class="rounded-circle" width="130" height="130" style="aspect-ratio: 1 / 1; object-fit: cover; margin-bottom: .6em;" />
                             <label>
                                 <input id="CameraInput" style="display: none;" type="file" class="hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#007bff" class="bi bi-camera-fill" viewBox="0 0 16 16">
@@ -106,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div class="collapse col-md-12" id="tabelaClientes" style="display: block;">
+            <div class="collapse col-md-12" id="tabelaClientes" style="">
                 <div class="card mb-3 col-md-12">
                     <div class="card-body">
                         <button onclick="window.location.href='@Url.Action("create", "Clientes", new {id = cobradorId})'" style="background-color: white; border: none; outline: none;">
@@ -157,7 +156,7 @@
                 </div>
             </div>
 
-            <div class="collapse col-md-12" id="tabelaCobrancas" style="display: none;">
+            <div class="collapse col-md-12" id="tabelaCobrancas" style="">
                     <div class="card mb-3 col-md-12">
                         <div class="card-body">
                         <button onclick="window.location.href='/Cobrancas/Create'" style="background-color: white; border: none; outline: none;">
@@ -377,6 +376,27 @@
         text-align: end;
     }
 
+    .button {
+        border: 1px solid #007bff;
+        color: #007bff;
+        background-color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+
+        outline: none;
+    }
+
+    .button:hover {
+        background-color: #007bff;
+        color: white;
+    }
+   
+   /*Estilo do botão quando selecionado*/
+    .selecionado {
+        background-color: #007bff;
+        color: white;
+    }
+
     .form-group > .btn-primary {
         width: 80%;
         height: 2.5em;
@@ -408,55 +428,6 @@
 
 @section Scripts {
     <script>
-        $(document).ready(function () {
-
-            $('#toggleButtonClientes').click(function () {
-                // Verifica se a tabela de cobranças está visível e a esconde
-                if ($('#tabelaCobrancas').is(':visible')) {
-                    $('#tabelaCobrancas').fadeOut('fast', function () {
-                        // Mostra a tabela de clientes após esconder a tabela de cobranças
-                        $('#tabelaClientes').fadeIn('fast');
-                    });
-                } else {
-                    // Se a tabela de cobranças não estiver visível, mostra a tabela de clientes
-                    $('#tabelaClientes').fadeToggle();
-                }
-            });
-
-            $('#toggleButtonCobrancas').click(function () {
-                // Verifica se a tabela de clientes está visível e a esconde
-                if ($('#tabelaClientes').is(':visible')) {
-                    $('#tabelaClientes').fadeOut('fast', function () {
-                        // Mostra a tabela de cobranças após esconder a tabela de clientes
-                        $('#tabelaCobrancas').fadeIn('fast');
-                    });
-                } else {
-                    // Se a tabela de clientes não estiver visível, mostra a tabela de cobranças
-                    $('#tabelaCobrancas').fadeToggle();
-                }
-            });
-        });
-
-
-        $(document).ready(function () {
-            $('#toggleButtonClientes').click(function () {
-                $('#toggleButtonClientes').addClass('active');
-                $('#toggleButtonCobrancas').removeClass('active');
-
-                $('#tabelaClientes').collapse('show');
-                $('#tabelaCobrancas').collapse('hide');
-            });
-
-            $('#toggleButtonCobrancas').click(function () {
-                $('#toggleButtonCobrancas').addClass('active');
-                $('#toggleButtonClientes').removeClass('active');
-
-                $('#tabelaCobrancas').collapse('show');
-                $('#tabelaClientes').collapse('hide');
-            });
-        });
-
-
         async function handleSendEmail(Cobranca, status) {
             if (status == 2) {
                 $('.toast').toast({ delay: 1500 })
@@ -472,9 +443,14 @@
 
             if (response.status == 200) {
                 $('.toast').toast({ delay: 2500 })
-                $('.toast').children('.toast-body').html('Email de cobrança enviado com sucesso!! \n Atualize a páagina para mais informações')
+                $('.toast').children('.toast-body').html('Email de cobrança enviado com sucesso!!')
                 $('.toast').toast('show')
-            } else if (response.status == 406){
+
+                setTimeout(() => {
+                    location.reload()
+                }, 2000)
+
+            } else if (response.status == 406) {
                 $('.toast').toast({ delay: 1500 })
                 $('.toast').children('.toast-body').html('Cobrança com pagamento já realizado!')
                 $('.toast').toast('show')
@@ -485,44 +461,130 @@
             }
         }
 
-        async function updateImage(img) {
-            const url = '@imageEndPoint' + '/' + @cobradorId
-            const formData = new FormData()
-            formData.append('File', img)
 
-            response = await fetch(url, {
-                method: 'post',
-                body: formData
-            })
-            json = await response.json()
-            
-            if (json.error == 0) {
-                $('#ProfilePicture').attr('src', '/imagens/'+json.newFoto)
-                $('.toast').toast({ delay: 1500 })
-                $('.toast').children('.toast-body').html('Foto atualizada com sucesso!')
-                $('.toast').toast('show')
-            } else {
-                $('.toast').toast({ delay: 2000 })
-                $('.toast').children('.toast-body').html(json.msg)
-                $('.toast').toast('show')
-            }
-            
-        }
+        $(document).ready(function () {
 
-        $("#CameraInput").on("change", () => {
-            if ($("#CameraInput").val()) {
-                const img = $("#CameraInput")[0].files[0]
-                const extensao = img.name.split('.').pop()
-                const extensoesSuportadas = ['jpeg', 'jpg', 'png']
+            $('#toggleButtonClientes').click(async function () {
+                // Verifica se a tabela de cobranças está visível e a esconde
+                if ($('#tabelaCobrancas').is(':visible')) {
+
+                    //$('#tabelaCobrancas').fadeOut()
+                    //$('#toggleButtonCobrancas').removeClass('active')
+                  
+                    $('#tabelaCobrancas').fadeOut('fast', function () {
+                        $('#toggleButtonCobrancas').removeClass('active')
+                        // Mostra a tabela de clientes após esconder a tabela de cobranças
+                        
+                    });
+                    await setTimeout(() => { console.log('oie') }, 2000)
+                }
+
                 
-                if (!extensoesSuportadas.includes(extensao)) {
-                    alert('Extensão de arquivo não suportada, apenas Imagens.')
+                if ($(this).hasClass("active")){
+                    $('#tabelaClientes').fadeOut('fast');
+                    $( this ).removeClass('active');
+                } else {
+                    $('#tabelaClientes').fadeIn('slow');
+                    $(this).addClass('active');
+                }
+            });
+
+            $('#toggleButtonCobrancas').click(async function () {
+                // Verifica se a tabela de clientes está visível e a esconde
+                if ($('#tabelaClientes').is(':visible')) {
+
+                    //$('#tabelaClientes').fadeOut()
+                    //$('#toggleButtonClientes').removeClass('active')
+                    
+                    $('#tabelaClientes').fadeOut('fast', function () {
+                        $('#toggleButtonClientes').removeClass('active')
+                        // Mostra a tabela de clientes após esconder a tabela de cobranças
+                    });
+                    await setTimeout(() => { console.log('oie') }, 2000)
+                }
+               
+                // validação caso o botão já esteja ativo
+                if ($( this ).hasClass("active")) {
+                    // Se a tabela de clientes não estiver visível, mostra a tabela de cobranças
+                    $('#tabelaCobrancas').fadeOut('fast');
+                    $( this ).removeClass('active');
+                } else {
+                    $('#tabelaCobrancas').fadeIn('slow');
+                    $( this ).addClass('active');
+                }
+            });
+
+            function showModal() {
+                // se ainda não existe sessão, cria com o padrão de cliente
+                if (sessionStorage.getItem('Modal') == null) {
+                    const obj = {
+                        isClienteSelected: false,
+                        isCobrancaSelected: true
+                    }
+
+                    sessionStorage.setItem('Modal', JSON.stringify(obj))
+                }
+
+                const obj = JSON.parse(sessionStorage.getItem('Modal'))
+                if (obj == null) {
                     return
                 }
-                updateImage(img)
-                
+
+                if (obj.isClienteSelected) {
+                    $('#toggleButtonClientes').click()
+                } else {
+                    $('#toggleButtonCobrancas').click()
+                }
+
             }
-        })
+
+            async function updateImage(img) {
+                const imageURL = '@Url.ActionLink("UpdateImage", "Cobradores")' + '/' + @cobradorId;
+
+                const formData = new FormData()
+                formData.append('File', img)
+
+                response = await fetch(imageURL, {
+                    method: 'post',
+                    body: formData
+                })
+                json = await response.json()
+
+                if (json.error == 0) {
+                    $('#ProfilePicture').attr('src', '/imagens/' + json.newFoto)
+                    $('.toast').toast({ delay: 1500 })
+                    $('.toast').children('.toast-body').html('Foto atualizada com sucesso!')
+                    $('.toast').toast('show')
+                } else {
+                    $('.toast').toast({ delay: 2000 })
+                    $('.toast').children('.toast-body').html(json.msg)
+                    $('.toast').toast('show')
+                }
+
+            }
+
+            $("#CameraInput").on("change", () => {
+                if ($("#CameraInput").val()) {
+                    const img = $("#CameraInput")[0].files[0]
+                    const extensao = img.name.split('.').pop()
+                    const extensoesSuportadas = ['jpeg', 'jpg', 'png']
+
+                    if (!extensoesSuportadas.includes(extensao)) {
+                        $('.toast').toast({ delay: 2500 })
+                        $('.toast').children('.toast-body').html('Extensão de arquivo não suportada, apenas imagens.')
+                        $('.toast').toast('show')
+                        return
+                    }
+                    updateImage(img)
+
+                }
+            })
+
+
+            showModal()
+        });
+
+       
 
         //Mascara
         $(document).ready(function () {
