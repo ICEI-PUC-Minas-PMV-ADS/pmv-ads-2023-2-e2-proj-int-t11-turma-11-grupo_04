@@ -1,21 +1,6 @@
 # Registro de Testes de Usabilidade
 
-    table {
-      border-collapse: collapse;
-      width: 80%;
-    }
-    th, td {
-      border: 1px solid #000;
-      padding: 8px;
-      font-size: large;
-    }
-    tr:nth-child(even) {
-      background-color: #d3d3d3;
-    }
-    tr:nth-child(odd) {
 
-    }
-  </style>
 </head>
 <body>
 
