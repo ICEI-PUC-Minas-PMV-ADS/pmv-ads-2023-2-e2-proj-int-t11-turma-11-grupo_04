@@ -8,7 +8,7 @@ Conjunto de slides em um arquivo PowerPoint ou PDF com a apresentação do proje
 Recibos Express
 
 ## Identidade Visual (Marca, Design)
-![](image.png)
+![logo](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/91093985/12a4e17d-1a60-4e4f-8c14-44de5c903502)
 
 ## Conjunto de Slides (Estrutura)
 ![](/img/slide_1.png)
