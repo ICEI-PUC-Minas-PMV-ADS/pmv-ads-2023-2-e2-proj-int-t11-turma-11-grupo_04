@@ -11,10 +11,4 @@ Recibos Express
 ![logo](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/91093985/12a4e17d-1a60-4e4f-8c14-44de5c903502)
 
 ## Conjunto de Slides (Estrutura)
-![](/img/slide_1.png)
-![](/img/slide_2.png)
-![](/img/slide_3.png)
-![](/img/slide_4.png)
-![](/img/slide_5.png)
-![](/img/slide_6.png)
-![](/img/slide_7.png)
+[Recibo Expresspdf.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/files/13589547/Recibo.Expresspdf.pdf)
