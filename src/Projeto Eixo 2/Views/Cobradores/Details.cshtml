@@ -2,7 +2,7 @@
 @model Projeto_Eixo_2.Models.Cobrador
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Perfil";
     var cobradorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     var fotoUrl = "/imagens/" + Model.FotoUrl;
     var emailEndPoint = Url.ActionLink("SendEmail", "Cobradores");

@@ -5,7 +5,7 @@
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Adicionar cobrança";
 }
 
 <script>
@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <label asp-for="Valor" class="control-label"></label>
                         <input asp-for="Valor" id="valor" class="form-control" />
-                        <span asp-validation-for="Valor" class="text-danger"></span>
+                      @*   <span asp-validation-for="Valor" class="text-danger"></span> *@
                     </div>
                     <div class="form-group" id="clienteSelectGroup">
                         <label asp-for="ClienteId" class="control-label"> Nome do Cliente</label>
