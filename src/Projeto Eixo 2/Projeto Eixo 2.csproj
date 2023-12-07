@@ -8,12 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\About.cshtml" />
-    <Content Remove="Views\Home\Index1.cshtml" />
-    <Content Remove="wwwroot\css\PopupCadastroCliente.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\Cassioo.png" />
   </ItemGroup>
 

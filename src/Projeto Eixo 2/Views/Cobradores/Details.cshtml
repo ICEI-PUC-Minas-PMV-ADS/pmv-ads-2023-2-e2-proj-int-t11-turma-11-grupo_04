@@ -446,7 +446,12 @@
                 $('.toast').children('.toast-body').html('Email de cobrança enviado com sucesso!!')
                 $('.toast').toast('show')
 
-                setTimeout(() => {
+                setTimeout(() => {                    
+                    let obj = JSON.parse(sessionStorage.getItem('Modal'))
+                    obj.isClienteSelected = false
+                    obj.isCobrancaSelected = true
+                    sessionStorage.setItem('Modal', JSON.stringify(obj))
+                    
                     location.reload()
                 }, 2000)
 
@@ -476,7 +481,6 @@
                         // Mostra a tabela de clientes após esconder a tabela de cobranças
                         
                     });
-                    await setTimeout(() => { console.log('oie') }, 2000)
                 }
 
                 
