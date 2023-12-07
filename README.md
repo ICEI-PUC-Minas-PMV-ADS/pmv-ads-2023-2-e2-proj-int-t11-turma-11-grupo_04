@@ -1,5 +1,5 @@
 
-# RecibosExpress
+# Cobrança Simplificada
 ![logo1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/128761321/8783389f-1ada-401b-a394-0137a357eed7)
 
 
@@ -18,7 +18,6 @@ O projeto em andamento busca simplificar o processo de geração de boletos de c
 * Eduarda Silva Merenciano
 * Gleyston Guimarães Silva
 * Lucas Bezerra Sampaio
-* Lucy Elaine Quispe Suxo
 
 ## Orientador
 
