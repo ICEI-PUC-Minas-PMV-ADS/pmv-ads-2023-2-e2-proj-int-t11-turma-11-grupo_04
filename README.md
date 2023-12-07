@@ -1,6 +1,7 @@
 
 # RecibosExpress
-![Recibos express](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/128761321/2afd86b0-4fbc-4c78-870e-17d96c093e44)
+![logo1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04/assets/128761321/8783389f-1ada-401b-a394-0137a357eed7)
+
 
 `Análise e Desenvolvimento de Sistema`
 
