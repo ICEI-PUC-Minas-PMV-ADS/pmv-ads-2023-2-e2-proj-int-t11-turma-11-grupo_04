@@ -70,4 +70,4 @@ As tecnologias que escolhemos utilizar para implementar a nossa solução são:
 
 O site utiliza a plataforma do Github Pages como ambiente de hospedagem do site do projeto. 
 
-A publicação do site no Github Pages é feita por meio de uma submissão do projeto (push) via git para o repositório que se encontra no endereço:https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t3-EduSync
+A publicação do site no Github Pages é feita por meio de uma submissão do projeto (push) via git para o repositório que se encontra no endereço:https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t11-turma-11-grupo_04
